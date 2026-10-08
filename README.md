@@ -91,7 +91,8 @@ veeam-design-system/
 ├── fonts/                       ← ES Build, ES Build Neutral, ES Build Bauhaus (woff2 + woff) + fonts.css
 ├── scripts/build-tokens.py      ← SINGLE SOURCE OF TRUTH — edit values here, then run it
 ├── scripts/package-skill.sh     ← rebuilds dist/veeam-design-system.zip
-├── scripts/deploy-site.sh       ← publishes the examples to Vercel
+├── scripts/build-site.sh        ← builds the public site (_site/); Vercel runs it on every push
+├── vercel.json                  ← tells Vercel to publish only _site/
 ├── examples/
 │   ├── foundations/             ← every token rendered: colors, ramps, gradients, type, buttons, spacing, grid, logo
 │   ├── homepage/                ← storefront homepage: parallax hero + Data Command Graph, category cards, promo + quick order
@@ -313,9 +314,11 @@ All example content (products, prices, SKUs, stats) is placeholder. The site is 
 (`noindex`) and contains only the example pages and their CSS, tokens, fonts and logos — never
 the source PDF or the skill. Share the link only inside the project team.
 
-**Updating the site:** after changing tokens or examples, run `./scripts/deploy-site.sh`
-(one-time `npx vercel login` first). To edit pages locally instead: `python3 -m http.server 8000`
-and open http://localhost:8000/examples/.
+**Updating the site:** it deploys automatically. Every push to `main` makes Vercel run
+`scripts/build-site.sh` and publish only the `_site/` folder it builds (see `vercel.json`), so the
+PDF, skill and scripts never go online. Track deploys in the
+[Vercel project](https://vercel.com/huri-1938s-projects/saltbox-veeam-design-system). To edit pages
+locally first: `python3 -m http.server 8000` and open http://localhost:8000/examples/.
 
 ---
 
@@ -392,7 +395,7 @@ If you know S1, you already know where everything is.
 1. Edit the value in **`scripts/build-tokens.py`** (all values live there).
 2. Run `python3 scripts/build-tokens.py` — regenerates `tokens/*`, `fonts/fonts.css` and
    `skill/references/color-variables.md`.
-3. Check it locally, then run `./scripts/deploy-site.sh` to update the live site.
+3. Check it locally, then push to `main` — the live site updates automatically.
 4. Update the prose in `skill/references/*.md` if the meaning changed.
 5. Commit with a message naming what changed, e.g. `tokens: darken warning-700 for contrast`.
 
