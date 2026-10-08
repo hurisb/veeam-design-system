@@ -12,17 +12,6 @@
   <style>
     /* Page layout only. Every color, size and space is a design-system token. */
 
-    /* ---------- Header ---------- */
-    .site-header { position: sticky; top: 0; z-index: 10; background: var(--bg-primary); border-bottom: 1px solid var(--border-secondary); }
-    .site-header .vds-header__inner { gap: var(--spacing-3xl); }
-    .search { flex: 1; max-width: 440px; position: relative; margin-left: auto; }
-    .search svg { position: absolute; left: var(--spacing-lg); top: 50%; transform: translateY(-50%); color: var(--fg-quaternary); pointer-events: none; }
-    .search .vds-input { padding-left: 40px; }
-    .icon-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-sm); min-width: 44px; height: 44px; padding: 0 var(--spacing-md); border-radius: var(--radius-md); color: var(--fg-secondary); text-decoration: none; font-size: var(--font-size-text-sm); font-weight: var(--font-weight-medium); background: none; border: 0; cursor: pointer; position: relative; }
-    .icon-btn:hover { background: var(--bg-primary_hover); color: var(--text-primary); }
-    .cart-count { position: absolute; top: 4px; right: 2px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: var(--radius-full); background: var(--color-primary); color: var(--color-white); font-size: 11px; line-height: 18px; font-weight: var(--font-weight-semibold); text-align: center; }
-    @media (max-width: 767px) { .search { display: none; } .account-label { display: none; } }
-
     /* ---------- Hero: background (cover + parallax) with text left, graphic right ---------- */
     .hero { position: relative; overflow: hidden; isolation: isolate; }
     .hero__bg {
@@ -122,7 +111,6 @@
     .remove { width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: none; border-radius: var(--radius-md); color: var(--fg-quaternary); cursor: pointer; }
     .remove:hover { background: var(--bg-primary_hover); color: var(--fg-error-primary); }
     .qo-actions { display: grid; gap: var(--spacing-xl); margin-top: var(--spacing-3xl); }
-    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
     /* ---------- Footer ---------- */
     .footer-row { display: flex; flex-wrap: wrap; gap: var(--spacing-3xl); align-items: center; justify-content: space-between; }
@@ -132,24 +120,25 @@
   </style>
 </head>
 <body>
-  <header class="site-header">
+  <!-- Site top bar — identical on every page (styles: .vds-site-header in css/veeam.css) -->
+  <header class="vds-site-header">
     <div class="vds-container vds-header__inner">
-      <a href="./" aria-label="Veeam Store home"><img src="../../skill/assets/logos/veeam-logo-clean.svg" alt="Veeam" width="112"></a>
+      <a href="../homepage/" aria-label="Veeam Store home"><img src="../../skill/assets/logos/veeam-logo-clean.svg" alt="Veeam" width="112"></a>
       <nav class="vds-nav" aria-label="Main">
-        <a href="./" aria-current="page">Home</a><a href="../storefront/">Products</a><a href="#categories">Workloads</a><a href="#quick-order">Quick order</a>
+        <a href="../homepage/" aria-current="page">Home</a><a href="../storefront/">Products</a><a href="../homepage/#categories">Workloads</a><a href="../homepage/#quick-order">Quick order</a>
       </nav>
-      <form class="search" role="search" onsubmit="return false">
-        <label class="sr" for="q">Search products</label>
+      <form class="vds-search" role="search" action="../storefront/">
+        <label class="vds-sr-only" for="site-search">Search products</label>
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m17.5 17.5-3.6-3.6m2.1-5.1a7.2 7.2 0 1 1-14.4 0 7.2 7.2 0 0 1 14.4 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <input class="vds-input" id="q" type="search" placeholder="Search products or SKUs">
+        <input class="vds-input" id="site-search" name="q" type="search" placeholder="Search products or SKUs">
       </form>
-      <a class="icon-btn" href="#" aria-label="Account">
+      <a class="vds-icon-btn" href="#" aria-label="Account">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 21c0-1.4 0-2.1-.17-2.67a4 4 0 0 0-2.66-2.66C16.6 15.5 15.9 15.5 14.5 15.5h-5c-1.4 0-2.1 0-2.67.17a4 4 0 0 0-2.66 2.66C4 18.9 4 19.6 4 21M16.5 7.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="account-label">Account</span>
+        <span class="vds-account-label">Account</span>
       </a>
-      <a class="icon-btn" href="#" aria-label="Cart, 2 items">
+      <a class="vds-icon-btn" href="#" aria-label="Cart, 2 items">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 2h1.3c.25 0 .37 0 .47.04.09.04.16.1.21.18.06.1.07.22.1.47L4.2 5m0 0 1.3 9.6c.05.42.08.63.18.79.09.14.21.25.36.32.17.08.38.08.8.08H18M4.2 5h15.12c.6 0 .9 0 1.1.12.17.1.3.27.37.47.07.22 0 .51-.13 1.1l-1.26 5.6c-.08.37-.12.55-.21.69-.08.12-.2.22-.34.28-.15.07-.34.07-.72.07H5.5M8 21a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm10 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="cart-count">2</span>
+        <span class="vds-cart-count">2</span>
       </a>
     </div>
   </header>
@@ -321,8 +310,8 @@
       const row = document.createElement('div');
       row.className = 'qo-row';
       row.innerHTML = `
-        <div><label class="sr" for="sku${n}">Product SKU, row ${n}</label><input class="vds-input sku" id="sku${n}" placeholder="Enter SKU" value="${sku}" autocomplete="off"><div class="qo-msg" aria-live="polite"></div></div>
-        <div><label class="sr" for="qty${n}">Quantity, row ${n}</label><input class="vds-input qty" id="qty${n}" type="number" min="1" value="${qty}" inputmode="numeric"></div>
+        <div><label class="vds-sr-only" for="sku${n}">Product SKU, row ${n}</label><input class="vds-input sku" id="sku${n}" placeholder="Enter SKU" value="${sku}" autocomplete="off"><div class="qo-msg" aria-live="polite"></div></div>
+        <div><label class="vds-sr-only" for="qty${n}">Quantity, row ${n}</label><input class="vds-input qty" id="qty${n}" type="number" min="1" value="${qty}" inputmode="numeric"></div>
         <button type="button" class="remove" aria-label="Remove row ${n}">${xIcon}</button>`;
       row.querySelector('.sku').addEventListener('blur', () => validate(row));
       row.querySelector('.remove').addEventListener('click', () => { row.remove(); if (!rows.children.length) addRow(); });

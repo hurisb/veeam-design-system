@@ -1,16 +1,7 @@
 /* Storefront example — layout for a B2B Commerce Cloud catalog (PLP + PDP).
    Visual values are tokens only; class names mirror SFRA/PWA Kit concepts (tile, refinements, PDP). */
 
-.utility-bar { background: var(--color-gradient-blue-3); color: var(--color-gray-dark-300); font-size: var(--font-size-text-xs); }
-.utility-bar .vds-container { display: flex; justify-content: space-between; gap: var(--spacing-xl); padding-block: var(--spacing-md); }
-.utility-bar a { color: var(--color-white); text-decoration: none; }
 
-.search { flex: 1; max-width: 480px; position: relative; }
-.search svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--fg-quaternary); }
-.search .vds-input { padding-left: 40px; }
-.cart-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-md); color: var(--fg-secondary); }
-.cart-btn:hover { background: var(--bg-primary_hover); }
-.cart-btn__count { position: absolute; top: 4px; right: 2px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: var(--radius-full); background: var(--color-primary); color: var(--color-white); font-size: 11px; line-height: 18px; font-weight: var(--font-weight-semibold); text-align: center; }
 
 .breadcrumbs { display: flex; gap: var(--spacing-md); font-size: var(--font-size-text-sm); color: var(--text-tertiary); padding-block: var(--spacing-xl); flex-wrap: wrap; }
 .breadcrumbs a { color: var(--text-tertiary); text-decoration: none; }

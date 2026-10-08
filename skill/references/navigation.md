@@ -361,6 +361,17 @@ Vertical sidebar navigation for applications.
 
 ### 11. Header Navigation
 
+**Veeam spec — storefront top bar (`.vds-site-header`), used on every page**
+
+One header for every page of a site — never a different bar per page. Order, left to right:
+clean logo (112px wide, links home) · main nav (`Text sm/Medium`, current page in azure with
+`aria-current="page"`) · search field (max 440px, icon inside, no extra button) · Account icon
+button with label · Cart icon button with an azure count badge. White background, 1px
+`border-secondary` bottom line, sticky at the top, 72px tall. Below 768px the search field and
+the "Account" label hide (icons stay). Anything else that sticks (e.g. a section menu) docks
+directly under it (`top: 73px`). Markup: copy it from any page in `examples/`.
+
+
 **Component:** `Header navigation`
 
 Horizontal top navigation bar for applications.

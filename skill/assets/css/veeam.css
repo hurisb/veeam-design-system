@@ -266,6 +266,19 @@ p { margin: 0; }
 .vds-nav a:hover, .vds-nav a[aria-current="page"] { color: var(--text-brand-tertiary); }
 @media (max-width: 1023px) { .vds-nav { display: none; } }
 
+/* ---------- Site header (storefront top bar) — same on every page ----------
+   Markup: see the top of any example page. Sticky, 72px tall: logo · nav · search · account · cart. */
+.vds-site-header { position: sticky; top: 0; z-index: 10; background: var(--bg-primary); border-bottom: 1px solid var(--border-secondary); }
+.vds-site-header .vds-header__inner { gap: var(--spacing-3xl); }
+.vds-search { flex: 1; max-width: 440px; position: relative; margin-left: auto; }
+.vds-search svg { position: absolute; left: var(--spacing-lg); top: 50%; transform: translateY(-50%); color: var(--fg-quaternary); pointer-events: none; }
+.vds-search .vds-input { padding-left: 40px; }
+.vds-icon-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-sm); min-width: 44px; height: 44px; padding: 0 var(--spacing-md); border-radius: var(--radius-md); color: var(--fg-secondary); text-decoration: none; font-size: var(--font-size-text-sm); font-weight: var(--font-weight-medium); background: none; border: 0; cursor: pointer; position: relative; }
+.vds-icon-btn:hover { background: var(--bg-primary_hover); color: var(--text-primary); }
+.vds-cart-count { position: absolute; top: 4px; right: 2px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: var(--radius-full); background: var(--color-primary); color: var(--color-white); font-size: 11px; line-height: 18px; font-weight: var(--font-weight-semibold); text-align: center; }
+.vds-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 767px) { .vds-search { display: none; } .vds-account-label { display: none; } }
+
 /* ---------- Footer ---------- */
 .vds-footer { background: var(--color-gradient-blue-3); color: var(--color-gray-dark-300); padding-block: var(--spacing-7xl); font-size: var(--font-size-text-sm); }
 .vds-footer a { color: var(--color-white); text-decoration: none; }
