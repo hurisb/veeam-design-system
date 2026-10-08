@@ -173,7 +173,7 @@ SEMANTIC = [
     ("border-tertiary", "gray-100", "gray-dark-800", "Low-contrast: subtle dividers, chart axes"),
     ("border-brand", "brand-600", "green-500", "Active/focused inputs, selected states, focus ring"),
     ("border-brand_alt", "brand-600", "gray-dark-700", "Brand border → gray in dark (banners, footers)"),
-    ("border-secondary-brand", "green-500", "green-500", "VEEAM: green accent rule (card top borders, timelines 'connected')"),
+    ("border-secondary-brand", "green-500", "green-500", "VEEAM: green 'connected' / 'good' strokes (timelines, selected diagram nodes) — not decorative card rules"),
     ("border-error", "error-500", "error-400", "Error borders"),
     ("border-error_subtle", "error-300", "error-500", "Subtle error borders"),
     ("border-warning", "warning-500", "warning-400", "VEEAM: Warning borders: inputs, alerts"),

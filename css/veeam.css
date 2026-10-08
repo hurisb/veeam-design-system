@@ -186,13 +186,13 @@ p { margin: 0; }
 .vds-checkbox { display: flex; gap: var(--spacing-md); align-items: flex-start; font-size: var(--font-size-text-sm); color: var(--text-secondary); }
 .vds-checkbox input { width: 16px; height: 16px; margin: 2px 0 0; accent-color: var(--color-primary); }
 
-/* ---------- Card — green top rule (web page p.14) ---------- */
+/* ---------- Card ---------- */
 .vds-card {
   background: var(--bg-primary); border: 1px solid var(--border-secondary);
-  border-top: 3px solid var(--border-secondary-brand);
-  border-radius: var(--radius-xs); padding: var(--spacing-3xl);
+  border-radius: var(--radius-xl); padding: var(--spacing-3xl);
+  box-shadow: 0 1px 2px rgb(29 31 42 / 5%);
 }
-.vds-card--plain { border-top-width: 1px; border-top-color: var(--border-secondary); border-radius: var(--radius-xl); }
+.vds-card--plain { box-shadow: none; }
 .vds-card__title { font-family: var(--font-family-display); font-weight: var(--font-weight-semibold); font-size: var(--font-size-text-xl); line-height: var(--line-height-text-xl); }
 .vds-card__body { margin-top: var(--spacing-md); color: var(--text-tertiary); font-size: var(--font-size-text-md); }
 

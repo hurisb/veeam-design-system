@@ -24,4 +24,6 @@ JSON
 SCOPE="${VERCEL_SCOPE:-huri-1938s-projects}"
 cd _site
 npx --yes vercel@latest link --yes --scope "$SCOPE" --project saltbox-veeam-design-system >/dev/null
-npx --yes vercel@latest deploy --prod --yes --scope "$SCOPE"
+rm -f .env.local                       # vercel link pulls an OIDC token here; never upload it
+printf '.env*\n.vercel\n' > .vercelignore
+npx --yes vercel@latest deploy --prod --yes --scope "$SCOPE" < /dev/null

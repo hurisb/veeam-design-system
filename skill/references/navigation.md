@@ -42,7 +42,21 @@ Text is centered; the arrow icon is optional on Primary/Secondary.
 CSS: `.vds-btn`, `.vds-btn--secondary`, `.vds-btn--tertiary`, `.vds-btn--sm` in `css/veeam.css`;
 set the surface with `data-surface="mineral"` or `data-surface="dark"` on the section.
 Tokens: `--button-primary-bg`, `--button-primary-bg-hover`, `--button-secondary-border`, … (see
-`color-variables.md` §6). Only **one Primary per view**.
+`color-variables.md`, section 8). Only **one Primary per view**.
+
+**CTA hierarchy — use it the same way on every page**
+
+| Level | Looks like | Use for | Examples |
+|---|---|---|---|
+| **Primary** button | Solid azure (`.vds-btn`) | The one main action of a view or section | Add to cart, Checkout, Shop products, Start trial |
+| **Secondary** button | Azure outline (`.vds-btn--secondary`) | An alternative action next to a primary, or the action of a promo/banner | Talk to sales, Request a quote, See what's new |
+| **Tertiary** button | Azure text, no box (`.vds-btn--tertiary`) | Low-emphasis actions inside a form or toolbar | Add another product, Clear filters, Sign in |
+| **Text link + →** | Azure Semibold text with arrow, sentence case | Navigation to another page — not an action | Shop all products →, Compare editions → |
+| **Icon button** | Gray icon, 44px target, `aria-label` | Utility actions | Remove row, Close, Account, Cart |
+
+Rules: buttons *do* something, links *go* somewhere. Never use a button style for plain
+navigation or a link style for a submit. Don't put two primaries side by side; don't color CTAs
+green on light pages (green is brand presence, not action).
 
 **Variant properties:**
 

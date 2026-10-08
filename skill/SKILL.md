@@ -61,7 +61,7 @@ with Veeam.CreativeTeam.Managers@veeam.com before publishing.
 | Data display | `references/data-display.md` | S1 inventory re-valued: tables, cards, badges, alerts, charts… |
 
 **Code:** see *Building with this skill* below — the tokens, CSS, fonts and logos are bundled in
-`assets/`. Live examples (foundations, landing page, storefront PLP/PDP): https://saltbox-veeam-design-system.vercel.app/examples/ —
+`assets/`. Live examples (foundations, storefront homepage, PLP, PDP): https://saltbox-veeam-design-system.vercel.app/examples/ —
 source in the GitHub repo hurisb/veeam-design-system.
 
 ## Building with this skill — bundled files

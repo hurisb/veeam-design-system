@@ -97,8 +97,9 @@ Designers (and anyone making docs or decks) need the fonts installed.
 The `skill/` folder teaches Claude the whole Veeam system. Do **one** of these.
 
 ### A. Claude.ai (website) or desktop app — as a Skill
-1. Download the ready-made skill: open the repo → `dist` folder → `veeam-design-system.zip` →
-   **Download** (or grab it from the repo's **Releases** page). Don't unzip it.
+1. Download the skill (you must be signed in to GitHub with access to the repo):
+   **https://github.com/hurisb/veeam-design-system/releases/latest/download/veeam-design-system.zip**
+   — don't unzip it.
 2. In Claude: **Settings → Customize → Skills → Upload skill**, choose `veeam-design-system.zip`.
 3. Make sure its toggle is **on**. Ask a Veeam question in any chat.
 
@@ -127,7 +128,7 @@ They're online — just open a link:
 
 - https://saltbox-veeam-design-system.vercel.app/examples/ — all examples
 - https://saltbox-veeam-design-system.vercel.app/examples/foundations/ — every color, status color, text gray, font size, button and spacing step
-- https://saltbox-veeam-design-system.vercel.app/examples/landing-page/ — a Veeam marketing page
+- https://saltbox-veeam-design-system.vercel.app/examples/homepage/ — a Veeam storefront homepage
 - https://saltbox-veeam-design-system.vercel.app/examples/storefront/ — a Commerce Cloud product listing
 - https://saltbox-veeam-design-system.vercel.app/examples/storefront/product.html — a product detail page
 

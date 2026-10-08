@@ -75,7 +75,7 @@ Use these in marketing/site code when you mean *the brand color*, not a UI role.
 | `border-tertiary` | `#f0f0f0` | `#1e2a47` | gray-100 / gray-dark-800 | Low-contrast: subtle dividers, chart axes |
 | `border-brand` | `#3700ff` | `#00d15f` | brand-600 / green-500 | Active/focused inputs, selected states, focus ring |
 | `border-brand_alt` | `#3700ff` | `#34405e` | brand-600 / gray-dark-700 | Brand border → gray in dark (banners, footers) |
-| `border-secondary-brand` | `#00d15f` | `#00d15f` | green-500 / green-500 | **VEEAM** green accent rule (card top borders, timelines 'connected') |
+| `border-secondary-brand` | `#00d15f` | `#00d15f` | green-500 / green-500 | **VEEAM** green 'connected' / 'good' strokes (timelines, selected diagram nodes) — not decorative card rules |
 | `border-error` | `#ed2b3d` | `#f15f6d` | error-500 / error-400 | Error borders |
 | `border-error_subtle` | `#f69aa3` | `#ed2b3d` | error-300 / error-500 | Subtle error borders |
 | `border-warning` | `#fe8a25` | `#fe9c45` | warning-500 / warning-400 | **VEEAM** Warning borders: inputs, alerts |

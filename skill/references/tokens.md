@@ -73,7 +73,7 @@ Notes
 - `green` is the **secondary** ramp and doubles as `success` ("green is good", PDF p.52).
 - `info` is anchored on Gradient blue 1 **`#008EE7`** (500) — blue means neutral/system information.
   `warning-25` is the PDF's system cream **`#FCF8EB`**. How to use the four status colors:
-  [`color-variables.md`](color-variables.md) §5.
+  [`color-variables.md`](color-variables.md), section 5.
 - `gray-dark` is navy-tinted so dark mode sits on the PRISM dark background (`#0F172C`, sampled
   from the PDF's dark-theme swatch).
 - CSS: `--color-brand-600`, `--color-green-500`, `--color-gray-dark-950`…
@@ -85,7 +85,7 @@ Notes
 Plain-language aliases for marketing and site code — `--color-primary`, `--color-secondary`,
 `--color-tertiary`, `--color-accent`, `--color-highlight`, `--color-text-dark`,
 `--color-success`, `--color-warning`, `--color-error`. Full table with roles in
-[`color-variables.md`](color-variables.md) §0.
+[`color-variables.md`](color-variables.md), section 0.
 
 ---
 

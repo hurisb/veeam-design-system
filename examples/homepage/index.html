@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Veeam Store — Homepage (example)</title>
+  <link rel="icon" href="../../skill/assets/logos/veeam-favicon.png">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <link rel="stylesheet" href="../../tokens/veeam-tokens.css">
+  <link rel="stylesheet" href="../../css/veeam.css">
+  <style>
+    /* Page layout only. Every color, size and space is a design-system token. */
+
+    /* ---------- Header ---------- */
+    .site-header { position: sticky; top: 0; z-index: 10; background: var(--bg-primary); border-bottom: 1px solid var(--border-secondary); }
+    .site-header .vds-header__inner { gap: var(--spacing-3xl); }
+    .search { flex: 1; max-width: 440px; position: relative; margin-left: auto; }
+    .search svg { position: absolute; left: var(--spacing-lg); top: 50%; transform: translateY(-50%); color: var(--fg-quaternary); pointer-events: none; }
+    .search .vds-input { padding-left: 40px; }
+    .icon-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-sm); min-width: 44px; height: 44px; padding: 0 var(--spacing-md); border-radius: var(--radius-md); color: var(--fg-secondary); text-decoration: none; font-size: var(--font-size-text-sm); font-weight: var(--font-weight-medium); background: none; border: 0; cursor: pointer; position: relative; }
+    .icon-btn:hover { background: var(--bg-primary_hover); color: var(--text-primary); }
+    .cart-count { position: absolute; top: 4px; right: 2px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: var(--radius-full); background: var(--color-primary); color: var(--color-white); font-size: 11px; line-height: 18px; font-weight: var(--font-weight-semibold); text-align: center; }
+    @media (max-width: 767px) { .search { display: none; } .account-label { display: none; } }
+
+    /* ---------- Hero: background (cover + parallax) with text left, graphic right ---------- */
+    .hero { position: relative; overflow: hidden; isolation: isolate; }
+    .hero__bg {
+      position: absolute; inset: -12% 0 -12% 0; z-index: -1;
+      background: url("hero-bg.svg") center / cover no-repeat;
+      will-change: transform;
+    }
+    .hero__mark { position: absolute; left: -7%; bottom: -34%; width: min(34vw, 480px); z-index: -1; opacity: .9; will-change: transform; }
+    .hero__inner {
+      display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--spacing-6xl); align-items: center;
+      min-height: 600px; padding-block: var(--spacing-8xl);
+    }
+    @media (min-width: 1024px) { .hero__inner { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); } }
+    .hero__copy { max-width: 560px; }
+    .hero__title { color: var(--text-brand-primary); }
+    .hero__lead { margin-top: var(--spacing-xl); color: var(--text-secondary); max-width: 480px; }
+    .hero__ctas { display: flex; flex-wrap: wrap; gap: var(--spacing-xl); margin-top: var(--spacing-4xl); }
+    @media (max-width: 767px) { .hero__inner { min-height: 0; padding-block: var(--spacing-6xl); } .hero__mark { width: 90vw; bottom: -6%; opacity: .5; } }
+
+    /* Data Command Graph — four tinted glass tiles + a dotted ring in the middle */
+    .dcg { margin: 0; position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-width: 0; gap: var(--spacing-lg); width: 100%; max-width: 560px; justify-self: end; aspect-ratio: 16 / 11; }
+    .dcg__tile {
+      position: relative; border-radius: var(--radius-xl); padding: var(--spacing-xl);
+      border: 1px solid rgb(255 255 255 / 35%);
+      box-shadow: inset 0 1px 0 rgb(255 255 255 / 25%);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      color: var(--color-white);
+    }
+    .dcg__tile b { display: block; font-family: var(--font-family-display); font-weight: var(--font-weight-semibold); font-size: var(--font-size-text-xl); line-height: var(--line-height-text-xl); letter-spacing: .02em; text-transform: uppercase; }
+    .dcg__tile span { font-size: var(--font-size-text-xs); line-height: var(--line-height-text-xs); opacity: .92; }
+    .dcg__tile--r { text-align: right; }
+    .dcg__tile--b { display: flex; flex-direction: column; justify-content: flex-end; }
+    .dcg__tile--understood { background: linear-gradient(135deg, color-mix(in srgb, var(--color-suma) 90%, transparent), color-mix(in srgb, var(--color-sol) 30%, transparent)); }
+    .dcg__tile--secured    { background: linear-gradient(225deg, color-mix(in srgb, var(--color-gradient-blue-1) 85%, transparent), color-mix(in srgb, var(--color-sky) 30%, transparent)); }
+    .dcg__tile--unleashed  { background: linear-gradient(45deg, color-mix(in srgb, var(--color-casia) 90%, transparent), color-mix(in srgb, var(--color-electric-azure) 25%, transparent)); }
+    .dcg__tile--resilient  { background: linear-gradient(315deg, color-mix(in srgb, var(--color-viridis) 85%, transparent), color-mix(in srgb, var(--color-green-600) 30%, transparent)); }
+    .dcg__ring { position: absolute; left: 50%; top: 50%; width: 62%; aspect-ratio: 1; transform: translate(-50%, -50%); pointer-events: none; }
+    .dcg__ring svg { width: 100%; height: 100%; overflow: visible; animation: spin 90s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .dcg__core {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: 36%; aspect-ratio: 1; border-radius: var(--radius-full);
+      display: grid; place-content: center; text-align: center; color: var(--color-white);
+      background: color-mix(in srgb, var(--color-gradient-blue-3) 55%, transparent);
+      border: 1px solid rgb(255 255 255 / 55%); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+    .dcg__core b { font-family: var(--font-family-display); font-weight: var(--font-weight-semibold); font-size: clamp(14px, 1.6vw, 20px); line-height: 1.05; text-transform: uppercase; }
+    .dcg__core small { display: block; margin-top: var(--spacing-xs); font-size: 10px; line-height: 14px; opacity: .85; }
+    .dcg__core em { display: block; margin-top: var(--spacing-xs); font-style: normal; font-size: 11px; font-weight: var(--font-weight-semibold); letter-spacing: .04em; }
+    @media (max-width: 1023px) { .dcg { justify-self: stretch; max-width: none; } }
+    @media (max-width: 479px) { .dcg { aspect-ratio: 1; } .dcg__tile { padding: var(--spacing-lg); } .dcg__tile b { font-size: var(--font-size-text-sm); line-height: var(--line-height-text-sm); } .dcg__tile span { font-size: 10px; line-height: 14px; } .dcg__core small { display: none; } .dcg__ring { width: 70%; } .dcg__core { width: 44%; } }
+
+    /* ---------- Shop by product (category cards on a subtle gray section) ---------- */
+    .categories { background: var(--bg-secondary); border-block: 1px solid var(--border-tertiary); }
+    .section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--spacing-xl); margin-bottom: var(--spacing-4xl); }
+    .section-head p { margin-top: var(--spacing-md); }
+    .category {
+      display: flex; flex-direction: column; height: 100%;
+      background: var(--bg-primary); border: 1px solid var(--border-secondary); border-radius: var(--radius-xl);
+      overflow: hidden; text-decoration: none; color: inherit;
+      box-shadow: 0 1px 2px rgb(29 31 42 / 5%);
+      transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .25s, border-color .25s;
+    }
+    .category:hover { transform: translateY(-4px); border-color: var(--border-brand); box-shadow: 0 24px 40px -24px rgb(55 0 255 / 35%); }
+    .category:focus-visible { outline: var(--stroke-focus) solid var(--border-brand); outline-offset: 3px; }
+    .category__media { position: relative; aspect-ratio: 16 / 9; display: grid; place-items: center; overflow: hidden; }
+    .category__media svg { width: 72px; height: 72px; transition: transform .4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .category:hover .category__media svg { transform: scale(1.08); }
+    .category__count { position: absolute; top: var(--spacing-lg); left: var(--spacing-lg); }
+    .category__body { display: flex; flex-direction: column; gap: var(--spacing-md); padding: var(--spacing-3xl); flex: 1; }
+    .category__title { font-family: var(--font-family-display); font-weight: var(--font-weight-semibold); font-size: var(--font-size-text-xl); line-height: var(--line-height-text-xl); color: var(--text-primary); }
+    .category__desc { font-size: var(--font-size-text-sm); line-height: var(--line-height-text-sm); color: var(--text-tertiary); }
+    .category__link { margin-top: auto; padding-top: var(--spacing-lg); display: inline-flex; align-items: center; gap: var(--spacing-sm); font-size: var(--font-size-text-sm); font-weight: var(--font-weight-semibold); color: var(--text-brand-tertiary); }
+    .category__link svg { transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1); }
+    .category:hover .category__link svg { transform: translateX(3px); }
+    .link-arrow { display: inline-flex; align-items: center; gap: var(--spacing-sm); font-size: var(--font-size-text-md); font-weight: var(--font-weight-semibold); color: var(--text-brand-tertiary); text-decoration: none; white-space: nowrap; }
+    .link-arrow:hover { text-decoration: underline; }
+
+    /* ---------- Promo + Quick Order ---------- */
+    .order-row { display: grid; gap: var(--grid-gutter); align-items: stretch; }
+    @media (min-width: 1024px) { .order-row { grid-template-columns: 5fr 7fr; } }
+    .promo {
+      position: relative; overflow: hidden; border-radius: var(--radius-2xl);
+      background: var(--gradient-brand-light); padding: var(--spacing-5xl) var(--spacing-4xl);
+      display: flex; flex-direction: column; justify-content: flex-start; min-height: 420px;
+    }
+    .promo img { position: absolute; right: -14%; bottom: 4%; width: 78%; opacity: .95; pointer-events: none; }
+    .promo__copy { position: relative; max-width: 380px; }
+    .promo .vds-plate-blur { padding: var(--spacing-3xl); }
+    .quick-order { border: 1px solid var(--border-secondary); border-radius: var(--radius-2xl); padding: var(--spacing-4xl); background: var(--bg-primary); }
+    .qo-head { display: grid; grid-template-columns: 1fr 96px 44px; gap: var(--spacing-lg); padding-bottom: var(--spacing-md); border-bottom: 1px solid var(--border-secondary); font-size: var(--font-size-text-xs); line-height: var(--line-height-text-xs); font-weight: var(--font-weight-medium); color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .04em; }
+    .qo-row { display: grid; grid-template-columns: 1fr 96px 44px; gap: var(--spacing-lg); align-items: start; padding-block: var(--spacing-lg); border-bottom: 1px solid var(--border-tertiary); }
+    .qo-row .vds-input { text-align: left; }
+    .qo-row .qty { text-align: center; }
+    .qo-product { margin-top: var(--spacing-sm); font-size: var(--font-size-text-sm); line-height: var(--line-height-text-sm); color: var(--text-tertiary); }
+    .qo-product b { color: var(--text-primary); font-weight: var(--font-weight-semibold); }
+    .remove { width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: none; border-radius: var(--radius-md); color: var(--fg-quaternary); cursor: pointer; }
+    .remove:hover { background: var(--bg-primary_hover); color: var(--fg-error-primary); }
+    .qo-actions { display: grid; gap: var(--spacing-xl); margin-top: var(--spacing-3xl); }
+    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    /* ---------- Footer ---------- */
+    .footer-row { display: flex; flex-wrap: wrap; gap: var(--spacing-3xl); align-items: center; justify-content: space-between; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: var(--spacing-md) var(--spacing-3xl); list-style: none; margin: 0; padding: 0; }
+
+    @media (prefers-reduced-motion: reduce) { .hero__bg, .hero__mark { transform: none !important; } .dcg__ring svg { animation: none; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="vds-container vds-header__inner">
+      <a href="./" aria-label="Veeam Store home"><img src="../../skill/assets/logos/veeam-logo-clean.svg" alt="Veeam" width="112"></a>
+      <nav class="vds-nav" aria-label="Main">
+        <a href="./" aria-current="page">Home</a><a href="../storefront/">Products</a><a href="#categories">Workloads</a><a href="#quick-order">Quick order</a>
+      </nav>
+      <form class="search" role="search" onsubmit="return false">
+        <label class="sr" for="q">Search products</label>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m17.5 17.5-3.6-3.6m2.1-5.1a7.2 7.2 0 1 1-14.4 0 7.2 7.2 0 0 1 14.4 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input class="vds-input" id="q" type="search" placeholder="Search products or SKUs">
+      </form>
+      <a class="icon-btn" href="#" aria-label="Account">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 21c0-1.4 0-2.1-.17-2.67a4 4 0 0 0-2.66-2.66C16.6 15.5 15.9 15.5 14.5 15.5h-5c-1.4 0-2.1 0-2.67.17a4 4 0 0 0-2.66 2.66C4 18.9 4 19.6 4 21M16.5 7.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="account-label">Account</span>
+      </a>
+      <a class="icon-btn" href="#" aria-label="Cart, 2 items">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 2h1.3c.25 0 .37 0 .47.04.09.04.16.1.21.18.06.1.07.22.1.47L4.2 5m0 0 1.3 9.6c.05.42.08.63.18.79.09.14.21.25.36.32.17.08.38.08.8.08H18M4.2 5h15.12c.6 0 .9 0 1.1.12.17.1.3.27.37.47.07.22 0 .51-.13 1.1l-1.26 5.6c-.08.37-.12.55-.21.69-.08.12-.2.22-.34.28-.15.07-.34.07-.72.07H5.5M8 21a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm10 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="cart-count">2</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO — background image covers the section (parallax); text left, graphic right, vertically centered -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg" data-parallax="0.25" aria-hidden="true"></div>
+      <img class="hero__mark" data-parallax="0.12" src="../../skill/assets/logos/veeam-bounce-mark.png" alt="" aria-hidden="true">
+      <div class="vds-container hero__inner">
+        <div class="hero__copy">
+          <h1 id="hero-title" class="display-xl hero__title">The Data &amp; AI Trust Company</h1>
+          <p class="text-xl hero__lead">Understand, secure, unleash and recover your data and AI agents — from one platform.</p>
+          <div class="hero__ctas">
+            <a class="vds-btn" href="../storefront/">Shop products</a>
+            <a class="vds-btn vds-btn--secondary" href="#">Talk to sales</a>
+          </div>
+        </div>
+
+        <figure class="dcg" aria-label="Data Command Graph: understood, secured, unleashed and resilient data and AI">
+          <div class="dcg__tile dcg__tile--understood"><b>Understood</b><span>Data &amp; AI Intelligence</span></div>
+          <div class="dcg__tile dcg__tile--secured dcg__tile--r"><b>Secured</b><span>Data &amp; AI Security</span></div>
+          <div class="dcg__tile dcg__tile--unleashed dcg__tile--b"><b>Unleashed</b><span>AI &amp; Agent Enablement</span></div>
+          <div class="dcg__tile dcg__tile--resilient dcg__tile--r dcg__tile--b"><b>Resilient</b><span>Data &amp; AI Resilience</span></div>
+          <div class="dcg__ring" aria-hidden="true"><svg id="ring" viewBox="-100 -100 200 200"></svg></div>
+          <div class="dcg__core" aria-hidden="true"><b>Data<br>Command<br>Graph</b><small>Structured | Unstructured<br>Primary | Secondary</small><em>AI AGENTS</em></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SHOP BY PRODUCT — category cards on a subtly darker section so they stand out -->
+    <section id="categories" class="categories vds-section" aria-labelledby="cat-title">
+      <div class="vds-container">
+        <div class="section-head">
+          <div>
+            <p class="vds-eyebrow vds-eyebrow--sm">Start here</p>
+            <h2 id="cat-title" class="display-md" style="margin-top: var(--spacing-sm);">Shop by product</h2>
+            <p class="text-lg text-tertiary-color">Go straight to pricing and editions for the products you already know or use.</p>
+          </div>
+          <a class="link-arrow" href="../storefront/">Shop all Veeam products
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="vds-grid" id="category-grid"></div>
+      </div>
+    </section>
+
+    <!-- PROMO + QUICK ORDER — two columns -->
+    <section id="quick-order" class="vds-section" aria-labelledby="qo-title">
+      <div class="vds-container order-row">
+        <aside class="promo" aria-label="Promotion">
+          <img src="../../skill/assets/logos/veeam-bounce-mark.png" alt="" aria-hidden="true">
+          <div class="promo__copy vds-plate-blur vds-stack-16">
+            <span class="vds-badge vds-badge--success">Now available</span>
+            <h2 class="display-sm">Resilience rehearsed. Recovery proven.</h2>
+            <p class="text-md text-tertiary-color">Veeam Data Platform v13.1 is here — a new standard of data resilience for every workload.</p>
+            <div><a class="vds-btn vds-btn--secondary" href="../storefront/product.html">See what's new</a></div>
+          </div>
+        </aside>
+
+        <div class="quick-order">
+          <h2 id="qo-title" class="display-xs">Quick order</h2>
+          <p class="text-md text-tertiary-color" style="margin-top: var(--spacing-sm);">Know your SKUs? Add several products to your cart at once.</p>
+          <form id="qo-form" style="margin-top: var(--spacing-3xl);" novalidate onsubmit="return false">
+            <div class="qo-head" aria-hidden="true"><span>Product SKU</span><span>Quantity</span><span></span></div>
+            <div id="qo-rows"></div>
+            <div class="qo-actions">
+              <button type="button" class="vds-btn vds-btn--tertiary vds-btn--sm" id="qo-add" style="justify-self: start;">
+                <svg class="vds-btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add another product</button>
+              <button type="submit" class="vds-btn" id="qo-submit" style="width: 100%;">Add to cart</button>
+              <p class="vds-hint" style="text-align:center">You can review everything in your cart before checkout.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="vds-footer">
+    <div class="vds-container footer-row">
+      <img src="../../skill/assets/logos/veeam-logo-clean.svg" alt="Veeam" width="112">
+      <ul class="footer-links">
+        <li><a href="#">Terms &amp; Conditions</a></li><li><a href="#">Contact</a></li><li><a href="#">Right of Revocation</a></li>
+        <li><a href="#">Security</a></li><li><a href="#">Legal Info</a></li><li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="vds-container" style="margin-top: var(--spacing-4xl); font-size: var(--font-size-text-xs);">Example storefront homepage for the Veeam Design System — placeholder products, SKUs and content.</div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite" id="toast" style="position:fixed;right:24px;bottom:24px;display:flex;gap:12px;align-items:center;padding:12px 16px;background:var(--bg-primary-solid);color:var(--color-white);border-radius:var(--radius-lg);font-size:var(--font-size-text-sm);transform:translateY(calc(100% + 32px));visibility:hidden;transition:transform .4s cubic-bezier(0.16,1,0.3,1),visibility .4s;"></div>
+
+  <script>
+    // ---- Data Command Graph ring: dots tinted by quadrant + a few connector lines
+    (() => {
+      const svg = document.getElementById('ring');
+      const tints = ['#fe8a25', '#008ee7', '#00d15f', '#8e71f4'];   // understood, secured, resilient, unleashed (clockwise from top-left)
+      let out = '<circle r="70" fill="none" stroke="rgba(255,255,255,.55)" stroke-width=".6"/>';
+      const pts = [];
+      for (let i = 0; i < 150; i++) {
+        const a = (i / 150) * Math.PI * 2 - Math.PI * 0.75;
+        const r = 70 + Math.sin(i * 1.7) * 14 + Math.cos(i * 0.6) * 6;
+        const x = Math.cos(a) * r, y = Math.sin(a) * r;
+        pts.push([x, y]);
+        const q = Math.floor(((a + Math.PI * 0.75) / (Math.PI * 2)) * 4) % 4;
+        out += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(1 + (i % 4) * 0.45).toFixed(2)}" fill="${tints[q]}" opacity="${(0.55 + (i % 3) * 0.15).toFixed(2)}"/>`;
+      }
+      for (let i = 0; i < pts.length; i += 3) {
+        const [x1, y1] = pts[i], [x2, y2] = pts[(i + 11) % pts.length];
+        out += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="rgba(255,255,255,.28)" stroke-width=".35"/>`;
+      }
+      svg.innerHTML = out;
+    })();
+
+    // ---- Simple parallax: background drifts slower than the page (transform only, rAF-throttled)
+    (() => {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const layers = [...document.querySelectorAll('[data-parallax]')];
+      const hero = document.querySelector('.hero');
+      let ticking = false;
+      const update = () => {
+        const y = Math.min(scrollY, hero.offsetHeight);
+        layers.forEach(l => l.style.transform = `translate3d(0, ${(y * +l.dataset.parallax).toFixed(1)}px, 0)`);
+        ticking = false;
+      };
+      addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    })();
+
+    // ---- Category cards (data from veeam.com product lines)
+    const icon = (d, id) => `<svg viewBox="0 0 72 72" fill="none" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="72" x2="72" y2="0"><stop stop-color="#008EE7"/><stop offset="1" stop-color="#32F26F"/></linearGradient></defs><path d="${d}" stroke="url(#${id})" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    const arrow = '<svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    const categories = [
+      ['Veeam Data Platform', 'Compare Essentials, Foundation, Advanced and Premium for VMware, Hyper-V, Nutanix and physical servers.', '4 editions', 'Compare editions',
+        'M36 8 60 17v17c0 15-10 25-24 30C22 59 12 49 12 34V17L36 8Zm-10 27 7 7 14-15', 'var(--color-brand-25)'],
+      ['Microsoft 365 backup', 'Protect Exchange Online, SharePoint, OneDrive and Teams — self-managed or as a service.', '3 plans', 'Browse plans',
+        'M14 14h20v20H14V14Zm24 0h20v20H38V14ZM14 38h20v20H14V38Zm24 0h20v20H38V38Z', 'var(--color-info-50)'],
+      ['Veeam Data Cloud', 'Fully managed SaaS backup for Salesforce, Microsoft Entra ID, Azure and more — no infrastructure to run.', '6 workloads', 'Explore solutions',
+        'M22 52h30a12 12 0 0 0 1-24 17 17 0 0 0-33 4 10 10 0 0 0 2 20Zm14-24v16m-7-7 7 7 7-7', 'var(--color-green-50)'],
+      ['Secure cloud storage', 'Veeam Vault: fully managed, immutable object storage — air-gapped and ready for offsite backup.', 'Per TB', 'Shop Veeam Vault',
+        'M14 14h44v44H14V14Zm22 14a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm0-14v6m0 32v6M14 36h6m32 0h6', 'var(--color-gray-100)']];
+    document.getElementById('category-grid').innerHTML = categories.map(([t, d, count, cta, path, bg], i) => `
+      <a class="vds-col-3 category" href="../storefront/">
+        <div class="category__media" style="background:${bg}">
+          <span class="vds-badge vds-badge--neutral category__count">${count}</span>${icon(path, 'cg' + i)}
+        </div>
+        <div class="category__body">
+          <h3 class="category__title">${t}</h3>
+          <p class="category__desc">${d}</p>
+          <span class="category__link">${cta} ${arrow}</span>
+        </div>
+      </a>`).join('');
+
+    // ---- Quick order rows, with inline validation using the system colors
+    const catalog = { 'V-VDPFND-VS-P0000-00': 'Veeam Data Platform Foundation · 10 workloads · 1 year', 'V-VBO365-0U-SU1AR-00': 'Veeam Backup for Microsoft 365 · per user · 1 year', 'V-VDCVLT-0T-SU1AR-00': 'Veeam Vault · per TB · 1 year' };
+    const xIcon = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m14 6-8 8m0-8 8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+    const okIcon = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 10l1.7 1.7L12.5 8.3M18.3 10a8.3 8.3 0 1 1-16.6 0 8.3 8.3 0 0 1 16.6 0Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    const errIcon = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 6.7V10m0 3.3h0m8.3-3.3a8.3 8.3 0 1 1-16.6 0 8.3 8.3 0 0 1 16.6 0Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    const rows = document.getElementById('qo-rows');
+    let n = 0;
+    const validate = (row) => {
+      const input = row.querySelector('.sku'), msg = row.querySelector('.qo-msg'), v = input.value.trim().toUpperCase();
+      input.removeAttribute('aria-invalid'); input.removeAttribute('data-state'); msg.innerHTML = '';
+      if (!v) return true;
+      if (catalog[v]) { input.dataset.state = 'success'; msg.innerHTML = `<p class="qo-product"><b>${catalog[v].split(' · ')[0]}</b> · ${catalog[v].split(' · ').slice(1).join(' · ')}</p>`; return true; }
+      input.setAttribute('aria-invalid', 'true');
+      msg.innerHTML = `<p class="vds-field-msg vds-field-msg--error" style="margin-top:6px">${errIcon}We couldn't find this SKU. Check it, or search by product name.</p>`;
+      return false;
+    };
+    const addRow = (sku = '', qty = 1) => {
+      n++;
+      const row = document.createElement('div');
+      row.className = 'qo-row';
+      row.innerHTML = `
+        <div><label class="sr" for="sku${n}">Product SKU, row ${n}</label><input class="vds-input sku" id="sku${n}" placeholder="Enter SKU" value="${sku}" autocomplete="off"><div class="qo-msg" aria-live="polite"></div></div>
+        <div><label class="sr" for="qty${n}">Quantity, row ${n}</label><input class="vds-input qty" id="qty${n}" type="number" min="1" value="${qty}" inputmode="numeric"></div>
+        <button type="button" class="remove" aria-label="Remove row ${n}">${xIcon}</button>`;
+      row.querySelector('.sku').addEventListener('blur', () => validate(row));
+      row.querySelector('.remove').addEventListener('click', () => { row.remove(); if (!rows.children.length) addRow(); });
+      rows.append(row);
+      if (sku) validate(row);
+      return row;
+    };
+    addRow('V-VDPFND-VS-P0000-00', 3);
+    addRow('V-VDP-XX12', 1);
+    addRow(); addRow();
+    document.getElementById('qo-add').addEventListener('click', () => addRow().querySelector('.sku').focus());
+    document.getElementById('qo-submit').addEventListener('click', () => {
+      const all = [...rows.children];
+      const ok = all.every(validate);
+      const count = all.filter(r => catalog[r.querySelector('.sku').value.trim().toUpperCase()]).length;
+      const t = document.getElementById('toast');
+      if (!ok) { all.find(r => r.querySelector('[aria-invalid]'))?.querySelector('.sku').focus(); return; }
+      t.innerHTML = `<span style="color:var(--color-mint);display:flex">${okIcon.replace('<svg', '<svg width="20" height="20"')}</span>${count} product${count === 1 ? '' : 's'} added to cart`;
+      t.style.visibility = 'visible'; t.style.transform = 'none'; setTimeout(() => { t.style.transform = 'translateY(calc(100% + 32px))'; t.style.visibility = 'hidden'; }, 4500);
+    });
+  </script>
+</body>
+</html>

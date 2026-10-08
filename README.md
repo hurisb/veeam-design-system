@@ -1,19 +1,45 @@
-# Veeam Design System
+# Veeam Design System — Claude Skill
 
-**Design tokens, fonts, logos, CSS and examples for building Veeam websites and Salesforce
-Commerce Cloud storefronts — built on Saltbox's S1 design system.**
+**This is where you download the Veeam Design System Skill for Claude.** Install it once and
+Claude knows Veeam's colors, fonts, logo, spacing, grid, buttons and components — so anyone on
+the team can ask *"what's the Veeam primary button?"* or *"build me a Veeam product page"* and get
+an on-brand answer. It's built on Saltbox's S1 design system.
 
-This repo turns the *Veeam Inflection Design System Guidelines* PDF into something the whole team
-can build with: color, type, spacing and grid **tokens** in every format we use (CSS, SCSS for
-SFRA, Chakra for PWA Kit, Tailwind, JSON for Figma), the **ES Build** web fonts, the **logo
-files**, ready-made **button/form/card styles**, working **example pages**, and a **Claude
-Skill** so anyone can ask "what's our primary button style?" and get the Veeam answer.
+## Download the Skill
+
+### **[Download veeam-design-system.zip](https://github.com/hurisb/veeam-design-system/releases/latest/download/veeam-design-system.zip)**
+
+Then install it — pick where you use Claude:
+
+| Where you use Claude | How to install (about 1 minute) |
+|---|---|
+| **Claude.ai website or desktop app** | 1. Open **Settings → Customize → Skills**. 2. Click **Upload skill** and choose `veeam-design-system.zip` (don't unzip it). 3. Turn its toggle **on**. |
+| **Claude Code** | Run `unzip ~/Downloads/veeam-design-system.zip -d ~/.claude/skills/` |
+| **Whole team at once** (Team/Enterprise plan) | An org owner/admin uploads the same zip in the organization admin settings (Skills section) and shares it org-wide. |
+
+**Check it works:** start a new chat and ask *"What font does Veeam use for headings?"* — the
+answer should be **ES Build Bauhaus**. Updating? Download the latest zip and upload it again to
+replace the old one. Step-by-step help for first-timers:
+[docs/GETTING-STARTED.md](docs/GETTING-STARTED.md).
+
+**See it in action:** [live example pages](https://saltbox-veeam-design-system.vercel.app/examples/)
+(homepage, product listing, product detail, and every token rendered).
+
+> You need to be signed in to GitHub and invited to this private repo for the download link to
+> work. Ask Huri for access.
+
+---
+
+## Everything else in this repo
+
+Beyond the Skill, the repo holds the source files developers and designers use directly: color,
+type, spacing and grid **tokens** in every format we use (CSS, SCSS for SFRA, Chakra for PWA Kit,
+Tailwind, JSON for Figma), the **ES Build** web fonts, the **logo files**, ready-made
+**button/form/card styles**, and the **example pages**.
 
 > **Private & confidential.** The ES Build fonts are licensed to Veeam and the source PDF is
 > marked *Confidential*. Don't make this repo public, don't post the fonts on a public CDN, and
 > don't share outside Saltbox and the Veeam project team.
-
----
 
 ## Contents
 
@@ -22,7 +48,7 @@ Skill** so anyone can ask "what's our primary button style?" and get the Veeam a
 3. [The system at a glance](#3-the-system-at-a-glance) — colors · fonts · spacing · grid · buttons
 4. [Use it in code](#4-use-it-in-code) — any website · SFRA · PWA Kit · B2B/D2C LWR · Tailwind · Figma
 5. [See the examples](#5-see-the-examples)
-6. [Use it with Claude](#6-use-it-with-claude)
+6. [Use it with Claude](#6-use-it-with-claude) — install options in detail
 7. [Brand rules you can't skip](#7-brand-rules-you-cant-skip)
 8. [How it relates to S1](#8-how-it-relates-to-s1)
 9. [Changing a token](#9-changing-a-token)
@@ -34,11 +60,11 @@ Skill** so anyone can ask "what's our primary button style?" and get the Veeam a
 
 | I am a… | Do this |
 |---|---|
-| **Front-end / SFCC developer** | Read [§3](#3-the-system-at-a-glance), then the section for your stack in [§4](#4-use-it-in-code). Copy `tokens/` + `fonts/`, never hard-code a hex. |
-| **Designer** | Import `tokens/tokens.json` into Tokens Studio ([§4.6](#46-figma--tokens-studio)), install the fonts from `fonts/`, and open the [live Foundations page](https://saltbox-veeam-design-system.vercel.app/examples/foundations/) to see every token rendered. |
-| **QA / reviewer** | Use the rules in [§7](#7-brand-rules-you-cant-skip) and the contrast table in `skill/references/color-variables.md`. Ask Claude to review a screenshot ([§6](#6-use-it-with-claude)). |
-| **PM / sales / leadership** | Skim [§3](#3-the-system-at-a-glance) and [§7](#7-brand-rules-you-cant-skip); open the [live examples](https://saltbox-veeam-design-system.vercel.app/examples/). Ask Claude questions in plain language. |
-| **Anyone who just wants the Claude Skill** | Download [`dist/veeam-design-system.zip`](dist/veeam-design-system.zip) and upload it in Claude → Settings → Skills ([§6](#6-use-it-with-claude)). |
+| **Anyone who just wants the Claude Skill** | Use the [Download the Skill](#download-the-skill) link at the top of this page. |
+| **Front-end / SFCC developer** | Read [Section 3](#3-the-system-at-a-glance), then the section for your stack in [Section 4](#4-use-it-in-code). Copy `tokens/` + `fonts/`, never hard-code a hex. |
+| **Designer** | Import `tokens/tokens.json` into Tokens Studio ([Section 4.6](#46-figma--tokens-studio)), install the fonts from `fonts/`, and open the [live Foundations page](https://saltbox-veeam-design-system.vercel.app/examples/foundations/) to see every token rendered. |
+| **QA / reviewer** | Use the rules in [Section 7](#7-brand-rules-you-cant-skip) and the contrast table in `skill/references/color-variables.md`. Ask Claude to review a screenshot ([Section 6](#6-use-it-with-claude)). |
+| **PM / sales / leadership** | Skim [Section 3](#3-the-system-at-a-glance) and [Section 7](#7-brand-rules-you-cant-skip); open the [live examples](https://saltbox-veeam-design-system.vercel.app/examples/). Ask Claude questions in plain language. |
 | **New to GitHub or Claude Skills** | Follow the step-by-step [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md). |
 
 Get the files: **`< > Code` → Download ZIP** (you must be signed in and invited), or
@@ -68,7 +94,7 @@ veeam-design-system/
 ├── scripts/deploy-site.sh       ← publishes the examples to Vercel
 ├── examples/
 │   ├── foundations/             ← every token rendered: colors, ramps, gradients, type, buttons, spacing, grid, logo
-│   ├── landing-page/            ← marketing page: gradient hero, Bounce Mark, cards, dark section, banner
+│   ├── homepage/                ← storefront homepage: parallax hero + Data Command Graph, category cards, promo + quick order
 │   └── storefront/              ← Commerce Cloud PLP (index.html) + PDP (product.html)
 ├── dist/veeam-design-system.zip ← THE CLAUDE SKILL, ready to upload (built by scripts/package-skill.sh)
 ├── skill/                       ← the Claude Skill source (also the full written spec)
@@ -177,7 +203,7 @@ Always pair a status color with an icon and words; tell the user how to fix erro
 | Disabled | `--text-disabled` | `#ADACAF` | 2.3:1 | Disabled controls only |
 
 Full guidance (UX rules, every token, light/dark values, contrast tables):
-[`skill/references/color-variables.md`](skill/references/color-variables.md) §5–6.
+[`skill/references/color-variables.md`](skill/references/color-variables.md) Section 5–6.
 
 ### Buttons
 
@@ -230,7 +256,7 @@ Dark theme is opt-in: `<html data-theme="dark">` (or `class="theme-dark"` on a s
 Copy `tokens/_veeam-tokens.scss` into your brand cartridge's `client/default/scss/`, import it
 **before** the base global styles, and copy `fonts/` to `static/default/fonts/`. Bootstrap's
 `$primary`, `$secondary`, fonts, button radius/padding, breakpoints and container are overridden
-for you. Step by step: [`skill/references/commerce-cloud.md` §1](skill/references/commerce-cloud.md#1-sfra-b2c-commerce-storefront-reference-architecture).
+for you. Step by step: [`skill/references/commerce-cloud.md` Section 1](skill/references/commerce-cloud.md#1-sfra-b2c-commerce-storefront-reference-architecture).
 
 ### 4.3 Composable Storefront — PWA Kit
 
@@ -247,7 +273,7 @@ export default extendTheme(veeamTheme)
 
 Upload `fonts/` as a static resource, load `fonts.css` + the tokens in Head Markup, and map the
 tokens onto the `--dxp-g-*` styling hooks — snippet in
-[`commerce-cloud.md` §3](skill/references/commerce-cloud.md#3-b2b--d2c-commerce-on-lwr-experience-builder).
+[`commerce-cloud.md` Section 3](skill/references/commerce-cloud.md#3-b2b--d2c-commerce-on-lwr-experience-builder).
 
 ### 4.5 Tailwind CSS (v3)
 
@@ -279,7 +305,7 @@ Creative).
 | Page | Link | Shows |
 |---|---|---|
 | Foundations | [https://saltbox-veeam-design-system.vercel.app/examples/foundations/](https://saltbox-veeam-design-system.vercel.app/examples/foundations/) | Every color, **system colors**, **text grays**, ramps, gradients, type styles, button states, spacing, the S1 grid and logos |
-| Landing page | [https://saltbox-veeam-design-system.vercel.app/examples/landing-page/](https://saltbox-veeam-design-system.vercel.app/examples/landing-page/) | Gradient hero with Bounce Mark, gradient headline word, cards, PRISM dark section, banner, footer |
+| Homepage | [https://saltbox-veeam-design-system.vercel.app/examples/homepage/](https://saltbox-veeam-design-system.vercel.app/examples/homepage/) | Storefront homepage: parallax hero with the Data Command Graph, "Shop by product" category cards, promo banner + Quick Order with inline validation |
 | Storefront PLP | [https://saltbox-veeam-design-system.vercel.app/examples/storefront/](https://saltbox-veeam-design-system.vercel.app/examples/storefront/) | Commerce Cloud product listing: header with search & cart, category hero, filters, product tiles, pagination |
 | Storefront PDP | [https://saltbox-veeam-design-system.vercel.app/examples/storefront/product.html](https://saltbox-veeam-design-system.vercel.app/examples/storefront/product.html) | Product detail: gallery, option chips, quantity, buy box, tabs, spec table, toast |
 
