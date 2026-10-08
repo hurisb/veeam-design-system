@@ -687,6 +687,25 @@ def build_color_md():
     write("skill/references/color-variables.md", "\n".join(out))
 
 
+def sync_skill_assets():
+    """Copy the build outputs into skill/assets so the Claude Skill is self-contained."""
+    import shutil
+    dst = os.path.join(ROOT, "skill", "assets")
+    for rel in ["tokens/veeam-tokens.css", "tokens/_veeam-tokens.scss", "tokens/tailwind.preset.js",
+                "tokens/pwa-kit-theme.js", "tokens/tokens.json", "css/veeam.css"]:
+        out = os.path.join(dst, rel)
+        os.makedirs(os.path.dirname(out), exist_ok=True)
+        shutil.copyfile(os.path.join(ROOT, rel), out)
+    fonts_dst = os.path.join(dst, "fonts")
+    for folder in ["es-build", "es-build-neutral", "es-build-bauhaus"]:
+        os.makedirs(os.path.join(fonts_dst, folder), exist_ok=True)
+        for f in os.listdir(os.path.join(ROOT, "fonts", folder)):
+            if f.endswith((".woff2", ".woff")):
+                shutil.copyfile(os.path.join(ROOT, "fonts", folder, f), os.path.join(fonts_dst, folder, f))
+    shutil.copyfile(os.path.join(ROOT, "fonts", "fonts.css"), os.path.join(fonts_dst, "fonts.css"))
+    print("synced skill/assets (tokens, css, fonts)")
+
+
 if __name__ == "__main__":
     build_css()
     build_fonts()
@@ -695,3 +714,4 @@ if __name__ == "__main__":
     build_tailwind()
     build_pwa()
     build_color_md()
+    sync_skill_assets()

@@ -1,6 +1,16 @@
 ---
-name: "veeam-design-system"
-description: "The Veeam design system (built on Saltbox's S1 system): ES Build Bauhaus for headings and ES Build Neutral for body, Electric Azure primary / Viridis green secondary colors, the blue-green brand gradient, the Veeam logo and Bounce Mark, S1 spacing/radius tokens, the Veeam 12-column grid, buttons and components. Use whenever building, reviewing or specifying Veeam websites, landing pages, Salesforce Commerce Cloud storefronts (SFRA, PWA Kit, B2B/D2C LWR), banners, documents or decks, or when asked about Veeam tokens, colors, fonts, logo, gradients, icons or components."
+name: veeam-design-system
+description: >
+  The Veeam design system (built on Saltbox's S1 system): ES Build Bauhaus for
+  headings and ES Build Neutral for body, Electric Azure #3700FF primary and
+  Viridis #00D15F secondary colors, the blue-green brand gradient, the Veeam
+  logo and Bounce Mark, S1 spacing/radius tokens, the Veeam grid, buttons and
+  components, with ready-to-use CSS, fonts and logo files. Use this skill
+  whenever building, reviewing or specifying anything for Veeam — websites,
+  landing pages, banners, Salesforce Commerce Cloud storefronts (SFRA, PWA Kit,
+  B2B/D2C LWR), components, prototypes, PRDs, documents or decks. Also use when
+  someone asks "what's the Veeam color/font/token for X" or wants a design
+  checked against the Veeam brand, even if they don't say "design system".
 ---
 
 # Veeam Design System
@@ -47,8 +57,37 @@ with Veeam.CreativeTeam.Managers@veeam.com before publishing.
 | Navigation | `references/navigation.md` | **Veeam button spec** + S1 nav: header, tabs, breadcrumbs, pagination… |
 | Data display | `references/data-display.md` | S1 inventory re-valued: tables, cards, badges, alerts, charts… |
 
-**Code:** `tokens/veeam-tokens.css` (variables), `css/veeam.css` (base + `.vds-*` components),
-`fonts/fonts.css`, `tokens/*` for SCSS/Tailwind/Chakra/JSON. **Examples:** `examples/`.
+**Code:** see *Building with this skill* below — the tokens, CSS, fonts and logos are bundled in
+`assets/`. The GitHub repo (hurisb/veeam-design-system) adds working example pages.
+
+## Building with this skill — bundled files
+
+Everything needed to build on-brand is inside this skill. Paths are relative to the skill folder.
+
+| Need | File |
+|---|---|
+| All tokens as CSS variables (light + `data-theme="dark"`) | `assets/tokens/veeam-tokens.css` |
+| Base styles + components (`.vds-btn`, `.vds-card`, `.vds-input`, `.vds-grid`, `.display-xl`, `.vds-eyebrow`…) | `assets/css/veeam.css` |
+| ES Build / Neutral / Bauhaus web fonts + `@font-face` | `assets/fonts/fonts.css` (+ woff2/woff) |
+| SFRA SCSS + Bootstrap overrides | `assets/tokens/_veeam-tokens.scss` |
+| PWA Kit (Chakra) theme | `assets/tokens/pwa-kit-theme.js` |
+| Tailwind preset | `assets/tokens/tailwind.preset.js` |
+| Figma / Tokens Studio JSON | `assets/tokens/tokens.json` |
+| Logos, favicon, app icon, Bounce Mark | `assets/logos/` |
+
+**Recipe for any HTML page, prototype or artifact**
+1. Copy `assets/fonts/` next to the page and link `fonts/fonts.css`. If files can't sit next to
+   the page (e.g. a single-file artifact), embed the woff2 files as base64 `@font-face` sources,
+   or fall back to Source Sans 3 from Google Fonts and say so.
+2. Inline or link `assets/tokens/veeam-tokens.css`, then `assets/css/veeam.css`.
+3. Use the `.vds-*` classes and `var(--token)` values — never raw hex, px spacing or radius.
+4. Use the logo files from `assets/logos/` (inline the SVG for single-file outputs).
+5. Check the result against the rules below and the checklist in `references/brand-elements.md`.
+
+For a Commerce Cloud project, follow `references/commerce-cloud.md` for the stack in use.
+
+> Path note: the reference files use repo paths (`tokens/…`, `css/…`, `fonts/…`). Inside this
+> skill the same files are at `assets/tokens/…`, `assets/css/…`, `assets/fonts/…`.
 
 ## Core principles
 

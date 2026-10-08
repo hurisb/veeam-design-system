@@ -38,6 +38,7 @@ Skill** so anyone can ask "what's our primary button style?" and get the Veeam a
 | **Designer** | Import `tokens/tokens.json` into Tokens Studio ([§4.6](#46-figma--tokens-studio)), install the fonts from `fonts/`, and open `examples/foundations/` to see every token rendered. |
 | **QA / reviewer** | Use the rules in [§7](#7-brand-rules-you-cant-skip) and the contrast table in `skill/references/color-variables.md`. Ask Claude to review a screenshot ([§6](#6-use-it-with-claude)). |
 | **PM / sales / leadership** | Skim [§3](#3-the-system-at-a-glance) and [§7](#7-brand-rules-you-cant-skip); open the example pages. Ask Claude questions in plain language. |
+| **Anyone who just wants the Claude Skill** | Download [`dist/veeam-design-system.zip`](dist/veeam-design-system.zip) and upload it in Claude → Settings → Skills ([§6](#6-use-it-with-claude)). |
 | **New to GitHub or Claude Skills** | Follow the step-by-step [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md). |
 
 Get the files: **`< > Code` → Download ZIP** (you must be signed in and invited), or
@@ -67,11 +68,12 @@ veeam-design-system/
 │   ├── foundations/             ← every token rendered: colors, ramps, gradients, type, buttons, spacing, grid, logo
 │   ├── landing-page/            ← marketing page: gradient hero, Bounce Mark, cards, dark section, banner
 │   └── storefront/              ← Commerce Cloud PLP (index.html) + PDP (product.html)
-├── skill/                       ← the Claude Skill (also the full written spec)
+├── dist/veeam-design-system.zip ← THE CLAUDE SKILL, ready to upload (built by scripts/package-skill.sh)
+├── skill/                       ← the Claude Skill source (also the full written spec)
 │   ├── SKILL.md
 │   ├── references/              ← tokens, color-variables, typography, logo, brand-elements, icons,
 │   │                              commerce-cloud, form-elements, navigation, data-display
-│   └── assets/logos/            ← SVG logos + favicon, app icon, social avatar, Bounce Mark PNGs
+│   └── assets/                  ← bundled copies: tokens, css, fonts, logos (synced by the build script)
 └── resources/
     └── Veeam Inflection Design System Guidelines.pdf   ← the source (v052226, confidential)
 ```
@@ -258,16 +260,26 @@ All example content (products, prices, SKUs, stats) is placeholder.
 
 ## 6. Use it with Claude
 
-The `skill/` folder is a **Claude Skill**. Install it once and Claude answers Veeam questions
-with the real values and builds UI with the right tokens.
+The **Veeam Design System Skill** works like the S1 skill: install it once and Claude answers
+Veeam questions with the real values and builds pages and components with the right tokens,
+fonts and logos (they're bundled inside the skill).
 
-- **Claude.ai / desktop:** zip the `skill` folder → **Settings → Customize → Skills → Upload**.
-- **Claude Code:** `cp -r skill ~/.claude/skills/veeam-design-system`
-- **No install:** attach `skill/SKILL.md` + the `skill/references/` files to a chat or a Project.
+**Download the skill:** [`dist/veeam-design-system.zip`](dist/veeam-design-system.zip) (also on the
+[Releases page](https://github.com/hurisb/veeam-design-system/releases/latest)).
+
+| Where you use Claude | Install |
+|---|---|
+| **Claude.ai or the desktop app** | **Settings → Customize → Skills → Upload skill** → pick `veeam-design-system.zip` → toggle it **on**. Don't unzip it. |
+| **Claude Code** | `unzip dist/veeam-design-system.zip -d ~/.claude/skills/` (or `cp -R skill ~/.claude/skills/veeam-design-system`) |
+| **Whole team at once** (Team/Enterprise plan) | An org owner/admin uploads the same zip in the organization admin settings (Skills section) and shares it org-wide. |
+| **No install** | Attach `skill/SKILL.md` + `skill/references/*` to a chat or a Claude Project. |
 
 Try: *"What font do we use for H2 on Veeam pages?"* · *"Build a Veeam PDP buy box in SFRA ISML
 using our tokens."* · *"Review this banner against the Veeam rules"* (attach a screenshot).
-More in [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md).
+If you also have the S1 skill, say **"for Veeam"** so Claude picks the right one.
+More prompts in [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md).
+
+To rebuild the zip after changing anything: `./scripts/package-skill.sh`.
 
 ---
 

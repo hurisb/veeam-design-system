@@ -91,15 +91,17 @@ Designers (and anyone making docs or decks) need the fonts installed.
 The `skill/` folder teaches Claude the whole Veeam system. Do **one** of these.
 
 ### A. Claude.ai (website) or desktop app — as a Skill
-1. Right-click the `skill` folder → **Compress** (Mac) or **Send to → Compressed folder**
-   (Windows). Zip the `skill` folder itself — `SKILL.md` must be inside it.
-2. In Claude: **Settings → Customize → Skills → Upload skill**, choose the zip.
+1. Download the ready-made skill: open the repo → `dist` folder → `veeam-design-system.zip` →
+   **Download** (or grab it from the repo's **Releases** page). Don't unzip it.
+2. In Claude: **Settings → Customize → Skills → Upload skill**, choose `veeam-design-system.zip`.
 3. Make sure its toggle is **on**. Ask a Veeam question in any chat.
+
+> Team or Enterprise plan? An org owner/admin can upload the same zip once in the organization
+> admin settings (Skills section) so everyone gets it automatically.
 
 ### B. Claude Code — as a Skill
 ```bash
-mkdir -p ~/.claude/skills
-cp -R skill ~/.claude/skills/veeam-design-system
+unzip dist/veeam-design-system.zip -d ~/.claude/skills/
 ```
 Or only for one project: copy it to `.claude/skills/veeam-design-system` inside that project.
 

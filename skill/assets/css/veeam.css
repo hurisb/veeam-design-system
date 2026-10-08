@@ -1,0 +1,231 @@
+/*
+ * Veeam Design System — base styles & core components.
+ * Load after the tokens and fonts:
+ *   <link rel="stylesheet" href="fonts/fonts.css">
+ *   <link rel="stylesheet" href="tokens/veeam-tokens.css">
+ *   <link rel="stylesheet" href="css/veeam.css">
+ * Every value here is a token; edit tokens in scripts/build-tokens.py, not here.
+ * Class prefix: .vds-  (Veeam Design System)
+ */
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: var(--text-brand-tertiary); text-underline-offset: 3px; }
+a:hover { color: var(--color-primary-hover); }
+:focus-visible { outline: var(--stroke-focus) solid var(--border-brand); outline-offset: 2px; }
+
+/* Headings: ES Build Bauhaus. Body/subheads: ES Build Neutral. */
+h1, h2, h3, h4, h5, h6 { margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-semibold); color: var(--text-primary); }
+h1 { font-size: var(--font-size-display-lg); line-height: var(--line-height-display-lg); letter-spacing: var(--letter-spacing-display-lg); }
+h2 { font-size: var(--font-size-display-md); line-height: var(--line-height-display-md); letter-spacing: var(--letter-spacing-display-md); }
+h3 { font-size: var(--font-size-display-sm); line-height: var(--line-height-display-sm); }
+h4 { font-size: var(--font-size-display-xs); line-height: var(--line-height-display-xs); }
+h5 { font-family: var(--font-family-body); font-size: var(--font-size-text-2xl); line-height: var(--line-height-text-2xl); }
+h6 { font-family: var(--font-family-body); font-size: var(--font-size-text-xl); line-height: var(--line-height-text-xl); }
+p { margin: 0; }
+
+/* ---------- Type scale classes ---------- */
+.display-3xl, .display-2xl, .display-xl, .display-lg, .display-md, .display-sm, .display-xs {
+  font-family: var(--font-family-display); font-weight: var(--font-weight-semibold);
+}
+.display-3xl { font-size: var(--font-size-display-3xl); line-height: var(--line-height-display-3xl); letter-spacing: var(--letter-spacing-display-3xl); }
+.display-2xl { font-size: var(--font-size-display-2xl); line-height: var(--line-height-display-2xl); letter-spacing: var(--letter-spacing-display-2xl); }
+.display-xl  { font-size: var(--font-size-display-xl);  line-height: var(--line-height-display-xl);  letter-spacing: var(--letter-spacing-display-xl); }
+.display-lg  { font-size: var(--font-size-display-lg);  line-height: var(--line-height-display-lg);  letter-spacing: var(--letter-spacing-display-lg); }
+.display-md  { font-size: var(--font-size-display-md);  line-height: var(--line-height-display-md);  letter-spacing: var(--letter-spacing-display-md); }
+.display-sm  { font-size: var(--font-size-display-sm);  line-height: var(--line-height-display-sm); }
+.display-xs  { font-size: var(--font-size-display-xs);  line-height: var(--line-height-display-xs); }
+.text-2xl { font-size: var(--font-size-text-2xl); line-height: var(--line-height-text-2xl); }
+.text-xl  { font-size: var(--font-size-text-xl);  line-height: var(--line-height-text-xl); }
+.text-lg  { font-size: var(--font-size-text-lg);  line-height: var(--line-height-text-lg); }
+.text-md  { font-size: var(--font-size-text-md);  line-height: var(--line-height-text-md); }
+.text-sm  { font-size: var(--font-size-text-sm);  line-height: var(--line-height-text-sm); }
+.text-xs  { font-size: var(--font-size-text-xs);  line-height: var(--line-height-text-xs); }
+.fw-regular { font-weight: var(--font-weight-regular); }
+.fw-medium { font-weight: var(--font-weight-medium); }
+.fw-semibold { font-weight: var(--font-weight-semibold); }
+.fw-bold { font-weight: var(--font-weight-bold); }
+.text-secondary-color { color: var(--text-secondary); }
+.text-tertiary-color { color: var(--text-tertiary); }
+.text-navy { color: var(--text-brand-primary); }
+
+/* Eyebrow — PDF "EYEBROW 24/28", uppercase. .vds-eyebrow--sm for dense UI. */
+.vds-eyebrow {
+  font-family: var(--font-family-body); font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-text-2xl); line-height: var(--line-height-text-2xl);
+  text-transform: uppercase; color: var(--text-secondary-brand);
+}
+.vds-eyebrow--sm { font-size: var(--font-size-text-sm); line-height: var(--line-height-text-sm); letter-spacing: 0.04em; }
+
+/* Gradient headline word — PRISM Hero Font ('Securiti', 'Agent Commander' only). */
+.vds-text-gradient {
+  background: var(--gradient-hero-text);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: var(--color-primary);
+}
+
+/* Responsive display scaling: drop 1–2 steps on small screens. */
+@media (max-width: 767px) {
+  .display-3xl { font-size: var(--font-size-display-xl); line-height: var(--line-height-display-xl); }
+  .display-2xl { font-size: var(--font-size-display-xl); line-height: var(--line-height-display-xl); }
+  .display-xl  { font-size: var(--font-size-display-sm); line-height: var(--line-height-display-sm); }
+  .display-lg, h1 { font-size: var(--font-size-display-sm); line-height: var(--line-height-display-sm); }
+  .display-md, h2 { font-size: var(--font-size-display-xs); line-height: var(--line-height-display-xs); }
+  .vds-eyebrow { font-size: var(--font-size-text-lg); line-height: var(--line-height-text-lg); }
+}
+
+/* ---------- Layout: container & grid (PDF p.44) ---------- */
+.vds-container {
+  width: 100%; max-width: var(--container-max-width); margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+.vds-grid {
+  display: grid; gap: var(--grid-gutter);
+  grid-template-columns: repeat(2, minmax(0, 1fr));            /* xS < 768: 2 columns */
+}
+@media (min-width: 768px)  { .vds-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); } }   /* S */
+@media (min-width: 1024px) { .vds-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); } }  /* M, L, XL */
+.vds-col-full { grid-column: 1 / -1; }
+@media (min-width: 1024px) {
+  .vds-col-3 { grid-column: span 3; } .vds-col-4 { grid-column: span 4; } .vds-col-5 { grid-column: span 5; }
+  .vds-col-6 { grid-column: span 6; } .vds-col-7 { grid-column: span 7; } .vds-col-8 { grid-column: span 8; }
+  .vds-col-9 { grid-column: span 9; }
+}
+.vds-section { padding-block: var(--vspace-80); }
+.vds-section--lg { padding-block: var(--vspace-120); }
+.vds-section--sm { padding-block: var(--vspace-48); }
+@media (max-width: 767px) { .vds-section, .vds-section--lg { padding-block: var(--vspace-48); } }
+.vds-stack-8 > * + * { margin-top: var(--vspace-8); }
+.vds-stack-16 > * + * { margin-top: var(--vspace-16); }
+.vds-stack-24 > * + * { margin-top: var(--vspace-24); }
+.vds-stack-32 > * + * { margin-top: var(--vspace-32); }
+
+/* ---------- Surfaces ---------- */
+.vds-surface-brand { background: var(--gradient-brand); }
+.vds-surface-light { background: var(--gradient-brand-light); }
+.vds-surface-dark  { background: var(--gradient-dark-bg); color: var(--color-white); }
+.vds-surface-mineral { background: var(--color-grey-mineral); color: var(--color-white); }
+.vds-surface-subtle { background: var(--bg-secondary); }
+/* White plate under text placed on busy gradients (PDF p.13, 36). */
+.vds-plate-blur {
+  background: rgb(255 255 255 / 72%); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-xl); padding: var(--spacing-3xl);
+}
+
+/* ---------- Buttons (PDF p.41) ---------- */
+.vds-btn {
+  --_bg: var(--button-primary-bg); --_fg: var(--button-primary-fg); --_bd: var(--button-primary-bg);
+  --_bg-h: var(--button-primary-bg-hover); --_fg-h: var(--button-primary-fg-hover); --_bd-h: var(--button-primary-bg-hover);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-md);
+  min-width: var(--button-min-width-lg);
+  padding: var(--spacing-lg) var(--spacing-3xl);                      /* 12 / 24 */
+  font-family: var(--font-family-body); font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-text-md); line-height: var(--line-height-text-md);
+  letter-spacing: 0.02em; text-transform: uppercase; text-decoration: none; white-space: nowrap;
+  color: var(--_fg); background: var(--_bg); border: 1px solid var(--_bd);
+  border-radius: var(--radius-button); cursor: pointer;
+  transition: background-color .2s cubic-bezier(0.16, 1, 0.3, 1), color .2s, border-color .2s, transform .1s;
+}
+.vds-btn:hover, .vds-btn:focus-visible, .vds-btn:active, .vds-btn.is-hover, .vds-btn.is-active {
+  background: var(--_bg-h); color: var(--_fg-h); border-color: var(--_bd-h);
+}
+.vds-btn:active { transform: translateY(1px); }
+.vds-btn:disabled, .vds-btn[aria-disabled="true"] { opacity: .4; cursor: not-allowed; transform: none; }
+.vds-btn--secondary {
+  --_bg: transparent; --_fg: var(--button-secondary-fg); --_bd: var(--button-secondary-border);
+  --_bg-h: var(--button-secondary-bg-hover); --_fg-h: var(--button-secondary-fg-hover); --_bd-h: var(--button-secondary-bg-hover);
+}
+.vds-btn--tertiary {
+  --_bg: transparent; --_fg: var(--button-tertiary-fg); --_bd: transparent;
+  --_bg-h: var(--button-tertiary-bg-hover); --_fg-h: var(--button-tertiary-fg-hover); --_bd-h: transparent;
+  min-width: 0; padding-inline: var(--spacing-md);
+}
+.vds-btn--sm {
+  min-width: var(--button-min-width-sm);
+  padding: var(--spacing-md) var(--spacing-2xl);                      /* 8 / 20 */
+  font-size: var(--font-size-text-sm); line-height: var(--line-height-text-sm);
+}
+.vds-btn--tertiary.vds-btn--sm { min-width: 0; }
+.vds-btn--fixed { width: var(--button-fixed-width); }
+@media (max-width: 767px) { .vds-btn--block-mobile { width: 100%; } }
+.vds-btn__arrow { width: 1em; height: 1em; flex: none; }
+
+/* ---------- Form fields (S1 Input field, Veeam values) ---------- */
+.vds-field { display: grid; gap: var(--spacing-sm); }
+.vds-label { font-size: var(--font-size-text-sm); line-height: var(--line-height-text-sm); font-weight: var(--font-weight-medium); color: var(--text-secondary); }
+.vds-label .req { color: var(--text-brand-tertiary); }
+.vds-input, .vds-select {
+  width: 100%; padding: var(--spacing-md) var(--spacing-lg);
+  font: inherit; font-size: var(--font-size-text-md); line-height: var(--line-height-text-md);
+  color: var(--text-primary); background: var(--bg-primary);
+  border: 1px solid var(--border-primary); border-radius: var(--radius-md);
+}
+.vds-input::placeholder { color: var(--text-placeholder); }
+.vds-input:focus, .vds-select:focus { outline: none; border-color: var(--border-brand); box-shadow: 0 0 0 1px var(--border-brand); }
+.vds-input[aria-invalid="true"] { border-color: var(--border-error); }
+.vds-hint { font-size: var(--font-size-text-sm); line-height: var(--line-height-text-sm); color: var(--text-tertiary); }
+.vds-error { font-size: var(--font-size-text-sm); line-height: var(--line-height-text-sm); color: var(--text-error-primary); }
+.vds-checkbox { display: flex; gap: var(--spacing-md); align-items: flex-start; font-size: var(--font-size-text-sm); color: var(--text-secondary); }
+.vds-checkbox input { width: 16px; height: 16px; margin: 2px 0 0; accent-color: var(--color-primary); }
+
+/* ---------- Card — green top rule (web page p.14) ---------- */
+.vds-card {
+  background: var(--bg-primary); border: 1px solid var(--border-secondary);
+  border-top: 3px solid var(--border-secondary-brand);
+  border-radius: var(--radius-xs); padding: var(--spacing-3xl);
+}
+.vds-card--plain { border-top-width: 1px; border-top-color: var(--border-secondary); border-radius: var(--radius-xl); }
+.vds-card__title { font-family: var(--font-family-display); font-weight: var(--font-weight-semibold); font-size: var(--font-size-text-xl); line-height: var(--line-height-text-xl); }
+.vds-card__body { margin-top: var(--spacing-md); color: var(--text-tertiary); font-size: var(--font-size-text-md); }
+
+/* ---------- Badge ---------- */
+.vds-badge {
+  display: inline-flex; align-items: center; gap: var(--spacing-xs);
+  padding: var(--spacing-xxs) var(--spacing-md); border-radius: var(--radius-full);
+  font-size: var(--font-size-text-xs); line-height: var(--line-height-text-xs); font-weight: var(--font-weight-medium);
+  background: var(--bg-brand-primary); color: var(--text-brand-secondary);
+}
+.vds-badge--success { background: var(--bg-success-primary); color: var(--text-success-primary); }
+.vds-badge--warning { background: var(--bg-warning-primary); color: var(--text-warning-primary); }
+.vds-badge--error { background: var(--bg-error-primary); color: var(--text-error-primary); }
+.vds-badge--neutral { background: var(--bg-tertiary); color: var(--text-secondary); }
+
+/* ---------- Message plate (Motion p.47–48): 60px radius, 8px stroke ---------- */
+.vds-plate {
+  display: inline-flex; align-items: center; gap: var(--spacing-xl);
+  padding: var(--spacing-xl) var(--spacing-4xl); border-radius: var(--radius-plate);
+  border: var(--stroke-plate) solid var(--color-ignis); color: var(--color-ignis); background: var(--color-white);
+  font-weight: var(--font-weight-semibold);
+}
+.vds-plate--solid { background: var(--color-ignis); color: var(--color-white); }
+.vds-plate--good { border-color: var(--color-viridis); color: var(--text-secondary-brand); }
+.vds-plate--glass {
+  background: rgb(255 255 255 / 18%); border-color: rgb(255 255 255 / 40%); color: var(--color-white);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+}
+
+/* ---------- Header / nav ---------- */
+.vds-header { background: var(--bg-primary); border-bottom: 1px solid var(--border-secondary); }
+.vds-header__inner { display: flex; align-items: center; gap: var(--spacing-4xl); min-height: 72px; }
+.vds-nav { display: flex; gap: var(--spacing-3xl); }
+.vds-nav a { color: var(--text-secondary); text-decoration: none; font-size: var(--font-size-text-sm); font-weight: var(--font-weight-medium); }
+.vds-nav a:hover, .vds-nav a[aria-current="page"] { color: var(--text-brand-tertiary); }
+@media (max-width: 1023px) { .vds-nav { display: none; } }
+
+/* ---------- Footer ---------- */
+.vds-footer { background: var(--color-gradient-blue-3); color: var(--color-gray-dark-300); padding-block: var(--vspace-64); font-size: var(--font-size-text-sm); }
+.vds-footer a { color: var(--color-white); text-decoration: none; }
+.vds-footer a:hover { color: var(--color-mint); }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
