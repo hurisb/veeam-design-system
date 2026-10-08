@@ -3,6 +3,7 @@
 # Only what the pages need is uploaded: examples/, css/, tokens/, fonts/, skill/assets/logos/.
 # The source PDF, the skill zip, docs and scripts are never deployed.
 # Usage: ./scripts/deploy-site.sh   (needs `npx vercel login` once)
+#        VERCEL_SCOPE=saltbox-mgmt ./scripts/deploy-site.sh   to deploy under a team
 set -e
 cd "$(dirname "$0")/.."
 python3 scripts/build-tokens.py >/dev/null
@@ -20,4 +21,7 @@ cat > _site/vercel.json <<'JSON'
   "headers": [{ "source": "/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }]
 }
 JSON
-npx --yes vercel@latest deploy _site --prod --yes --name saltbox-veeam-design-system
+SCOPE="${VERCEL_SCOPE:-huri-1938s-projects}"
+cd _site
+npx --yes vercel@latest link --yes --scope "$SCOPE" --project saltbox-veeam-design-system >/dev/null
+npx --yes vercel@latest deploy --prod --yes --scope "$SCOPE"

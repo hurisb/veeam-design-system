@@ -123,24 +123,15 @@ Or only for one project: copy it to `.claude/skills/veeam-design-system` inside 
 
 ## Part 4 — Look at the examples
 
-Browsers block web fonts from files opened directly, so start a tiny local server.
-Mac: open **Terminal**, then:
+They're online — just open a link:
 
-```bash
-cd ~/Downloads/veeam-design-system
-```
+- https://saltbox-veeam-design-system.vercel.app/examples/ — all examples
+- https://saltbox-veeam-design-system.vercel.app/examples/foundations/ — every color, status color, text gray, font size, button and spacing step
+- https://saltbox-veeam-design-system.vercel.app/examples/landing-page/ — a Veeam marketing page
+- https://saltbox-veeam-design-system.vercel.app/examples/storefront/ — a Commerce Cloud product listing
+- https://saltbox-veeam-design-system.vercel.app/examples/storefront/product.html — a product detail page
 
-```bash
-python3 -m http.server 8000
-```
-
-Then visit:
-- http://localhost:8000/examples/foundations/ — every color, font size, button and spacing step
-- http://localhost:8000/examples/landing-page/ — a Veeam marketing page
-- http://localhost:8000/examples/storefront/ — a Commerce Cloud product listing
-- http://localhost:8000/examples/storefront/product.html — a product detail page
-
-Press `Ctrl + C` in Terminal to stop the server.
+Please share these links only inside the project team.
 
 ---
 
@@ -180,7 +171,7 @@ Press `Ctrl + C` in Terminal to stop the server.
 
 **GitHub shows "404 / not found".** Sign in and accept the collaborator invite.
 
-**Example pages show a plain font.** You opened the file directly — use the local server (Part 4).
+**Example pages show a plain font.** You opened an HTML file from your computer — use the online links in Part 4.
 
 **No "Skills" option in Claude.** Update the app, or use the no-install option (3C).
 

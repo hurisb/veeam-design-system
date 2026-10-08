@@ -35,9 +35,9 @@ Skill** so anyone can ask "what's our primary button style?" and get the Veeam a
 | I am a… | Do this |
 |---|---|
 | **Front-end / SFCC developer** | Read [§3](#3-the-system-at-a-glance), then the section for your stack in [§4](#4-use-it-in-code). Copy `tokens/` + `fonts/`, never hard-code a hex. |
-| **Designer** | Import `tokens/tokens.json` into Tokens Studio ([§4.6](#46-figma--tokens-studio)), install the fonts from `fonts/`, and open `examples/foundations/` to see every token rendered. |
+| **Designer** | Import `tokens/tokens.json` into Tokens Studio ([§4.6](#46-figma--tokens-studio)), install the fonts from `fonts/`, and open the [live Foundations page](https://saltbox-veeam-design-system.vercel.app/examples/foundations/) to see every token rendered. |
 | **QA / reviewer** | Use the rules in [§7](#7-brand-rules-you-cant-skip) and the contrast table in `skill/references/color-variables.md`. Ask Claude to review a screenshot ([§6](#6-use-it-with-claude)). |
-| **PM / sales / leadership** | Skim [§3](#3-the-system-at-a-glance) and [§7](#7-brand-rules-you-cant-skip); open the example pages. Ask Claude questions in plain language. |
+| **PM / sales / leadership** | Skim [§3](#3-the-system-at-a-glance) and [§7](#7-brand-rules-you-cant-skip); open the [live examples](https://saltbox-veeam-design-system.vercel.app/examples/). Ask Claude questions in plain language. |
 | **Anyone who just wants the Claude Skill** | Download [`dist/veeam-design-system.zip`](dist/veeam-design-system.zip) and upload it in Claude → Settings → Skills ([§6](#6-use-it-with-claude)). |
 | **New to GitHub or Claude Skills** | Follow the step-by-step [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md). |
 
@@ -64,6 +64,8 @@ veeam-design-system/
 ├── css/veeam.css                ← base styles + .vds-* components (type, buttons, grid, forms, cards, badges, plates)
 ├── fonts/                       ← ES Build, ES Build Neutral, ES Build Bauhaus (woff2 + woff) + fonts.css
 ├── scripts/build-tokens.py      ← SINGLE SOURCE OF TRUTH — edit values here, then run it
+├── scripts/package-skill.sh     ← rebuilds dist/veeam-design-system.zip
+├── scripts/deploy-site.sh       ← publishes the examples to Vercel
 ├── examples/
 │   ├── foundations/             ← every token rendered: colors, ramps, gradients, type, buttons, spacing, grid, logo
 │   ├── landing-page/            ← marketing page: gradient hero, Bounce Mark, cards, dark section, banner
@@ -272,23 +274,22 @@ Creative).
 
 ## 5. See the examples
 
-The example pages load the real tokens and fonts. Fonts need a local web server (browsers block
-fonts from `file://`):
+**Online — no setup needed: [https://saltbox-veeam-design-system.vercel.app/examples/](https://saltbox-veeam-design-system.vercel.app/examples/)**
 
-```bash
-python3 -m http.server 8000
-```
-
-Then open:
-
-| Page | URL | Shows |
+| Page | Link | Shows |
 |---|---|---|
-| Foundations | http://localhost:8000/examples/foundations/ | Every color, ramp, gradient, type style, button state, spacing step, the grid and logos |
-| Landing page | http://localhost:8000/examples/landing-page/ | Gradient hero with Bounce Mark, gradient headline word, green-rule cards, PRISM dark section, banner, footer |
-| Storefront PLP | http://localhost:8000/examples/storefront/ | Commerce Cloud product listing: header with search & cart, category hero, refinements, product tiles, pagination |
-| Storefront PDP | http://localhost:8000/examples/storefront/product.html | Product detail: gallery, option chips, quantity, buy box, tabs, spec table, toast |
+| Foundations | [https://saltbox-veeam-design-system.vercel.app/examples/foundations/](https://saltbox-veeam-design-system.vercel.app/examples/foundations/) | Every color, **system colors**, **text grays**, ramps, gradients, type styles, button states, spacing, the S1 grid and logos |
+| Landing page | [https://saltbox-veeam-design-system.vercel.app/examples/landing-page/](https://saltbox-veeam-design-system.vercel.app/examples/landing-page/) | Gradient hero with Bounce Mark, gradient headline word, cards, PRISM dark section, banner, footer |
+| Storefront PLP | [https://saltbox-veeam-design-system.vercel.app/examples/storefront/](https://saltbox-veeam-design-system.vercel.app/examples/storefront/) | Commerce Cloud product listing: header with search & cart, category hero, filters, product tiles, pagination |
+| Storefront PDP | [https://saltbox-veeam-design-system.vercel.app/examples/storefront/product.html](https://saltbox-veeam-design-system.vercel.app/examples/storefront/product.html) | Product detail: gallery, option chips, quantity, buy box, tabs, spec table, toast |
 
-All example content (products, prices, SKUs, stats) is placeholder.
+All example content (products, prices, SKUs, stats) is placeholder. The site is unlisted
+(`noindex`) and contains only the example pages and their CSS, tokens, fonts and logos — never
+the source PDF or the skill. Share the link only inside the project team.
+
+**Updating the site:** after changing tokens or examples, run `./scripts/deploy-site.sh`
+(one-time `npx vercel login` first). To edit pages locally instead: `python3 -m http.server 8000`
+and open http://localhost:8000/examples/.
 
 ---
 
@@ -365,7 +366,7 @@ If you know S1, you already know where everything is.
 1. Edit the value in **`scripts/build-tokens.py`** (all values live there).
 2. Run `python3 scripts/build-tokens.py` — regenerates `tokens/*`, `fonts/fonts.css` and
    `skill/references/color-variables.md`.
-3. Open `examples/foundations/` to check it.
+3. Check it locally, then run `./scripts/deploy-site.sh` to update the live site.
 4. Update the prose in `skill/references/*.md` if the meaning changed.
 5. Commit with a message naming what changed, e.g. `tokens: darken warning-700 for contrast`.
 
