@@ -4,8 +4,9 @@ description: >
   The Veeam design system (built on Saltbox's S1 system): ES Build Bauhaus for
   headings and ES Build Neutral for body, Electric Azure #3700FF primary and
   Viridis #00D15F secondary colors, the blue-green brand gradient, the Veeam
-  logo and Bounce Mark, S1 spacing/radius tokens, the Veeam grid, buttons and
-  components, with ready-to-use CSS, fonts and logo files. Use this skill
+  logo and Bounce Mark, the S1 spacing, radius and grid, system colors
+  (success/warning/error/info), text grays, buttons and components, with
+  ready-to-use CSS, fonts and logo files. Use this skill
   whenever building, reviewing or specifying anything for Veeam — websites,
   landing pages, banners, Salesforce Commerce Cloud storefronts (SFRA, PWA Kit,
   B2B/D2C LWR), components, prototypes, PRDs, documents or decks. Also use when
