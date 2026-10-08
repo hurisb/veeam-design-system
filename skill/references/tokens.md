@@ -1,0 +1,215 @@
+# Design Tokens — raw values
+
+The primitive/raw layer of the Veeam design system. It follows the **S1 structure** (same ramp
+steps, same spacing and radius scale, same naming) with **Veeam values** from the *Veeam
+Inflection Design System Guidelines* PDF (Interim Styleguide Toolkit, version 052226 —
+`resources/` in this repo).
+
+- For *which* color to use where (`text-primary`, `bg-brand-solid`…), see
+  [`color-variables.md`](color-variables.md). For type styles, see [`typography.md`](typography.md).
+- Every value here is defined once in `scripts/build-tokens.py` and generated into
+  `tokens/veeam-tokens.css`, `tokens/tokens.json`, `tokens/_veeam-tokens.scss`,
+  `tokens/tailwind.preset.js` and `tokens/pwa-kit-theme.js`.
+- **Bold** hex = printed in the PDF. Plain hex = derived to complete a ramp.
+
+---
+
+## 1. Brand palette (from the PDF)
+
+| Name | Hex | RGB | CMYK | Pantone | Role |
+|---|---|---|---|---|---|
+| Viridis | **#00D15F** | 0 209 95 | 71 0 84 0 | 2420 C | Signature Veeam green — logo plate, brand presence |
+| Viridis 20% | **#40DB87** | 50 219 135 | 54 0 65 0 | 2268 C | Bounce Mark inside the logo |
+| Mint | **#32F26F** | 50 242 111 | 54 0 65 0 | — | Bright green, icon gradient end |
+| Sky | **#57E0FF** | 87 224 255 | 55 0 0 0 | — | Complement to Viridis in illustration |
+| Electric Azure | **#3700FF** | 55 0 255 | 92 97 0 0 | — | **Primary CTA** on the web |
+| Casia | **#8E71F4** | 142 113 244 | 49 55 0 0 | — | Supplementary accent |
+| Sol | **#FFD839** | 255 216 57 | 0 4 88 0 | — | Highlight (fills only) |
+| Suma | **#FE8A25** | 254 138 37 | 0 50 100 0 | — | Warning |
+| Ignis (system red) | **#ED2B3D** | — | — | — | Alerts & watch-outs only |
+| Navy Blue (Dark Text) | **#0E0D72** | 14 13 114 | 100 86 23 6 | — | Brand dark text |
+| White | **#FFFFFF** | 255 255 255 | 4 5 8 0 | — | Gradient start, space under the logo |
+| Gradient green | **#00FF5E** | 0 255 94 | 65 0 71 0 | — | Brand gradient stop |
+| Gradient blue 1 | **#008EE7** | 0 142 231 | 93 52 0 0 | — | Brand gradient stop, icon gradient start |
+| Gradient blue 2 | **#283E8E** | 40 62 142 | 96 73 0 15 | — | Brand gradient stop, **CTA hover** |
+| Gradient blue 3 | **#1D1E3F** | 29 30 64 | 96 76 0 20 | — | Brand gradient end, dark sections |
+| Black | **#000000** | 0 0 0 | 60 50 50 100 | Black spot | Monochrome logo |
+
+Presentation (PowerPoint) palette, PDF p.58: main **#00D15F #4AFF9C #8E71F4 #1CA8DD #002060
+#3700FF #FF6900 #FFD839 #97D700**; neutrals **#1D1F2A #505861 #8F8B90 #DBDEE1 #F2F3F2**;
+negative **#ED2B3D**. Web palette, PDF p.39: green **#02613F #007F49 #009277 #00D15F #E1F4EC**
+(`#32F26F` and `#9CFFA3` are *not part of PRISM*); blue **#002833 #283E8E #3700FF #57E0FF
+#E3EEFE #EEF4F6**; supplementary **#8E71F4 #CECBB8**; system **#ED2B3D #FE8A25 #FFD839
+#FCF8EB**; neutral **#000000 #232323 #505861 #ADACAF #F0F0F0 #F9F9F9 #FFFFFF**.
+
+> **Mind the color space:** RGB/hex for screens, CMYK for print. Print never looks as vivid.
+
+CSS: `--color-viridis`, `--color-electric-azure`, `--color-sky`… (kebab-case of the name).
+
+---
+
+## 2. Primitive ramps (25 → 950)
+
+Same 12 steps as S1, so every S1 semantic token resolves to the same step.
+
+| Step | `brand` (Electric Azure) | `green` (Viridis) = `success` | `gray` (light) | `gray-dark` (PRISM) | `error` | `warning` |
+|---|---|---|---|---|---|---|
+| 25 | `#f5f8fe` | `#f2fdf6` | `#fcfcfc` | `#fafafb` | `#fffafa` | `#fffaf5` |
+| 50 | **`#e3eefe`** | **`#e1f4ec`** | **`#f9f9f9`** | `#f5f6f8` | `#fef2f3` | `#fff4ea` |
+| 100 | `#ccd9fe` | `#c6f7da` | **`#f0f0f0`** | `#eceef3` | `#fde3e5` | `#ffe6cf` |
+| 200 | `#a9b6ff` | **`#9cffa3`** | **`#dbdee1`** | `#e1e4ec` | `#fbc7cc` | `#ffcd9f` |
+| 300 | `#8a8dff` | **`#4aff9c`** | `#c3c6cb` | `#c8ccd8` | `#f69aa3` | `#feb06a` |
+| 400 | `#6b5cff` | **`#32f26f`** | **`#adacaf`** | `#959cb0` | `#f15f6d` | `#fe9c45` |
+| 500 | `#4d2eff` | **`#00d15f`** | `#6e737b` | `#7d859c` | **`#ed2b3d`** | **`#fe8a25`** |
+| 600 | **`#3700ff`** | **`#009277`** | **`#505861`** | `#5a637d` | `#d01a2c` | **`#ff6900`** |
+| 700 | **`#283e8e`** | **`#007f49`** | `#3b4049` | `#34405e` | `#ad1524` | `#c2510a` |
+| 800 | **`#1d1e3f`** | **`#02613f`** | **`#232323`** | `#1e2a47` | `#8c1520` | `#9f3f0a` |
+| 900 | **`#0e0d72`** | `#014a30` | **`#1d1f2a`** | `#162036` | `#74161f` | `#80350c` |
+| 950 | `#0a0a45` | `#002e1e` | `#121318` | **`#0f172c`** | `#400a0f` | `#451905` |
+
+Notes
+- `brand` is the **primary** ramp. Like S1's navy→purple ramp, it changes hue at the dark end:
+  `brand-700` is Gradient blue 2 (the PDF's CTA hover) and `brand-900` is Navy Blue.
+- `green` is the **secondary** ramp and doubles as `success` ("green is good", PDF p.52).
+- `gray-dark` is navy-tinted so dark mode sits on the PRISM dark background (`#0F172C`, sampled
+  from the PDF's dark-theme swatch).
+- CSS: `--color-brand-600`, `--color-green-500`, `--color-gray-dark-950`…
+
+---
+
+## 3. Brand aliases
+
+Plain-language aliases for marketing and site code — `--color-primary`, `--color-secondary`,
+`--color-tertiary`, `--color-accent`, `--color-highlight`, `--color-text-dark`,
+`--color-success`, `--color-warning`, `--color-error`. Full table with roles in
+[`color-variables.md`](color-variables.md) §0.
+
+---
+
+## 4. Gradients
+
+| Token | Value | Use |
+|---|---|---|
+| `gradient-brand` | 135°: `#FFFFFF` 0 → `#00FF5E` 22% → `#008EE7` 52% → `#283E8E` 78% → `#1D1E3F` 100% | **Signature key visual.** Every design needs it. |
+| `gradient-brand-radial` | same stops, radial from top-left | Radial version; white corner sits beneath the logo |
+| `gradient-brand-light` | `#FFFFFF` → `#E1F4EC` → `#9CFFA3` → `#00D15F` | Light green wash behind dark text |
+| `gradient-hero-text` | 90°: `#00D15F` → `#1976A6` → `#3700FF` | PRISM *Hero font* — gradient headline words |
+| `gradient-tab-active` | `#15839A` → `#3700FF` | PRISM *Tab: Active* |
+| `gradient-negative` | `#E23E57` → `#A0273A` | PRISM *Negative stats* |
+| `gradient-dark-bg` | 180°: `#0C1427` → `#1E3C6F` | PRISM *dark theme background* |
+| `gradient-icon` | `#008EE7` → `#32F26F` | Marketing icons (Gradient blue 1 → Mint) |
+| `gradient-green-cyan` · `-casia-azure` · `-cyan-ocean` | `#00D15F→#1CA8DD` · `#8E71F4→#3700FF` · `#1CA8DD→#0058FF` | Presentation gradients, light BG |
+| `gradient-mint-cyan` · `gradient-alert-dark` | `#4AFF9C→#1CA8DD` · `#FFD839→#FE8A25` | Presentation gradients for dark BG |
+| `gradient-alert` | `#FF6900` → `#FE8A25` | Negative gradient, light BG |
+
+PRISM gradients (hero text, tab, negative, dark bg) are shown as swatches in the PDF without
+stop values; the stops above were sampled from the PDF artwork.
+
+---
+
+## 5. Spacing scale — unchanged from S1
+
+Base unit 4px, with 2px sub-steps.
+
+| Token | px | | Token | px |
+|---|---|---|---|---|
+| spacing-none | 0 | | spacing-3xl | 24 |
+| spacing-xxs | 2 | | spacing-4xl | 32 |
+| spacing-xs | 4 | | spacing-5xl | 40 |
+| spacing-sm | 6 | | spacing-6xl | 48 |
+| spacing-md | 8 | | spacing-7xl | 64 |
+| spacing-lg | 12 | | spacing-8xl | 80 |
+| spacing-xl | 16 | | spacing-9xl | 96 |
+| spacing-2xl | 20 | | spacing-10xl | 128 |
+| **spacing-section** *(Veeam)* | **120** | | spacing-11xl | 160 |
+
+### Vertical spacing rules (PDF p.44)
+
+Stack sections and blocks only on these steps: **8 · 16 · 24 · 32 · 48 · 64 · 80 · 120** —
+tokens `--vspace-8` … `--vspace-120` (each equals an S1 spacing token, plus `spacing-section`
+for 120). Section padding: 80 default, 120 for hero/feature sections, 48 on mobile.
+
+---
+
+## 6. Radius scale — S1 + two Veeam tokens
+
+| Token | px | | Token | px |
+|---|---|---|---|---|
+| radius-none | 0 | | radius-xl | 12 |
+| radius-xxs | 2 | | radius-2xl | 16 |
+| radius-xs | 4 | | radius-3xl | 20 |
+| radius-sm | 6 | | radius-4xl | 24 |
+| radius-md | 8 | | **radius-plate** *(Veeam)* | **60** |
+| radius-lg | 10 | | radius-full | 9999 |
+| **radius-button** *(Veeam)* | **6** | | | |
+
+Strokes: `stroke-plate` 8px (message plates), `stroke-icon-marketing` 12px (144px icon grid),
+`stroke-focus` 2px.
+
+---
+
+## 7. Type scale (numeric)
+
+See [`typography.md`](typography.md) for families, weights and usage.
+
+| Token | Size | Line height | Tracking | Family | PDF source |
+|---|---|---|---|---|---|
+| display-3xl | 120 | 128 | -2% | Bauhaus | Display 120 |
+| display-2xl | 100 | 108 | -2% | Bauhaus | Display 100 |
+| display-xl | 60 | 68 | -2% | Bauhaus | Display 60 |
+| display-lg | 50 | 60 | -2% | Bauhaus | H1 title 50/60 |
+| display-md | 44 | 52 | -1% | Bauhaus | H2 title (PDF prints "55/52") |
+| display-sm | 36 | 44 | 0 | Bauhaus | H3 title 36/44 |
+| display-xs | 28 | 36 | 0 | Bauhaus | Text 28 – 28/36 |
+| text-2xl | 24 | 28 | 0 | Neutral | Text 24 – 24/28 · Eyebrow 24/28 |
+| text-xl | 20 | 24 | 0 | Neutral | Text 20 – 20/24 |
+| text-lg | 18 | 24 | 0 | Neutral | Text 18 · Body 18/24 |
+| text-md | 16 | 24 | 0 | Neutral | Paragraph 16/24 · Body 16/24 |
+| text-sm | 14 | 20 | 0 | Neutral | Caption 14/20 |
+| text-xs | 12 | 18 | 0 | Neutral | *(S1 carry-over)* |
+
+---
+
+## 8. Layout — grid & containers (PDF p.44)
+
+| Breakpoint | Min width | Behavior | Columns | Column | Gutter | Content padding |
+|---|---|---|---|---|---|---|
+| XL | 3840 | centered | 12 | 75 | 30 | 0 15 |
+| L | 1260 | centered | 12 | 75 | 30 | 0 15 |
+| M | 1024 | stretched | 12 | % | 30 | 0 15 |
+| S | 768 | stretched | 6 | % | 30 | 0 15 |
+| xS | < 768 (max 767) | stretched | 2 | % | 30 | 0 15 |
+
+| Token | px |
+|---|---|
+| container-max-width | 1260 (12 × 75 + 11 × 30 + 2 × 15) |
+| container-padding | 15 |
+| grid-gutter | 30 |
+| grid-column | 75 |
+| paragraph-max-width | 720 *(S1)* |
+| button-min-width-lg / -sm | 190 / 166 |
+| button-fixed-width | 285 |
+
+> The 30px gutter equals Bootstrap 4's default, so SFRA's grid works unchanged — only the
+> breakpoints and container width are overridden (`tokens/_veeam-tokens.scss`).
+
+### Banner sizes (PDF p.45)
+
+| Banner | Size | Notes |
+|---|---|---|
+| Hero banner | 1920 × 538 | Static background, light scheme preferred, 1–2 CTAs, standard font size |
+| Hero with video | 1920 × 1180 | Video autoplays below headline; 1–2 CTAs |
+| New Visitors | 252 × 364 | Animated background allowed, 1–2 CTAs |
+| Menu banner | 915 × 128 | Background image 1260px wide, one CTA |
+
+---
+
+## Status
+
+- From the PDF: brand palette, web & presentation palettes, button spec, grid, banner sizes,
+  type sizes, plate radius/stroke, icon grid.
+- Derived (flagged in bold vs. plain above): intermediate ramp steps; line-heights for
+  Display 120/100/60 (the PDF gives sizes only); `text-xs`; PRISM gradient stops (sampled).
+- Open question: the PDF prints **H2 as "55/52"** — a line-height smaller than the size and a
+  size larger than H1 (50). We use **44/52** (fits between H1 50/60 and H3 36/44). Confirm
+  with Veeam's Creative team.

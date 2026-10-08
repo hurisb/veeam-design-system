@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Veeam Data Platform Foundation — Veeam Store (example PDP)</title>
+  <link rel="icon" href="../../skill/assets/logos/veeam-favicon.png">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <link rel="stylesheet" href="../../tokens/veeam-tokens.css">
+  <link rel="stylesheet" href="../../css/veeam.css">
+  <link rel="stylesheet" href="storefront.css">
+</head>
+<body>
+  <div class="utility-bar"><div class="vds-container"><span>Example B2B storefront · sample products and prices</span><span><a href="#">Partner portal</a> · <a href="#">Order status</a></span></div></div>
+  <header class="vds-header">
+    <div class="vds-container vds-header__inner">
+      <a href="index.html" aria-label="Veeam Store home"><img src="../../skill/assets/logos/veeam-logo-clean.svg" alt="Veeam" width="112"></a>
+      <nav class="vds-nav" aria-label="Store"><a href="index.html" aria-current="page">Products</a><a href="#">Solutions</a><a href="#">Renewals</a></nav>
+      <a class="vds-btn vds-btn--tertiary vds-btn--sm" style="margin-left:auto" href="index.html">← Back to products</a>
+    </div>
+  </header>
+
+  <main class="vds-container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="#">Home</a><span aria-hidden="true">/</span><a href="index.html">Data protection</a><span aria-hidden="true">/</span><span aria-current="page">Veeam Data Platform Foundation</span></nav>
+
+    <div class="pdp">
+      <div>
+        <div class="pdp__media"><img src="../../skill/assets/logos/veeam-bounce-mark.png" alt="Veeam Data Platform product visual"></div>
+        <div class="pdp__thumbs" role="group" aria-label="Product images">
+          <button aria-pressed="true" aria-label="Image 1" style="background: var(--gradient-brand-radial)"></button>
+          <button aria-pressed="false" aria-label="Image 2" style="background: var(--gradient-dark-bg)"></button>
+          <button aria-pressed="false" aria-label="Image 3" style="background: var(--gradient-brand-light)"></button>
+          <button aria-pressed="false" aria-label="Image 4" style="background: var(--gradient-green-cyan)"></button>
+        </div>
+      </div>
+
+      <div class="vds-stack-24">
+        <div class="vds-stack-8">
+          <span class="vds-badge vds-badge--success">Best seller</span>
+          <h1 class="display-md">Veeam Data Platform Foundation</h1>
+          <p class="text-sm text-tertiary-color">SKU V-VDPFND-VS-P0000-00 · Sample</p>
+        </div>
+        <p class="text-lg text-tertiary-color">Secure backup and fast, reliable recovery for virtual, physical, cloud and SaaS workloads — with immutability built in.</p>
+
+        <div class="buy-box">
+          <div class="option-group" role="group" aria-labelledby="term-l">
+            <span class="vds-label" id="term-l">Subscription term</span>
+            <div class="option-group__choices" data-choices>
+              <button class="choice" aria-pressed="true">1 year</button><button class="choice" aria-pressed="false">3 years · save 10%</button><button class="choice" aria-pressed="false">5 years · save 15%</button>
+            </div>
+          </div>
+          <div class="option-group" role="group" aria-labelledby="sup-l">
+            <span class="vds-label" id="sup-l">Support level</span>
+            <div class="option-group__choices" data-choices>
+              <button class="choice" aria-pressed="true">Production 24/7</button><button class="choice" aria-pressed="false">Basic</button>
+            </div>
+          </div>
+          <div class="option-group">
+            <label class="vds-label" for="qty">Workload packs (10 each)</label>
+            <div class="qty"><button type="button" aria-label="Decrease" data-step="-1">−</button><input id="qty" inputmode="numeric" value="3"><button type="button" aria-label="Increase" data-step="1">+</button></div>
+          </div>
+          <div style="display:flex; justify-content: space-between; align-items: end; padding-top: var(--spacing-md); border-top: 1px solid var(--border-secondary);">
+            <span class="text-sm text-tertiary-color">Estimated total</span>
+            <span class="price" id="total">$3,000<small style="text-align:right">per year · excl. tax</small></span>
+          </div>
+          <button class="vds-btn" id="add" style="width:100%">Add to cart</button>
+          <button class="vds-btn vds-btn--secondary" style="width:100%">Request a quote</button>
+          <p class="vds-hint" style="display:flex; gap: var(--spacing-md); align-items:center;">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" style="color: var(--fg-success-primary)"><path d="m5 10.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Instant license delivery to your account</p>
+        </div>
+      </div>
+    </div>
+
+    <section style="padding-bottom: var(--vspace-80);">
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true">Specifications</button><button role="tab" aria-selected="false">What's included</button><button role="tab" aria-selected="false">Licensing</button>
+      </div>
+      <table class="spec-table" style="margin-top: var(--vspace-24);">
+        <tr><th>Deployment</th><td>Self-managed (on-premises or cloud)</td></tr>
+        <tr><th>Protected workloads</th><td>VMware, Hyper-V, Nutanix AHV, physical servers, AWS, Azure, Google Cloud</td></tr>
+        <tr><th>Immutability</th><td>Hardened Linux repository, object lock</td></tr>
+        <tr><th>License unit</th><td>Pack of 10 workloads, portable</td></tr>
+      </table>
+    </section>
+  </main>
+
+  <div class="toast" role="status" aria-live="polite" id="toast">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 10.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Added to cart · <a href="#" style="color: var(--color-mint)">View cart</a>
+  </div>
+
+  <footer class="vds-footer"><div class="vds-container">Example storefront for the Veeam Design System. Product names are illustrative; SKU and prices are placeholders.</div></footer>
+
+  <script>
+    document.querySelectorAll('[data-choices]').forEach(g => g.addEventListener('click', e => {
+      const b = e.target.closest('.choice'); if (!b) return;
+      g.querySelectorAll('.choice').forEach(c => c.setAttribute('aria-pressed', c === b));
+    }));
+    const qty = document.getElementById('qty'), total = document.getElementById('total');
+    const render = () => total.firstChild.textContent = '$' + (Math.max(1, +qty.value || 1) * 1000).toLocaleString('en-US');
+    document.querySelectorAll('[data-step]').forEach(b => b.addEventListener('click', () => { qty.value = Math.max(1, (+qty.value || 1) + +b.dataset.step); render(); }));
+    qty.addEventListener('input', render);
+    document.getElementById('add').addEventListener('click', () => {
+      const t = document.getElementById('toast'); t.classList.add('is-open'); setTimeout(() => t.classList.remove('is-open'), 3000);
+    });
+    document.querySelectorAll('[role=tab]').forEach(t => t.addEventListener('click', () =>
+      document.querySelectorAll('[role=tab]').forEach(o => o.setAttribute('aria-selected', o === t))));
+  </script>
+</body>
+</html>

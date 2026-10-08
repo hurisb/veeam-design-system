@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Veeam — Agent Commander (example landing page)</title>
+  <link rel="icon" href="../../skill/assets/logos/veeam-favicon.png">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <link rel="stylesheet" href="../../tokens/veeam-tokens.css">
+  <link rel="stylesheet" href="../../css/veeam.css">
+  <style>
+    /* Layout-only rules for this page. Colors, type, spacing all come from tokens. */
+    .hero { position: relative; overflow: hidden; background: var(--gradient-brand-radial); }
+    .hero__inner { display: grid; gap: var(--grid-gutter); align-items: center; min-height: 560px; padding-block: var(--vspace-80); }
+    @media (min-width: 1024px) { .hero__inner { grid-template-columns: 7fr 5fr; } }
+    .hero__mark { width: 100%; max-width: 520px; justify-self: end; filter: drop-shadow(0 30px 60px rgb(29 30 63 / 35%)); animation: float 8s ease-in-out infinite; }
+    @keyframes float { 50% { transform: translateY(-12px); } }
+    .hero .vds-plate-blur { max-width: 640px; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: var(--spacing-xl); align-items: center; }
+    .subnav { background: var(--bg-primary); border-bottom: 1px solid var(--border-secondary); }
+    .subnav .vds-container { display: flex; gap: var(--spacing-4xl); overflow-x: auto; padding-block: var(--spacing-xl); font-size: var(--font-size-text-sm); }
+    .subnav a { color: var(--text-secondary); text-decoration: none; white-space: nowrap; }
+    .lounge { background: linear-gradient(180deg, var(--color-brand-25) 0%, var(--color-brand-50) 100%); }
+    .stats { display: grid; gap: var(--grid-gutter); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (min-width: 1024px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    .stat__value { font-family: var(--font-family-display); font-weight: var(--font-weight-semibold); font-size: var(--font-size-display-lg); line-height: var(--line-height-display-lg); color: var(--color-mint); }
+    .stat__label { color: var(--color-gray-dark-300); margin-top: var(--spacing-md); }
+    .feature { display: grid; gap: var(--grid-gutter); align-items: center; }
+    @media (min-width: 1024px) { .feature { grid-template-columns: 1fr 1fr; } }
+    .diagram { background: var(--color-white); border-radius: var(--radius-2xl); padding: var(--spacing-4xl); box-shadow: 0 30px 60px -20px rgb(15 23 44 / 60%); display: grid; gap: var(--spacing-xl); }
+    .node { display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-secondary); border-radius: var(--radius-md); padding: var(--spacing-lg) var(--spacing-xl); font-size: var(--font-size-text-sm); color: var(--text-primary); }
+    .node.is-risk { border-color: var(--border-error); }
+    .check-list { list-style: none; padding: 0; margin: var(--vspace-24) 0 0; display: grid; gap: var(--spacing-lg); }
+    .check-list li { display: flex; gap: var(--spacing-lg); color: var(--color-gray-dark-200); }
+    .check-list svg { flex: none; color: var(--color-mint); margin-top: 3px; }
+    .banner { border-radius: var(--radius-2xl); overflow: hidden; background: var(--gradient-brand); }
+    .banner__inner { display: grid; gap: var(--spacing-3xl); padding: var(--vspace-64) var(--spacing-4xl); }
+    @media (min-width: 1024px) { .banner__inner { grid-template-columns: 2fr 1fr; align-items: center; padding-inline: var(--vspace-64); } }
+    .footer-grid { display: grid; gap: var(--grid-gutter); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (min-width: 1024px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; } }
+    .footer-grid h4 { font-family: var(--font-family-body); font-size: var(--font-size-text-sm); line-height: var(--line-height-text-sm); color: var(--color-white); margin-bottom: var(--spacing-lg); }
+    .footer-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--spacing-md); }
+  </style>
+</head>
+<body>
+  <header class="vds-header">
+    <div class="vds-container vds-header__inner">
+      <a href="#" aria-label="Veeam home"><img src="../../skill/assets/logos/veeam-logo-clean.svg" alt="Veeam" width="112"></a>
+      <nav class="vds-nav" aria-label="Main">
+        <a href="#" aria-current="page">Platform</a><a href="#">Agent Commander</a><a href="#">Solutions</a><a href="#">Pricing</a><a href="#">Resources</a>
+      </nav>
+      <div style="margin-left:auto; display:flex; gap: var(--spacing-md);">
+        <a class="vds-btn vds-btn--tertiary vds-btn--sm" href="#">Sign in</a>
+        <a class="vds-btn vds-btn--sm" href="#">Request demo</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO: brand gradient + Bounce Mark; white corner sits beneath the logo/text (PDF p.6) -->
+  <section class="hero">
+    <div class="vds-container hero__inner">
+      <div class="vds-plate-blur vds-stack-24">
+        <p class="vds-eyebrow">Introducing</p>
+        <h1 class="display-xl">Agent <span class="vds-text-gradient">Commander</span></h1>
+        <p class="text-xl fw-medium">Detect AI risks. Protect AI systems. Undo AI mistakes.</p>
+        <div class="cta-row">
+          <a class="vds-btn" href="#">See in action
+            <svg class="vds-btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="vds-btn vds-btn--tertiary" href="#">Read press release
+            <svg class="vds-btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+      <img class="hero__mark" src="../../skill/assets/logos/veeam-bounce-mark.png" alt="" aria-hidden="true">
+    </div>
+  </section>
+
+  <nav class="subnav" aria-label="On this page"><div class="vds-container">
+    <a href="#lounge">Leaders' Lounge</a><a href="#detect">Risk detection</a><a href="#numbers">By the numbers</a><a href="#start">Get started</a>
+  </div></nav>
+
+  <!-- Cards with green top rule (Web Page, PDF p.14) -->
+  <section id="lounge" class="lounge vds-section">
+    <div class="vds-container">
+      <h2 class="display-md">Visit the Veeam Leaders' Lounge</h2>
+      <p class="text-lg text-tertiary-color" style="margin-top: var(--vspace-16); max-width: var(--paragraph-max-width);">Four sessions built for security and data leaders — practical, peer-led, and hands-on.</p>
+      <div class="vds-grid" style="margin-top: var(--vspace-48);">
+        <article class="vds-col-3 vds-card" style="grid-column: span 1 / span 1;"></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dark PRISM section with glass-like diagram (PDF p.45) -->
+  <section id="detect" class="vds-surface-dark vds-section--lg" data-surface="dark">
+    <div class="vds-container feature">
+      <div>
+        <p class="vds-eyebrow vds-eyebrow--sm" style="color: var(--color-mint)">Data Command Graph</p>
+        <h2 class="display-md" style="color: var(--color-white); margin-top: var(--vspace-16);">Comprehensive risk detection</h2>
+        <p class="text-lg" style="color: var(--color-gray-dark-300); margin-top: var(--vspace-16);">The Data Command Graph maps every relationship between your sensitive data, AI agents, user identities and access patterns.</p>
+        <ul class="check-list">
+          <li><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 10.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Inventory AI agents and models across your environment</li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 10.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Auto-classify sensitive data and AI data access</li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 10.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Spot AI risk and toxic combinations early</li>
+        </ul>
+        <div class="cta-row" style="margin-top: var(--vspace-32);">
+          <a class="vds-btn" href="#">Request early access</a>
+          <a class="vds-btn vds-btn--secondary" href="#">Watch the demo</a>
+        </div>
+      </div>
+      <div class="diagram" aria-label="Example AI access map">
+        <p class="vds-eyebrow vds-eyebrow--sm" style="color: var(--text-tertiary)">AI agents · last 24h</p>
+        <div class="node"><span>Sales Agent</span><span class="vds-badge vds-badge--success">Protected</span></div>
+        <div class="node"><span>Support Agent</span><span class="vds-badge vds-badge--success">Protected</span></div>
+        <div class="node is-risk"><span>Marketing Copilot</span><span class="vds-badge vds-badge--error">Access denied</span></div>
+        <div class="node"><span>Finance Agent</span><span class="vds-badge vds-badge--warning">Review scopes</span></div>
+        <div class="vds-plate" style="justify-self:start; font-size: var(--font-size-text-sm); padding: var(--spacing-md) var(--spacing-3xl); border-width: 4px;">PII data → public sharing blocked</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="numbers" class="vds-surface-dark vds-section" style="background: var(--color-gradient-blue-3);">
+    <div class="vds-container stats">
+      <div><p class="stat__value">550K+</p><p class="stat__label">customers worldwide</p></div>
+      <div><p class="stat__value">82%</p><p class="stat__label">of the Fortune 500</p></div>
+      <div><p class="stat__value">35K+</p><p class="stat__label">partners</p></div>
+      <div><p class="stat__value">#1</p><p class="stat__label">in data resilience market share</p></div>
+    </div>
+  </section>
+
+  <section id="start" class="vds-section--lg">
+    <div class="vds-container">
+      <div class="banner">
+        <div class="banner__inner">
+          <div class="vds-plate-blur vds-stack-16">
+            <p class="vds-eyebrow vds-eyebrow--sm">Research report</p>
+            <h2 class="display-sm">2026 Ransomware Trends and Proactive Strategies</h2>
+            <p class="text-md text-tertiary-color">Best practices for cyber resilience every organization should evaluate.</p>
+          </div>
+          <div class="cta-row" style="justify-content: flex-start;">
+            <a class="vds-btn vds-btn--block-mobile" href="#">Download report</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="vds-footer">
+    <div class="vds-container footer-grid">
+      <div class="vds-stack-16"><img src="../../skill/assets/logos/veeam-logo-clean.svg" alt="Veeam" width="112"><p>The Data &amp; AI Trust Company.</p></div>
+      <div><h4>Platform</h4><ul><li><a href="#">Data Platform</a></li><li><a href="#">Agent Commander</a></li><li><a href="#">Data Cloud</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Newsroom</a></li></ul></div>
+      <div><h4>Support</h4><ul><li><a href="#">Help center</a></li><li><a href="#">Documentation</a></li><li><a href="#">Contact sales</a></li></ul></div>
+    </div>
+    <div class="vds-container" style="margin-top: var(--vspace-48); font-size: var(--font-size-text-xs);">Example page for the Veeam Design System — placeholder content.</div>
+  </footer>
+
+  <script>
+    // Render the four lounge cards from data (keeps markup short).
+    const cards = [
+      ['An AI Security Blueprint', 'A practical framework for detecting shadow AI, securing autonomous systems, and building resilience.'],
+      ['Peer Conversations', 'Real talk with CISOs, CIOs and senior practitioners navigating real-world data and AI risk.'],
+      ['Live Platform Demos', 'See the Data Command Center in action — not slides, live workflows at booth S-427.'],
+      ['Executive-Ready Next Steps', 'Leave with peer-vetted priorities you can use to align security, IT and the business.']];
+    const grid = document.querySelector('#lounge .vds-grid');
+    grid.innerHTML = cards.map(([t, b]) =>
+      `<article class="vds-card" style="grid-column: span 2;"><h3 class="vds-card__title">${t}</h3><p class="vds-card__body">${b}</p></article>`).join('');
+    // 2 cols on mobile (span 2 = full), 6 on tablet (span 3 = half), 12 on desktop (span 3 = quarter)
+    const mq = () => grid.querySelectorAll('.vds-card').forEach(c => c.style.gridColumn = `span ${innerWidth >= 768 ? 3 : 2}`);
+    addEventListener('resize', mq); mq();
+  </script>
+</body>
+</html>

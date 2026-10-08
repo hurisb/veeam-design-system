@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Veeam DS — Foundations</title>
+  <link rel="icon" href="../../skill/assets/logos/veeam-favicon.png">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <link rel="stylesheet" href="../../tokens/veeam-tokens.css">
+  <link rel="stylesheet" href="../../css/veeam.css">
+  <style>
+    /* Page-only helpers — everything visual still comes from tokens. */
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--spacing-xl); }
+    .swatch { border: 1px solid var(--border-secondary); border-radius: var(--radius-md); overflow: hidden; background: var(--bg-primary); }
+    .swatch__chip { height: 72px; }
+    .swatch__meta { padding: var(--spacing-md) var(--spacing-lg); font-size: var(--font-size-text-xs); line-height: var(--line-height-text-xs); color: var(--text-tertiary); }
+    .swatch__meta b { display: block; color: var(--text-primary); font-size: var(--font-size-text-sm); font-weight: var(--font-weight-semibold); }
+    .ramp { display: grid; grid-template-columns: 120px repeat(12, minmax(0, 1fr)); gap: 2px; align-items: stretch; font-size: 10px; }
+    .ramp > span { height: 44px; border-radius: 3px; display: flex; align-items: flex-end; padding: 2px 4px; }
+    .ramp > b { font-size: var(--font-size-text-sm); align-self: center; }
+    .grad { height: 88px; border-radius: var(--radius-md); }
+    .type-row { display: grid; grid-template-columns: 180px 1fr; gap: var(--spacing-3xl); align-items: baseline; padding-block: var(--spacing-xl); border-top: 1px solid var(--border-secondary); }
+    .type-row code { font-size: var(--font-size-text-xs); color: var(--text-tertiary); }
+    .btn-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--spacing-xl); }
+    .btn-col { display: grid; gap: var(--spacing-lg); justify-items: start; padding: var(--spacing-3xl); border-radius: var(--radius-md); }
+    .btn-col.on-light { border: 1px solid var(--border-secondary); }
+    .space-bar { height: 16px; background: var(--bg-brand-primary); border-left: 3px solid var(--color-primary); }
+    .space-row { display: grid; grid-template-columns: 150px 60px 1fr; gap: var(--spacing-lg); align-items: center; font-size: var(--font-size-text-sm); }
+    .grid-demo div { background: var(--bg-brand-primary); height: 64px; border-radius: 2px; }
+    .toc { position: sticky; top: 0; z-index: 2; background: rgb(255 255 255 / 92%); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border-secondary); }
+    .toc .vds-container { display: flex; gap: var(--spacing-3xl); overflow-x: auto; padding-block: var(--spacing-lg); font-size: var(--font-size-text-sm); }
+    .toc a { text-decoration: none; white-space: nowrap; }
+    section h2 { margin-bottom: var(--vspace-32); }
+    @media (max-width: 767px) { .ramp { grid-template-columns: 70px repeat(12, minmax(0, 1fr)); } .ramp > span { font-size: 0; } .type-row { grid-template-columns: 1fr; gap: var(--spacing-xs); } }
+  </style>
+</head>
+<body>
+  <header class="vds-surface-brand">
+    <div class="vds-container vds-section">
+      <img src="../../skill/assets/logos/veeam-logo-primary.svg" alt="Veeam" width="200">
+      <div class="vds-plate-blur" style="margin-top: var(--vspace-48); max-width: 760px;">
+        <p class="vds-eyebrow vds-eyebrow--sm">Veeam Design System · built on S1</p>
+        <h1 class="display-xl" style="margin-top: var(--vspace-16);">Foundations</h1>
+        <p class="text-lg text-tertiary-color" style="margin-top: var(--vspace-16);">Every swatch, size and state on this page is drawn from <code>tokens/veeam-tokens.css</code>. If it looks wrong here, fix it in <code>scripts/build-tokens.py</code>.</p>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Sections"><div class="vds-container">
+    <a href="#brand">Brand colors</a><a href="#ramps">Ramps</a><a href="#gradients">Gradients</a><a href="#type">Typography</a>
+    <a href="#buttons">Buttons</a><a href="#forms">Forms &amp; badges</a><a href="#spacing">Spacing</a><a href="#grid">Grid</a><a href="#logo">Logo</a>
+  </div></nav>
+
+  <main>
+    <section id="brand" class="vds-container vds-section">
+      <h2>Brand colors — primary, secondary &amp; friends</h2>
+      <div class="swatches" id="alias-swatches"></div>
+    </section>
+
+    <section id="ramps" class="vds-container vds-section--sm">
+      <h2>Primitive ramps (25 → 950)</h2>
+      <div id="ramps-wrap" class="vds-stack-8"></div>
+      <p class="vds-hint" style="margin-top: var(--vspace-16);">Steps printed in the Veeam PDF are anchored exactly; the remaining steps were derived to complete each ramp. See <code>skill/references/tokens.md</code>.</p>
+    </section>
+
+    <section id="gradients" class="vds-container vds-section">
+      <h2>Gradients</h2>
+      <div class="swatches" id="grad-swatches" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));"></div>
+    </section>
+
+    <section id="type" class="vds-container vds-section">
+      <h2>Typography</h2>
+      <div class="vds-grid" style="margin-bottom: var(--vspace-48);">
+        <div class="vds-col-6 vds-card vds-card--plain">
+          <p class="vds-eyebrow vds-eyebrow--sm">Headings &amp; display</p>
+          <p class="display-md" style="margin-top: var(--spacing-lg);">ES Build Bauhaus</p>
+          <p class="vds-card__body">No ears or spurs — legible yet sophisticated headlines. <code>--font-family-display</code></p>
+        </div>
+        <div class="vds-col-6 vds-card vds-card--plain">
+          <p class="vds-eyebrow vds-eyebrow--sm">Subheads, body &amp; UI</p>
+          <p class="text-2xl" style="margin-top: var(--spacing-lg); font-weight: 600; font-size: 36px; line-height: 44px;">ES Build Neutral</p>
+          <p class="vds-card__body">Full letterforms for accessibility at small sizes. <code>--font-family-body</code></p>
+        </div>
+      </div>
+      <div id="type-rows"></div>
+    </section>
+
+    <section id="buttons" class="vds-container vds-section">
+      <h2>Buttons — three surfaces, four states</h2>
+      <div class="btn-board">
+        <div class="btn-col on-light" id="btns-light"></div>
+        <div class="btn-col vds-surface-mineral" data-surface="mineral" id="btns-mineral"></div>
+        <div class="btn-col" style="background: var(--color-gray-800);" data-surface="dark" id="btns-dark"></div>
+      </div>
+      <div style="display:flex; flex-wrap: wrap; gap: var(--spacing-xl); margin-top: var(--vspace-32); align-items:center;">
+        <button class="vds-btn">Call to action</button>
+        <button class="vds-btn vds-btn--sm">Call to action</button>
+        <button class="vds-btn vds-btn--fixed">Fixed 285px</button>
+        <button class="vds-btn" disabled>Disabled</button>
+      </div>
+    </section>
+
+    <section id="forms" class="vds-container vds-section">
+      <h2>Forms, badges &amp; plates</h2>
+      <div class="vds-grid">
+        <form class="vds-col-6 vds-stack-24" onsubmit="return false">
+          <div class="vds-field"><label class="vds-label" for="em">Work email <span class="req">*</span></label>
+            <input class="vds-input" id="em" type="email" placeholder="you@company.com"><span class="vds-hint">We'll send the trial key here.</span></div>
+          <div class="vds-field"><label class="vds-label" for="co">Company</label>
+            <input class="vds-input" id="co" aria-invalid="true" value="Northwind Freight"><span class="vds-error">This company already has an active trial.</span></div>
+          <label class="vds-checkbox"><input type="checkbox" checked> Keep me posted on Veeam Data Platform releases</label>
+          <button class="vds-btn">Start free trial</button>
+        </form>
+        <div class="vds-col-6 vds-stack-24">
+          <div style="display:flex; gap: var(--spacing-md); flex-wrap: wrap;">
+            <span class="vds-badge">Neutral</span><span class="vds-badge vds-badge--success">Protected</span>
+            <span class="vds-badge vds-badge--warning">Expiring in 12 days</span><span class="vds-badge vds-badge--error">Backup failed</span>
+            <span class="vds-badge vds-badge--neutral">Draft</span>
+          </div>
+          <div class="vds-plate">Ransomware detected</div>
+          <div class="vds-plate vds-plate--solid">Access denied</div>
+          <div class="vds-plate vds-plate--good">Backup verified</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="spacing" class="vds-container vds-section">
+      <h2>Spacing (S1 scale) &amp; vertical rhythm</h2>
+      <div class="vds-grid">
+        <div class="vds-col-6 vds-stack-8" id="spacing-rows"></div>
+        <div class="vds-col-6 vds-stack-8" id="radius-rows"></div>
+      </div>
+    </section>
+
+    <section id="grid" class="vds-container vds-section">
+      <h2>Grid — 12 / 6 / 2 columns, 30px gutter</h2>
+      <div class="vds-grid grid-demo" id="grid-demo"></div>
+      <p class="vds-hint" style="margin-top: var(--vspace-16);">Resize the window: 12 columns ≥ 1024px, 6 columns ≥ 768px, 2 columns below. Container max 1260px with 15px padding.</p>
+    </section>
+
+    <section id="logo" class="vds-container vds-section">
+      <h2>Logo</h2>
+      <div class="vds-grid">
+        <div class="vds-col-4 vds-card vds-card--plain"><img src="../../skill/assets/logos/veeam-logo-primary.svg" alt="Veeam primary logo" width="180"><p class="vds-hint" style="margin-top:12px">Primary · ≥ 200px wide</p></div>
+        <div class="vds-col-4 vds-card vds-card--plain"><img src="../../skill/assets/logos/veeam-logo-clean.svg" alt="Veeam clean logo" width="140"><p class="vds-hint" style="margin-top:12px">Clean · under 200px</p></div>
+        <div class="vds-col-4 vds-card vds-card--plain" style="background: var(--color-black)"><img src="../../skill/assets/logos/veeam-logo-mono-white.svg" alt="Veeam monochrome white logo" width="180"><p class="vds-hint" style="margin-top:12px; color: var(--color-gray-dark-400)">Monochrome white</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="vds-footer"><div class="vds-container">Veeam Design System · Saltbox internal · tokens v1</div></footer>
+
+  <script>
+    const css = getComputedStyle(document.documentElement);
+    const v = n => css.getPropertyValue(n).trim();
+    const el = (tag, attrs = {}, html = '') => Object.assign(document.createElement(tag), attrs, { innerHTML: html });
+
+    const aliases = [
+      ['color-primary', 'Primary · Electric Azure'], ['color-primary-hover', 'Primary hover'], ['color-secondary', 'Secondary · Viridis'],
+      ['color-secondary-hover', 'Secondary hover'], ['color-tertiary', 'Tertiary · Sky'], ['color-accent', 'Accent · Casia'],
+      ['color-highlight', 'Highlight · Sol'], ['color-text-dark', 'Dark text · Navy'], ['color-success', 'Success'],
+      ['color-warning', 'Warning · Suma'], ['color-error', 'Error · Ignis'], ['color-surface-dark', 'PRISM dark bg']];
+    const sw = document.getElementById('alias-swatches');
+    aliases.forEach(([t, label]) => sw.append(el('div', { className: 'swatch' },
+      `<div class="swatch__chip" style="background:var(--${t})"></div><div class="swatch__meta"><b>${label}</b>--${t}<br>${v('--' + t)}</div>`)));
+
+    const steps = ['25','50','100','200','300','400','500','600','700','800','900','950'];
+    const rw = document.getElementById('ramps-wrap');
+    ['brand','green','gray','gray-dark','error','warning'].forEach(r => {
+      const row = el('div', { className: 'ramp' }, `<b>${r}</b>`);
+      steps.forEach((s, i) => {
+        const chip = el('span', { title: `--color-${r}-${s} ${v(`--color-${r}-${s}`)}` }, `<span style="color:${i > 5 ? '#fff' : '#1d1f2a'}">${s}</span>`);
+        chip.style.background = `var(--color-${r}-${s})`;
+        row.append(chip);
+      });
+      rw.append(row);
+    });
+
+    const grads = ['gradient-brand','gradient-brand-radial','gradient-brand-light','gradient-hero-text','gradient-tab-active','gradient-negative',
+      'gradient-dark-bg','gradient-icon','gradient-green-cyan','gradient-casia-azure','gradient-cyan-ocean','gradient-mint-cyan','gradient-alert','gradient-alert-dark'];
+    const gw = document.getElementById('grad-swatches');
+    grads.forEach(g => gw.append(el('div', { className: 'swatch' }, `<div class="grad" style="background:var(--${g})"></div><div class="swatch__meta"><b>--${g}</b></div>`)));
+
+    const types = [['display-3xl','Display 120'],['display-2xl','Display 100'],['display-xl','Display 60'],['display-lg','H1 · 50/60'],
+      ['display-md','H2 · 44/52'],['display-sm','H3 · 36/44'],['display-xs','H4 · 28/36'],['text-2xl','Text 24 · 24/28'],['text-xl','Text 20 · 20/24'],
+      ['text-lg','Body 18/24'],['text-md','Paragraph 16/24'],['text-sm','Caption 14/20'],['text-xs','Legal 12/18']];
+    const tr = document.getElementById('type-rows');
+    types.forEach(([c, label]) => tr.append(el('div', { className: 'type-row' },
+      `<code>.${c}<br>${label}</code><p class="${c}" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.startsWith('display') ? 'Command your data' : 'Detect AI risk. Protect AI systems. Undo AI mistakes.'}</p>`)));
+    tr.append(el('div', { className: 'type-row' }, `<code>.vds-eyebrow<br>Eyebrow 24/28</code><p class="vds-eyebrow">Introducing</p>`));
+    tr.append(el('div', { className: 'type-row' }, `<code>.vds-text-gradient<br>PRISM hero font</code><p class="display-xl">Agent <span class="vds-text-gradient">Commander</span></p>`));
+
+    const arrow = '<svg class="vds-btn__arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    ['light','mineral','dark'].forEach(s => {
+      const col = document.getElementById('btns-' + s);
+      col.append(el('p', { className: 'vds-eyebrow vds-eyebrow--sm', style: s === 'light' ? '' : 'color:#fff' }, s === 'light' ? 'Light surface' : s === 'mineral' ? 'Grey Mineral surface' : 'Dark surface'));
+      [['', 'Default'], ['is-hover', 'Hover / focus / active']].forEach(([st, label]) => {
+        const row = el('div', { style: 'display:flex;gap:12px;flex-wrap:wrap' });
+        row.append(el('button', { className: `vds-btn vds-btn--sm ${st}` }, label === 'Default' ? 'Primary' : 'Hover'));
+        row.append(el('button', { className: `vds-btn vds-btn--sm vds-btn--secondary ${st}` }, label === 'Default' ? 'Secondary' : 'Hover'));
+        row.append(el('button', { className: `vds-btn vds-btn--sm vds-btn--tertiary ${st}` }, arrow + (label === 'Default' ? 'Tertiary' : 'Hover')));
+        col.append(row);
+      });
+    });
+
+    const sp = document.getElementById('spacing-rows');
+    ['spacing-xs','spacing-md','spacing-lg','spacing-xl','spacing-3xl','spacing-4xl','spacing-6xl','spacing-7xl','spacing-8xl','spacing-section'].forEach(t =>
+      sp.append(el('div', { className: 'space-row' }, `<code>--${t}</code><span>${v('--' + t)}</span><div class="space-bar" style="width:var(--${t})"></div>`)));
+    const rr = document.getElementById('radius-rows');
+    ['radius-xs','radius-button','radius-md','radius-xl','radius-2xl','radius-plate','radius-full'].forEach(t =>
+      rr.append(el('div', { className: 'space-row' }, `<code>--${t}</code><span>${v('--' + t)}</span><div style="height:44px;width:120px;background:var(--bg-brand-primary);border:1px solid var(--color-primary);border-radius:var(--${t})"></div>`)));
+
+    const gd = document.getElementById('grid-demo');
+    for (let i = 0; i < 12; i++) gd.append(el('div'));
+  </script>
+</body>
+</html>
