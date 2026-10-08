@@ -4,10 +4,9 @@
 module.exports = {
   "theme": {
     "screens": {
-      "sm": "768px",
-      "md": "1024px",
-      "lg": "1260px",
-      "xl": "3840px"
+      "tablet": "768px",
+      "desktop": "1024px",
+      "wide": "1440px"
     },
     "extend": {
       "colors": {
@@ -84,7 +83,7 @@ module.exports = {
           "950": "#400a0f"
         },
         "warning": {
-          "25": "#fffaf5",
+          "25": "#fcf8eb",
           "50": "#fff4ea",
           "100": "#ffe6cf",
           "200": "#ffcd9f",
@@ -96,6 +95,20 @@ module.exports = {
           "800": "#9f3f0a",
           "900": "#80350c",
           "950": "#451905"
+        },
+        "info": {
+          "25": "#f5fbff",
+          "50": "#e8f5fd",
+          "100": "#cfeafb",
+          "200": "#a3d6f6",
+          "300": "#6cbdf0",
+          "400": "#33a3eb",
+          "500": "#008ee7",
+          "600": "#0077c4",
+          "700": "#005f9e",
+          "800": "#014b7c",
+          "900": "#023d65",
+          "950": "#022640"
         },
         "success": {
           "25": "#f2fdf6",
@@ -173,6 +186,8 @@ module.exports = {
           "text-error-primary": "var(--text-error-primary)",
           "text-warning-primary": "var(--text-warning-primary)",
           "text-success-primary": "var(--text-success-primary)",
+          "text-info-primary": "var(--text-info-primary)",
+          "text-disabled": "var(--text-disabled)",
           "border-primary": "var(--border-primary)",
           "border-secondary": "var(--border-secondary)",
           "border-secondary_alt": "var(--border-secondary_alt)",
@@ -182,6 +197,13 @@ module.exports = {
           "border-secondary-brand": "var(--border-secondary-brand)",
           "border-error": "var(--border-error)",
           "border-error_subtle": "var(--border-error_subtle)",
+          "border-warning": "var(--border-warning)",
+          "border-warning_subtle": "var(--border-warning_subtle)",
+          "border-success": "var(--border-success)",
+          "border-success_subtle": "var(--border-success_subtle)",
+          "border-info": "var(--border-info)",
+          "border-info_subtle": "var(--border-info_subtle)",
+          "border-disabled": "var(--border-disabled)",
           "fg-primary": "var(--fg-primary)",
           "fg-secondary": "var(--fg-secondary)",
           "fg-secondary_hover": "var(--fg-secondary_hover)",
@@ -200,6 +222,9 @@ module.exports = {
           "fg-warning-secondary": "var(--fg-warning-secondary)",
           "fg-success-primary": "var(--fg-success-primary)",
           "fg-success-secondary": "var(--fg-success-secondary)",
+          "fg-info-primary": "var(--fg-info-primary)",
+          "fg-info-secondary": "var(--fg-info-secondary)",
+          "fg-disabled": "var(--fg-disabled)",
           "bg-primary": "var(--bg-primary)",
           "bg-primary_alt": "var(--bg-primary_alt)",
           "bg-primary_hover": "var(--bg-primary_hover)",
@@ -230,7 +255,11 @@ module.exports = {
           "bg-warning-solid": "var(--bg-warning-solid)",
           "bg-success-primary": "var(--bg-success-primary)",
           "bg-success-secondary": "var(--bg-success-secondary)",
-          "bg-success-solid": "var(--bg-success-solid)"
+          "bg-success-solid": "var(--bg-success-solid)",
+          "bg-info-primary": "var(--bg-info-primary)",
+          "bg-info-secondary": "var(--bg-info-secondary)",
+          "bg-info-solid": "var(--bg-info-solid)",
+          "bg-disabled": "var(--bg-disabled)"
         }
       },
       "fontFamily": {
@@ -369,8 +398,7 @@ module.exports = {
         "8xl": "80px",
         "9xl": "96px",
         "10xl": "128px",
-        "11xl": "160px",
-        "section": "120px"
+        "11xl": "160px"
       },
       "borderRadius": {
         "none": "0",
@@ -383,12 +411,11 @@ module.exports = {
         "2xl": "16px",
         "3xl": "20px",
         "4xl": "24px",
-        "plate": "60px",
         "full": "9999px",
-        "button": "6px"
+        "plate": "60px"
       },
       "maxWidth": {
-        "container": "1260px",
+        "container": "1280px",
         "paragraph": "720px"
       },
       "backgroundImage": {

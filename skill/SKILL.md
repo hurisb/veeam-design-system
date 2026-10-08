@@ -38,8 +38,10 @@ with Veeam.CreativeTeam.Managers@veeam.com before publishing.
 | **Headings font** | **ES Build Bauhaus** (SemiBold) | `--font-family-display` |
 | **Body font** | **ES Build Neutral** | `--font-family-body` |
 | PowerPoint headings | ES Build (never Bauhaus in PPT) | `--font-family-brand` |
-| Spacing | S1 scale, 4px base; vertical rhythm 8/16/24/32/48/64/80/120 | `--spacing-*`, `--vspace-*` |
-| Grid | 12 col ≥ 1024 · 6 col ≥ 768 · 2 col below; 30px gutter; 1260px container | `--grid-gutter`, `--container-max-width` |
+| Spacing & radius | **Identical to S1** (4px base: 2…160px; radius 2…24px + full); buttons `radius-sm` 6px | `--spacing-*`, `--radius-*` |
+| Grid | **Identical to S1:** 12 col / 32px gutter / 32px margin ≥ 1024 (container 1280) · 6 col / 32 / 32 ≥ 768 · 4 col / 16 / 16 on mobile | `--grid-gutter`, `--grid-columns`, `--container-padding` |
+| System colors | success green · warning orange · error red · info blue — each with fill, border, icon, text, solid | `bg-success-primary`, `border-warning`, `fg-error-primary`, `text-info-primary`… |
+| Text grays | headings `text-primary` #1D1F2A · labels `text-secondary` #3B4049 · **body `text-tertiary` #505861** · captions `text-quaternary` #6E737B | `--text-*` |
 | Buttons | 6px radius, UPPERCASE, 12/24 padding (sm 8/20), min 190 (sm 166) | `.vds-btn` |
 
 ## How this skill is organized
@@ -47,7 +49,7 @@ with Veeam.CreativeTeam.Managers@veeam.com before publishing.
 | Section | File | Covers |
 |---|---|---|
 | Tokens | `references/tokens.md` | Brand palette (hex/RGB/CMYK/Pantone), ramps 25–950, gradients, spacing, radius, type scale, grid, banner sizes |
-| Color variables | `references/color-variables.md` | Brand aliases + S1 semantic tokens (text/border/fg/bg) with Veeam light **and** dark values, button tokens per surface, contrast flags |
+| Color variables | `references/color-variables.md` | Brand aliases, S1 semantic tokens with Veeam light **and** dark values, **system colors (success/warning/error/info) with UX rules**, **text grays with contrast**, button tokens per surface |
 | Typography | `references/typography.md` | ES Build Bauhaus / Neutral / ES Build, fallbacks & language fonts, scale, weights, rules, messaging |
 | Logo | `references/logo.md` | Primary/clean/mono logos, favicon, app icon, Bounce Mark, usage |
 | Brand elements | `references/brand-elements.md` | Key visual (gradient, Bounce Mark, Wave), green balance, imagery, illustration, motion & plates, checklist |
@@ -118,7 +120,8 @@ the gradient, or the inverted logo.
 - **From the PDF:** palettes, logo files (vector-extracted), fonts (all three ES Build sets,
   woff2 + woff), type sizes, button spec and states, grid, vertical spacing, banner sizes, plate
   radius/stroke, icon grid, illustration and key-visual rules.
-- **Inherited from S1:** spacing and radius scales, semantic token names/roles, component
+- **Inherited from S1 (kept identical, even where the PDF differs):** spacing and radius scales,
+  the grid (12/6/4 columns, 32/16px gutters, 1280 container), semantic token names/roles, component
   inventory, UI icon set (Untitled UI line), accessibility rules.
 - **Derived (flagged in `tokens.md`):** intermediate ramp steps, dark-theme neutrals, line heights
   for Display 120/100/60, sampled PRISM gradient stops.

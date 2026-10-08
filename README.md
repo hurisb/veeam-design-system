@@ -135,13 +135,47 @@ Details, fallbacks for Japanese/Chinese/Thai/Korean, and rules:
 
 ### Spacing, radius, grid
 
-- **Spacing = the S1 scale**, 4px base: `--spacing-xs` 4 · `md` 8 · `lg` 12 · `xl` 16 · `2xl` 20 ·
-  `3xl` 24 · `4xl` 32 · `6xl` 48 · `7xl` 64 · `8xl` 80 … plus `--spacing-section` 120.
-- **Vertical rhythm (Veeam):** only 8 · 16 · 24 · 32 · 48 · 64 · 80 · 120 between blocks
-  (`--vspace-8` … `--vspace-120`). Sections: 80 (120 for heroes, 48 on mobile).
-- **Radius = the S1 scale** + `--radius-button` 6 and `--radius-plate` 60.
-- **Grid:** 12 columns ≥ 1024px · 6 columns 768–1023 · 2 columns < 768 · **30px gutter** ·
-  container **1260px** (75px columns) with **15px** side padding. Centered at L/XL, fluid at M/S/xS.
+Spacing, radius and grid are **identical to S1** — on purpose, so every Saltbox project shares
+one layout system (where the Veeam PDF says otherwise, S1 wins).
+
+- **Spacing:** 4px base — `--spacing-xs` 4 · `md` 8 · `lg` 12 · `xl` 16 · `2xl` 20 · `3xl` 24 ·
+  `4xl` 32 · `6xl` 48 · `7xl` 64 · `8xl` 80 · `9xl` 96 · `10xl` 128. Sections: 80 (96 for heroes,
+  48 on mobile).
+- **Radius:** S1 scale (2 → 24, full). Buttons use `--radius-sm` (6px). Veeam adds only
+  `--radius-plate` (60px) for message plates.
+- **Grid:**
+
+| | Columns | Gutter | Side margin | Container |
+|---|---|---|---|---|
+| Desktop ≥ 1024px | 12 | 32px | 32px | max 1280px (1216 content) |
+| Tablet 768–1023px | 6 | 32px | 32px | fluid |
+| Mobile < 768px | 4 | 16px | 16px | fluid |
+
+`.vds-container` + `.vds-grid` apply this automatically (`--grid-columns`, `--grid-gutter`,
+`--container-padding` switch at each breakpoint).
+
+### System colors & text grays
+
+| Status | Use for | Fill · Border · Icon · Text |
+|---|---|---|
+| **Success** (green) | Done, valid, protected, online | `bg-success-primary` · `border-success` · `fg-success-primary` · `text-success-primary` |
+| **Warning** (orange) | Needs attention soon, user can continue | `bg-warning-primary` · `border-warning` · `fg-warning-primary` · `text-warning-primary` |
+| **Error** (red) | Failed, invalid, blocked, destructive | `bg-error-primary` · `border-error` · `fg-error-primary` · `text-error-primary` |
+| **Info** (blue) | Neutral system messages and tips | `bg-info-primary` · `border-info` · `fg-info-primary` · `text-info-primary` |
+
+Always pair a status color with an icon and words; tell the user how to fix errors. Ready-made:
+`.vds-alert--success|warning|error`, `.vds-badge--*`, `.vds-field-msg--*`, `.vds-dot--*`.
+
+| Text tone | Token | Hex | Contrast on white | Use |
+|---|---|---|---|---|
+| Strongest | `--text-primary` | `#1D1F2A` | 16.4:1 | Headings, values, prices |
+| Strong | `--text-secondary` | `#3B4049` | 10.4:1 | Labels, subheadings, nav |
+| **Body** | `--text-tertiary` | `#505861` | 7.2:1 | **Paragraphs**, descriptions |
+| Subtle | `--text-quaternary` | `#6E737B` | 4.8:1 | Captions, timestamps |
+| Disabled | `--text-disabled` | `#ADACAF` | 2.3:1 | Disabled controls only |
+
+Full guidance (UX rules, every token, light/dark values, contrast tables):
+[`skill/references/color-variables.md`](skill/references/color-variables.md) §5–6.
 
 ### Buttons
 
@@ -180,7 +214,7 @@ Details, fallbacks for Japanese/Chinese/Thai/Korean, and rules:
 ```css
 .promo {
   background: var(--gradient-brand);
-  padding: var(--vspace-80) var(--container-padding);
+  padding: var(--spacing-8xl) var(--container-padding);
   border-radius: var(--radius-2xl);
 }
 .promo h2 { font: var(--font-weight-semibold) var(--font-size-display-md)/var(--line-height-display-md) var(--font-family-display); }
@@ -317,9 +351,10 @@ for Veeam:
 | Token architecture: primitives → semantic (`text-*`, `border-*`, `fg-*`, `bg-*`) → components | All color values (azure primary, green secondary, Veeam neutrals, PRISM dark theme) |
 | Semantic token names and roles | Fonts: Space Grotesk/Inter → ES Build Bauhaus/ES Build Neutral |
 | Spacing scale (2–160px) and radius scale | Type sizes (Display 120/100/60, H1 50, H2 44, H3 36…) |
-| Type-scale naming (`Display xl`, `Text md`…) and weight rules | Grid: 1260px container, 30px gutter, 12/6/2 columns |
+| Type-scale naming (`Display xl`, `Text md`…) and weight rules | Type sizes, button spec, status/info colors |
 | Component inventory (forms, navigation, data display) | Button spec, gradients, plates, logo, brand elements |
-| Accessibility and UI icon rules (Untitled UI line) | Added: brand aliases, button tokens per surface, `radius-plate`, `--vspace-*` |
+| Grid (12/6/4 columns, 32/16px gutters, 1280 container) | Added: brand aliases, button tokens per surface, `radius-plate`, info ramp |
+| Accessibility and UI icon rules (Untitled UI line) | |
 
 If you know S1, you already know where everything is.
 

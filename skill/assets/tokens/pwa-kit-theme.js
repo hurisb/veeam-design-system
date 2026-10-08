@@ -77,7 +77,7 @@ const tokens = {
       "950": "#400a0f"
     },
     "warning": {
-      "25": "#fffaf5",
+      "25": "#fcf8eb",
       "50": "#fff4ea",
       "100": "#ffe6cf",
       "200": "#ffcd9f",
@@ -89,6 +89,20 @@ const tokens = {
       "800": "#9f3f0a",
       "900": "#80350c",
       "950": "#451905"
+    },
+    "info": {
+      "25": "#f5fbff",
+      "50": "#e8f5fd",
+      "100": "#cfeafb",
+      "200": "#a3d6f6",
+      "300": "#6cbdf0",
+      "400": "#33a3eb",
+      "500": "#008ee7",
+      "600": "#0077c4",
+      "700": "#005f9e",
+      "800": "#014b7c",
+      "900": "#023d65",
+      "950": "#022640"
     },
     "success": {
       "25": "#f2fdf6",
@@ -178,9 +192,8 @@ const tokens = {
     "2xl": "16px",
     "3xl": "20px",
     "4xl": "24px",
-    "plate": "60px",
     "full": "9999px",
-    "button": "6px"
+    "plate": "60px"
   },
   "space": {
     "none": "0",
@@ -199,26 +212,25 @@ const tokens = {
     "8xl": "80px",
     "9xl": "96px",
     "10xl": "128px",
-    "11xl": "160px",
-    "section": "120px"
+    "11xl": "160px"
   },
   "breakpoints": {
     "base": "0em",
     "sm": "48em",
     "md": "64em",
-    "lg": "78.75em",
-    "xl": "240em"
+    "lg": "80em",
+    "xl": "90em"
   },
   "sizes": {
     "container": {
-      "xl": "1260px"
+      "xl": "1280px"
     }
   }
 }
 
 const Button = {
   baseStyle: {
-    borderRadius: '6px', fontFamily: 'body', fontWeight: 600, textTransform: 'uppercase',
+    borderRadius: '6px' /* radius-sm */, fontFamily: 'body', fontWeight: 600, textTransform: 'uppercase',
     letterSpacing: '0.02em', _focusVisible: {outline: '2px solid #3700ff', outlineOffset: '2px', boxShadow: 'none'}
   },
   sizes: {

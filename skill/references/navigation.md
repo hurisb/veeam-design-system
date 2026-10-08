@@ -25,7 +25,7 @@ The primary action component used throughout the system.
 | Padding (V / H) | 12 / 24 px | 8 / 20 px |
 | Min width | 190 px | 166 px |
 | Label | `Text md/Semibold` 16/24, UPPERCASE, +2% tracking | `Text sm/Semibold` 14/20, UPPERCASE |
-| Radius | `radius-button` 6 | `radius-button` 6 |
+| Radius | `radius-sm` 6 | `radius-sm` 6 |
 | Fixed width | 285 px (`.vds-btn--fixed`) | 285 px |
 | Mobile | 100% width (`.vds-btn--block-mobile`) | 100% width |
 

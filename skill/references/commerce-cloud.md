@@ -37,13 +37,14 @@ All of them come from `scripts/build-tokens.py` — change a value there, run
    ```
 5. What the overrides do: `$primary` → Electric Azure, `$secondary` → Viridis,
    `$headings-font-family` → ES Build Bauhaus, `$font-family-base` → ES Build Neutral,
-   `$btn-border-radius` → 6px, button padding 12/24 (sm 8/20), `$grid-gutter-width` 30px
-   (Bootstrap's default — unchanged), breakpoints `sm 768 / md 1024 / lg 1260`, container 1260px.
+   `$btn-border-radius` → 6px, button padding 12/24 (sm 8/20), and the **S1 grid**:
+   `$grid-gutter-width` 32px (16px under 768px via an included media query), breakpoints
+   `sm 768 / md 1024 / lg 1280 / xl 1440`, container 1280px.
 6. Bootstrap `.btn-primary` / `.btn-outline-primary` now match Veeam primary / secondary. Add
    `text-transform: uppercase; letter-spacing: .02em; min-width: 190px` to `.btn` in your
    cartridge (or port `.vds-btn` from `css/veeam.css`).
 
-> SFRA's own breakpoints differ from Veeam's (`md 769 / lg 992 / xl 1200`). Changing
+> SFRA's own breakpoints differ from S1's (`md 769 / lg 992 / xl 1200`). Changing
 > `$grid-breakpoints` affects every `col-md-*` in base templates — review PLP/PDP/checkout
 > templates after switching, or keep SFRA breakpoints and only set `$container-max-widths`.
 

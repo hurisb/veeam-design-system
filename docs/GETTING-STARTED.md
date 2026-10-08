@@ -32,8 +32,14 @@ background needed.
 - **ES Build** (standard) — headings in PowerPoint only.
 
 **Spacing, grid, buttons**
-- The S1 spacing scale (4, 8, 12, 16, 24, 32, 48, 64, 80 … px), 12-column grid with 30px gaps
-  and a 1260px max width, square-ish buttons (6px corners) with UPPERCASE labels.
+- Exactly the S1 spacing scale (4, 8, 12, 16, 24, 32, 48, 64, 80 … px) and S1 grid: 12 columns
+  on desktop, 6 on tablet, 4 on mobile, 32px gaps (16px on mobile), 1280px max width.
+- Buttons with 6px corners and UPPERCASE labels.
+
+**System colors & text grays**
+- Four status colors — **success** (green), **warning** (orange), **error** (red), **info**
+  (blue) — each with matching fill, border, icon and text tokens and clear rules for when to use them.
+- Gray tones for text: headings, labels, body, captions and disabled, with contrast ratios.
 
 **Logo & brand elements**
 - The Veeam logo (green plate, white "veeam"), clean/mono versions, favicon, app icon, the

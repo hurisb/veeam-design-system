@@ -11,7 +11,7 @@
   <style>
     /* Layout-only rules for this page. Colors, type, spacing all come from tokens. */
     .hero { position: relative; overflow: hidden; background: var(--gradient-brand-radial); }
-    .hero__inner { display: grid; gap: var(--grid-gutter); align-items: center; min-height: 560px; padding-block: var(--vspace-80); }
+    .hero__inner { display: grid; gap: var(--grid-gutter); align-items: center; min-height: 560px; padding-block: var(--spacing-8xl); }
     @media (min-width: 1024px) { .hero__inner { grid-template-columns: 7fr 5fr; } }
     .hero__mark { width: 100%; max-width: 520px; justify-self: end; filter: drop-shadow(0 30px 60px rgb(29 30 63 / 35%)); animation: float 8s ease-in-out infinite; }
     @keyframes float { 50% { transform: translateY(-12px); } }
@@ -30,12 +30,12 @@
     .diagram { background: var(--color-white); border-radius: var(--radius-2xl); padding: var(--spacing-4xl); box-shadow: 0 30px 60px -20px rgb(15 23 44 / 60%); display: grid; gap: var(--spacing-xl); }
     .node { display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-secondary); border-radius: var(--radius-md); padding: var(--spacing-lg) var(--spacing-xl); font-size: var(--font-size-text-sm); color: var(--text-primary); }
     .node.is-risk { border-color: var(--border-error); }
-    .check-list { list-style: none; padding: 0; margin: var(--vspace-24) 0 0; display: grid; gap: var(--spacing-lg); }
+    .check-list { list-style: none; padding: 0; margin: var(--spacing-3xl) 0 0; display: grid; gap: var(--spacing-lg); }
     .check-list li { display: flex; gap: var(--spacing-lg); color: var(--color-gray-dark-200); }
     .check-list svg { flex: none; color: var(--color-mint); margin-top: 3px; }
     .banner { border-radius: var(--radius-2xl); overflow: hidden; background: var(--gradient-brand); }
-    .banner__inner { display: grid; gap: var(--spacing-3xl); padding: var(--vspace-64) var(--spacing-4xl); }
-    @media (min-width: 1024px) { .banner__inner { grid-template-columns: 2fr 1fr; align-items: center; padding-inline: var(--vspace-64); } }
+    .banner__inner { display: grid; gap: var(--spacing-3xl); padding: var(--spacing-7xl) var(--spacing-4xl); }
+    @media (min-width: 1024px) { .banner__inner { grid-template-columns: 2fr 1fr; align-items: center; padding-inline: var(--spacing-7xl); } }
     .footer-grid { display: grid; gap: var(--grid-gutter); grid-template-columns: repeat(2, minmax(0, 1fr)); }
     @media (min-width: 1024px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; } }
     .footer-grid h4 { font-family: var(--font-family-body); font-size: var(--font-size-text-sm); line-height: var(--line-height-text-sm); color: var(--color-white); margin-bottom: var(--spacing-lg); }
@@ -82,8 +82,8 @@
   <section id="lounge" class="lounge vds-section">
     <div class="vds-container">
       <h2 class="display-md">Visit the Veeam Leaders' Lounge</h2>
-      <p class="text-lg text-tertiary-color" style="margin-top: var(--vspace-16); max-width: var(--paragraph-max-width);">Four sessions built for security and data leaders — practical, peer-led, and hands-on.</p>
-      <div class="vds-grid" style="margin-top: var(--vspace-48);">
+      <p class="text-lg text-tertiary-color" style="margin-top: var(--spacing-xl); max-width: var(--paragraph-max-width);">Four sessions built for security and data leaders — practical, peer-led, and hands-on.</p>
+      <div class="vds-grid" style="margin-top: var(--spacing-6xl);">
         <article class="vds-col-3 vds-card" style="grid-column: span 1 / span 1;"></article>
       </div>
     </div>
@@ -94,14 +94,14 @@
     <div class="vds-container feature">
       <div>
         <p class="vds-eyebrow vds-eyebrow--sm" style="color: var(--color-mint)">Data Command Graph</p>
-        <h2 class="display-md" style="color: var(--color-white); margin-top: var(--vspace-16);">Comprehensive risk detection</h2>
-        <p class="text-lg" style="color: var(--color-gray-dark-300); margin-top: var(--vspace-16);">The Data Command Graph maps every relationship between your sensitive data, AI agents, user identities and access patterns.</p>
+        <h2 class="display-md" style="color: var(--color-white); margin-top: var(--spacing-xl);">Comprehensive risk detection</h2>
+        <p class="text-lg" style="color: var(--color-gray-dark-300); margin-top: var(--spacing-xl);">The Data Command Graph maps every relationship between your sensitive data, AI agents, user identities and access patterns.</p>
         <ul class="check-list">
           <li><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 10.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Inventory AI agents and models across your environment</li>
           <li><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 10.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Auto-classify sensitive data and AI data access</li>
           <li><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 10.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Spot AI risk and toxic combinations early</li>
         </ul>
-        <div class="cta-row" style="margin-top: var(--vspace-32);">
+        <div class="cta-row" style="margin-top: var(--spacing-4xl);">
           <a class="vds-btn" href="#">Request early access</a>
           <a class="vds-btn vds-btn--secondary" href="#">Watch the demo</a>
         </div>
@@ -150,7 +150,7 @@
       <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Newsroom</a></li></ul></div>
       <div><h4>Support</h4><ul><li><a href="#">Help center</a></li><li><a href="#">Documentation</a></li><li><a href="#">Contact sales</a></li></ul></div>
     </div>
-    <div class="vds-container" style="margin-top: var(--vspace-48); font-size: var(--font-size-text-xs);">Example page for the Veeam Design System — placeholder content.</div>
+    <div class="vds-container" style="margin-top: var(--spacing-6xl); font-size: var(--font-size-text-xs);">Example page for the Veeam Design System — placeholder content.</div>
   </footer>
 
   <script>
@@ -163,8 +163,8 @@
     const grid = document.querySelector('#lounge .vds-grid');
     grid.innerHTML = cards.map(([t, b]) =>
       `<article class="vds-card" style="grid-column: span 2;"><h3 class="vds-card__title">${t}</h3><p class="vds-card__body">${b}</p></article>`).join('');
-    // 2 cols on mobile (span 2 = full), 6 on tablet (span 3 = half), 12 on desktop (span 3 = quarter)
-    const mq = () => grid.querySelectorAll('.vds-card').forEach(c => c.style.gridColumn = `span ${innerWidth >= 768 ? 3 : 2}`);
+    // S1 grid: full width on mobile (4 cols), half on tablet (6 cols), quarter on desktop (12 cols)
+    const mq = () => grid.querySelectorAll('.vds-card').forEach(c => c.style.gridColumn = innerWidth >= 768 ? 'span 3' : '1 / -1');
     addEventListener('resize', mq); mq();
   </script>
 </body>

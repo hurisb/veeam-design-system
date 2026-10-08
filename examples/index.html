@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Veeam Design System — Examples</title>
+  <link rel="icon" href="../skill/assets/logos/veeam-favicon.png">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../tokens/veeam-tokens.css">
+  <link rel="stylesheet" href="../css/veeam.css">
+  <style>
+    .hub-card { display: grid; gap: var(--spacing-md); text-decoration: none; color: inherit; height: 100%; transition: transform .2s cubic-bezier(0.16, 1, 0.3, 1), border-color .2s; }
+    .hub-card:hover { transform: translateY(-2px); border-color: var(--border-brand); }
+    .hub-card .preview { height: 140px; border-radius: var(--radius-md); margin-bottom: var(--spacing-md); }
+  </style>
+</head>
+<body>
+  <header class="vds-surface-brand">
+    <div class="vds-container vds-section">
+      <img src="../skill/assets/logos/veeam-logo-primary.svg" alt="Veeam" width="200">
+      <div class="vds-plate-blur vds-stack-16" style="margin-top: var(--spacing-6xl); max-width: 760px;">
+        <p class="vds-eyebrow vds-eyebrow--sm">Saltbox · Veeam Design System · built on S1</p>
+        <h1 class="display-xl">Examples</h1>
+        <p class="text-lg text-tertiary-color">Live pages built only with the design system's tokens, fonts and components. Internal reference for the Saltbox Veeam team — content is placeholder.</p>
+      </div>
+    </div>
+  </header>
+  <main class="vds-container vds-section">
+    <div class="vds-grid">
+      <a class="vds-col-6 vds-card vds-card--plain hub-card" href="foundations/">
+        <div class="preview" style="background: var(--gradient-brand)"></div>
+        <h2 class="vds-card__title">Foundations</h2>
+        <p class="vds-card__body">Every color, system color, text gray, gradient, type style, button state, spacing step, the S1 grid and the logos.</p>
+      </a>
+      <a class="vds-col-6 vds-card vds-card--plain hub-card" href="landing-page/">
+        <div class="preview" style="background: var(--gradient-brand-radial)"></div>
+        <h2 class="vds-card__title">Landing page</h2>
+        <p class="vds-card__body">Marketing page: gradient hero with the Bounce Mark, gradient headline word, cards, dark section, banner and footer.</p>
+      </a>
+      <a class="vds-col-6 vds-card vds-card--plain hub-card" href="storefront/">
+        <div class="preview" style="background: var(--gradient-brand-light)"></div>
+        <h2 class="vds-card__title">Storefront — product listing</h2>
+        <p class="vds-card__body">Commerce Cloud PLP: header with search and cart, category hero, filters, product tiles, pagination.</p>
+      </a>
+      <a class="vds-col-6 vds-card vds-card--plain hub-card" href="storefront/product.html">
+        <div class="preview" style="background: var(--gradient-dark-bg)"></div>
+        <h2 class="vds-card__title">Storefront — product detail</h2>
+        <p class="vds-card__body">Commerce Cloud PDP: gallery, option chips, quantity, buy box, tabs, spec table and add-to-cart toast.</p>
+      </a>
+    </div>
+    <p class="vds-hint" style="margin-top: var(--spacing-4xl);">Docs, tokens and the Claude Skill live in the private GitHub repo <b>hurisb/veeam-design-system</b> (ask Huri for access).</p>
+  </main>
+  <footer class="vds-footer"><div class="vds-container">Saltbox internal · Veeam Design System examples · not an official Veeam site.</div></footer>
+</body>
+</html>

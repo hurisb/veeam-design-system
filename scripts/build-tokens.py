@@ -68,10 +68,16 @@ RAMPS = {
     },
     # Warning — PDF Suma #FE8A25 (500), negative-gradient orange #FF6900 (600).
     "warning": {
-        "25": "#fffaf5", "50": "#fff4ea", "100": "#ffe6cf", "200": "#ffcd9f",
+        "25": "#fcf8eb", "50": "#fff4ea", "100": "#ffe6cf", "200": "#ffcd9f",
         "300": "#feb06a", "400": "#fe9c45", "500": "#fe8a25", "600": "#ff6900",
         "700": "#c2510a", "800": "#9f3f0a", "900": "#80350c", "950": "#451905",
     },
+}
+# Info — Gradient blue 1 #008EE7 (PDF) at 500. Blue = neutral/informational (PDF p.52).
+RAMPS["info"] = {
+    "25": "#f5fbff", "50": "#e8f5fd", "100": "#cfeafb", "200": "#a3d6f6",
+    "300": "#6cbdf0", "400": "#33a3eb", "500": "#008ee7", "600": "#0077c4",
+    "700": "#005f9e", "800": "#014b7c", "900": "#023d65", "950": "#022640",
 }
 # Success = the green ramp ("Green is good" — PDF p.52).
 RAMPS["success"] = dict(RAMPS["green"])
@@ -156,8 +162,10 @@ SEMANTIC = [
     ("text-on-brand-solid", "white", "gray-800", "VEEAM: label on bg-brand-solid (white on azure; ink on green in dark)"),
     ("text-on-brand-solid_hover", "white", "white", "VEEAM: label on bg-brand-solid_hover"),
     ("text-error-primary", "error-600", "error-400", "Error messages"),
-    ("text-warning-primary", "warning-700", "warning-400", "Warning text (700 in light for contrast)"),
-    ("text-success-primary", "success-700", "success-400", "Success text (700 in light for contrast)"),
+    ("text-warning-primary", "warning-800", "warning-400", "Warning text (800 in light: passes AA on white and on its light fill)"),
+    ("text-success-primary", "success-800", "success-400", "Success text (800 in light: passes AA on white and on its light fill)"),
+    ("text-info-primary", "info-700", "info-300", "VEEAM: Info text"),
+    ("text-disabled", "gray-400", "gray-dark-600", "VEEAM: Disabled labels and values (exempt from contrast rules)"),
     # Border
     ("border-primary", "gray-300", "gray-dark-700", "High-contrast: inputs, button groups, checkboxes"),
     ("border-secondary", "gray-200", "gray-dark-800", "Default: cards, tables, dividers"),
@@ -168,6 +176,13 @@ SEMANTIC = [
     ("border-secondary-brand", "green-500", "green-500", "VEEAM: green accent rule (card top borders, timelines 'connected')"),
     ("border-error", "error-500", "error-400", "Error borders"),
     ("border-error_subtle", "error-300", "error-500", "Subtle error borders"),
+    ("border-warning", "warning-500", "warning-400", "VEEAM: Warning borders: inputs, alerts"),
+    ("border-warning_subtle", "warning-300", "warning-500", "VEEAM: Subtle warning borders (alert outlines)"),
+    ("border-success", "success-500", "success-400", "VEEAM: Success borders: validated inputs, alerts"),
+    ("border-success_subtle", "success-200", "success-600", "VEEAM: Subtle success borders (alert outlines)"),
+    ("border-info", "info-500", "info-400", "VEEAM: Info borders"),
+    ("border-info_subtle", "info-200", "info-500", "VEEAM: Subtle info borders (alert outlines)"),
+    ("border-disabled", "gray-200", "gray-dark-800", "VEEAM: Disabled control borders"),
     # Foreground (icons, indicators)
     ("fg-primary", "gray-900", "white", "Highest-contrast icons"),
     ("fg-secondary", "gray-700", "gray-dark-300", "High-contrast icons"),
@@ -183,10 +198,13 @@ SEMANTIC = [
     ("fg-brand-secondary_alt", "brand-500", "gray-dark-600", "Brand → gray in dark (brand buttons)"),
     ("fg-error-primary", "error-600", "error-500", "Primary error icons"),
     ("fg-error-secondary", "error-500", "error-400", "Input error icons, negative charts"),
-    ("fg-warning-primary", "warning-600", "warning-500", "Primary warning icons"),
+    ("fg-warning-primary", "warning-700", "warning-500", "Primary warning icons (700 for 3:1 on white)"),
     ("fg-warning-secondary", "warning-500", "warning-400", "Secondary warning icons"),
     ("fg-success-primary", "success-600", "success-500", "Primary success icons"),
     ("fg-success-secondary", "success-500", "success-400", "Dots, online indicators, positive charts"),
+    ("fg-info-primary", "info-600", "info-500", "VEEAM: Primary info icons"),
+    ("fg-info-secondary", "info-500", "info-400", "VEEAM: Secondary info icons, dots"),
+    ("fg-disabled", "gray-400", "gray-dark-600", "VEEAM: Disabled icons"),
     # Background
     ("bg-primary", "white", "gray-dark-950", "Page/card/component backgrounds"),
     ("bg-primary_alt", "white", "gray-dark-900", "Alt primary (→ secondary in dark)"),
@@ -215,10 +233,14 @@ SEMANTIC = [
     ("bg-error-solid_hover", "error-700", "error-500", "Solid error, hover"),
     ("bg-warning-primary", "warning-50", "warning-950", "Light warning fill"),
     ("bg-warning-secondary", "warning-100", "warning-600", "Warning featured icons"),
-    ("bg-warning-solid", "warning-600", "warning-600", "Solid warning: featured icons"),
+    ("bg-warning-solid", "warning-700", "warning-700", "Solid warning with white text (700 for 4.7:1)"),
     ("bg-success-primary", "success-50", "success-950", "Light success fill"),
     ("bg-success-secondary", "success-100", "success-600", "Success featured icons"),
-    ("bg-success-solid", "success-600", "success-600", "Solid success: featured icons, metrics"),
+    ("bg-success-solid", "success-700", "success-700", "Solid success: badges/toasts with white text (700 for 5.1:1)"),
+    ("bg-info-primary", "info-50", "info-950", "VEEAM: Light info fill"),
+    ("bg-info-secondary", "info-100", "info-600", "VEEAM: Info featured icons"),
+    ("bg-info-solid", "info-700", "info-700", "VEEAM: Solid info with white text"),
+    ("bg-disabled", "gray-100", "gray-dark-800", "VEEAM: Disabled control fills"),
 ]
 
 # Chart series (fixed order). Status colors (green/red/orange) are never series colors.
@@ -283,24 +305,25 @@ SPACING = {
     "spacing-lg": 12, "spacing-xl": 16, "spacing-2xl": 20, "spacing-3xl": 24, "spacing-4xl": 32,
     "spacing-5xl": 40, "spacing-6xl": 48, "spacing-7xl": 64, "spacing-8xl": 80, "spacing-9xl": 96,
     "spacing-10xl": 128, "spacing-11xl": 160,
-    "spacing-section": 120,  # VEEAM: largest vertical-rhythm step (PDF p.44)
 }
-VSPACE = [8, 16, 24, 32, 48, 64, 80, 120]  # PDF "Vertical spacing rules"
 RADIUS = {
     "radius-none": 0, "radius-xxs": 2, "radius-xs": 4, "radius-sm": 6, "radius-md": 8,
     "radius-lg": 10, "radius-xl": 12, "radius-2xl": 16, "radius-3xl": 20, "radius-4xl": 24,
-    "radius-plate": 60,  # VEEAM: message plates, glass overlays (PDF p.47)
     "radius-full": 9999,
-    "radius-button": 6,  # VEEAM: all CTAs (PDF p.41)
+    "radius-plate": 60,  # VEEAM: message plates / glass overlays only (PDF p.47) — no S1 equivalent
 }
 STROKE = {"stroke-plate": 8, "stroke-icon-marketing": 12, "stroke-focus": 2}
+# Layout = S1 (identical values). The Veeam PDF grid (1260 / 30px) is NOT used — see tokens.md.
 LAYOUT = {
-    "container-max-width": 1260, "container-padding": 15, "grid-gutter": 30, "grid-column": 75,
-    "paragraph-max-width": 720,
-    "button-min-width-lg": 190, "button-min-width-sm": 166, "button-fixed-width": 285,
+    "container-max-width-desktop": 1280, "container-padding-desktop": 32, "container-padding-mobile": 16,
+    "grid-gutter-desktop": 32, "grid-gutter-mobile": 16, "paragraph-max-width": 720,
+    "width-xxs": 320, "width-xs": 384, "width-sm": 480, "width-md": 560, "width-lg": 640, "width-xl": 768,
+    "width-2xl": 1024, "width-3xl": 1280, "width-4xl": 1440, "width-5xl": 1600, "width-6xl": 1920,
+    "button-min-width-lg": 190, "button-min-width-sm": 166, "button-fixed-width": 285,  # VEEAM button spec
 }
-BREAKPOINTS = {"xs": 0, "sm": 768, "md": 1024, "lg": 1260, "xl": 3840}
-GRID_COLUMNS = {"xs": 2, "sm": 6, "md": 12, "lg": 12, "xl": 12}
+# Breakpoints derived from the S1 grid frames (Mobile 375 / Tablet 768 / Desktop 1440 viewport).
+BREAKPOINTS = {"mobile": 0, "tablet": 768, "desktop": 1024, "wide": 1440}
+GRID_COLUMNS = {"mobile": 4, "tablet": 6, "desktop": 12, "wide": 12}
 
 # Component tokens — buttons (PDF p.41), per surface.
 BUTTONS = {
@@ -396,8 +419,6 @@ def build_css():
     L.append("\n  /* ---- Spacing / radius / stroke ---- */")
     for k, v in SPACING.items():
         L.append(f"  --{k}: {px(v)};")
-    for v in VSPACE:
-        L.append(f"  --vspace-{v}: {v}px;")
     for k, v in RADIUS.items():
         L.append(f"  --{k}: {px(v)};")
     for k, v in STROKE.items():
@@ -407,6 +428,11 @@ def build_css():
         L.append(f"  --{k}: {v}px;")
     for k, v in BREAKPOINTS.items():
         L.append(f"  --breakpoint-{k}: {v}px;")
+    L.append("  /* Responsive aliases (S1): mobile values here, desktop values from 768px up */")
+    L.append("  --container-max-width: var(--container-max-width-desktop);")
+    L.append("  --container-padding: var(--container-padding-mobile);")
+    L.append("  --grid-gutter: var(--grid-gutter-mobile);")
+    L.append("  --grid-columns: 4;")
     L.append("\n  /* ---- Buttons (light surface) ---- */")
     for k, v in BUTTONS["light"].items():
         L.append(f"  --button-{k}: {v};")
@@ -415,6 +441,7 @@ def build_css():
     dark = ["  /* Semantic colors (dark) */"] + [f"  --{k}: {var_ref(d)};" for k, _, d, _ in SEMANTIC]
     dark += ["  --color-surface: var(--color-gray-dark-950);", "  /* Buttons on dark */"]
     dark += [f"  --button-{k}: {v};" for k, v in BUTTONS["dark"].items()]
+    L.append("@media (min-width: 768px) {\n  :root {\n    --container-padding: var(--container-padding-desktop);\n    --grid-gutter: var(--grid-gutter-desktop);\n    --grid-columns: 6;\n  }\n}\n@media (min-width: 1024px) {\n  :root { --grid-columns: 12; }\n}\n")
     L.append("/* Dark theme is opt-in: <html data-theme=\"dark\"> or class=\"theme-dark\" on any container. */")
     L.append("[data-theme=\"dark\"],\n.theme-dark {\n  color-scheme: dark;\n" + "\n".join(dark) + "\n}\n")
     L.append("/* Grey Mineral surface (#505861) — white buttons, per PDF p.41. */")
@@ -480,7 +507,6 @@ def build_json():
                        "lineHeight": f"{lh}px", "letterSpacing": f"{ls * 100:g}%"}}
         for k, (size, lh, ls, fam, ref_) in TYPE.items()}
     t["spacing"] = {k: {"$type": "dimension", "$value": f"{v}px"} for k, v in SPACING.items()}
-    t["vspace"] = {str(v): {"$type": "dimension", "$value": f"{v}px"} for v in VSPACE}
     t["radius"] = {k: {"$type": "dimension", "$value": f"{v}px"} for k, v in RADIUS.items()}
     t["stroke"] = {k: {"$type": "dimension", "$value": f"{v}px"} for k, v in STROKE.items()}
     t["layout"] = {k: {"$type": "dimension", "$value": f"{v}px"} for k, v in LAYOUT.items()}
@@ -533,9 +559,16 @@ def build_scss():
         "$btn-border-radius: 6px;", "$btn-border-radius-lg: 6px;", "$btn-border-radius-sm: 6px;",
         "$btn-padding-y: 12px;", "$btn-padding-x: 24px;", "$btn-padding-y-sm: 8px;", "$btn-padding-x-sm: 20px;",
         "$btn-font-weight: 600;", "$input-border-color: $color-gray-300;", "$input-focus-border-color: $color-primary;",
-        "$grid-gutter-width: 30px;",
-        "$grid-breakpoints: (xs: 0, sm: 768px, md: 1024px, lg: 1260px, xl: 3840px);",
-        "$container-max-widths: (sm: 100%, md: 100%, lg: 1260px, xl: 1260px);",
+        "$grid-gutter-width: 32px;  // S1 desktop/tablet gutter; mobile 16px below",
+        "$grid-breakpoints: (xs: 0, sm: 768px, md: 1024px, lg: 1280px, xl: 1440px);",
+        "$container-max-widths: (sm: 100%, md: 100%, lg: 1280px, xl: 1280px);",
+        "",
+        "// S1 mobile grid: 16px gutter and side margin under 768px (Bootstrap uses one gutter for all sizes).",
+        "@media (max-width: 767.98px) {",
+        "  .container, .container-fluid { padding-left: 16px; padding-right: 16px; }",
+        "  .row { margin-left: -8px; margin-right: -8px; }",
+        "  .row > [class*='col'] { padding-left: 8px; padding-right: 8px; }",
+        "}",
     ]
     write("tokens/_veeam-tokens.scss", "\n".join(L) + "\n")
 
@@ -563,7 +596,7 @@ def build_tailwind():
                                "body": FONTS["font-family-body"].split(", "),
                                "brand": FONTS["font-family-brand"].split(", ")},
                 "fontSize": font_size, "spacing": spacing, "borderRadius": radius,
-                "maxWidth": {"container": "1260px", "paragraph": "720px"},
+                "maxWidth": {"container": "1280px", "paragraph": "720px"},
                 "backgroundImage": {k.replace("gradient-", "gradient-"): v for k, v, _ in GRADIENTS},
             },
         }
@@ -587,8 +620,8 @@ def build_pwa():
         "fontSizes": font_sizes, "lineHeights": line_heights,
         "radii": {k.replace("radius-", ""): px(v) for k, v in RADIUS.items()},
         "space": {k.replace("spacing-", ""): px(v) for k, v in SPACING.items()},
-        "breakpoints": {"base": "0em", "sm": "48em", "md": "64em", "lg": "78.75em", "xl": "240em"},
-        "sizes": {"container": {"xl": "1260px"}},
+        "breakpoints": {"base": "0em", "sm": "48em", "md": "64em", "lg": "80em", "xl": "90em"},
+        "sizes": {"container": {"xl": "1280px"}},
     }
     btn = BUTTONS["light"]
     js = f"""// {HEADER}
@@ -601,7 +634,7 @@ const tokens = {json.dumps(theme, indent=2)}
 
 const Button = {{
   baseStyle: {{
-    borderRadius: '6px', fontFamily: 'body', fontWeight: 600, textTransform: 'uppercase',
+    borderRadius: '6px' /* radius-sm */, fontFamily: 'body', fontWeight: 600, textTransform: 'uppercase',
     letterSpacing: '0.02em', _focusVisible: {{outline: '2px solid {btn['primary-bg']}', outlineOffset: '2px', boxShadow: 'none'}}
   }},
   sizes: {{
@@ -631,6 +664,37 @@ export default {{
 # ---------------------------------------------------------------------------
 # color-variables.md
 # ---------------------------------------------------------------------------
+def contrast(a, b="#ffffff"):
+    def lum(h):
+        h = h.lstrip("#")[:6]
+        c = [int(h[i:i + 2], 16) / 255 for i in (0, 2, 4)]
+        c = [x / 12.92 if x <= 0.03928 else ((x + 0.055) / 1.055) ** 2.4 for x in c]
+        return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]
+    hi, lo = sorted([lum(a), lum(b)], reverse=True)
+    return (hi + 0.05) / (lo + 0.05)
+
+
+STATUS = [
+    # name, meaning, use-when, examples, icon
+    ("success", "Green — it worked / it's healthy",
+     "An action completed, a check passed, a system is protected or online.",
+     "\"Order placed\", \"Backup verified\", valid field, \"In stock\", online dot",
+     "`check-circle`"),
+    ("warning", "Orange (Suma) — attention needed, not broken yet",
+     "Something may fail or needs a decision soon; the user can continue.",
+     "\"License expires in 12 days\", \"Low stock\", unsaved changes, approaching a limit",
+     "`alert-triangle`"),
+    ("error", "Red (Ignis) — it failed / it's blocked",
+     "An action failed, input is invalid, data is at risk, or a destructive action is about to happen.",
+     "\"Payment declined\", invalid email, \"Backup failed\", \"Delete account\"",
+     "`alert-circle` / `x-circle`"),
+    ("info", "Blue — neutral information (system)",
+     "Context, tips and neutral system messages that need no action.",
+     "\"Prices exclude tax\", \"New version available\", maintenance notice, help text banners",
+     "`info-circle`"),
+]
+
+
 def build_color_md():
     groups = [("1. Text colors", "text-"), ("2. Border colors", "border-"),
               ("3. Foreground colors (icons, indicators)", "fg-"), ("4. Background colors", "bg-")]
@@ -658,7 +722,98 @@ def build_color_md():
                 desc = d.replace("VEEAM: ", "")
                 out.append(f"| `{k}` | `{resolve(l)}` | `{resolve(dk)}` | {l} / {dk} | {tag}{desc} |")
         out.append("")
-    out += ["## 5. Chart series", "", "Fixed order; max four series. Status colors (green/red/orange) are never series colors.", "",
+    # ---- System (status) colors
+    sem = {k: (resolve(l), resolve(dk)) for k, l, dk, _ in SEMANTIC}
+    out += ["## 5. System colors — success, warning, error, info", "",
+            "The traffic-light set every status message uses. Each status has the **same five roles**, so",
+            "once you know one, you know all four.", "",
+            "| Status | Meaning | Use when | Examples | Icon (Untitled UI) |", "|---|---|---|---|---|"]
+    for name, meaning, when, ex, icon in STATUS:
+        out.append(f"| **{name.capitalize()}** | {meaning} | {when} | {ex} | {icon} |")
+    out += ["", "### Tokens per status (light / dark)", "",
+            "| Role | Token pattern | Success | Warning | Error | Info |", "|---|---|---|---|---|---|"]
+    roles = [("Light fill (alerts, badges)", "bg-{s}-primary"), ("Medium fill (featured icons)", "bg-{s}-secondary"),
+             ("Solid fill (white text on top)", "bg-{s}-solid"), ("Border / input outline", "border-{s}"),
+             ("Subtle border (alert outline)", "border-{s}_subtle"), ("Icon", "fg-{s}-primary"),
+             ("Dot / secondary icon / chart", "fg-{s}-secondary"), ("Text", "text-{s}-primary")]
+    for label, pat in roles:
+        cells = []
+        for st in ["success", "warning", "error", "info"]:
+            k = pat.format(s=st)
+            cells.append(f"`{sem[k][0]}` / `{sem[k][1]}`" if k in sem else "—")
+        out.append(f"| {label} | `{pat.replace('{s}', '*')}` | " + " | ".join(cells) + " |")
+    out += ["", "### Contrast on white (WCAG 2.1)", "", "| Pair | Success | Warning | Error | Info |", "|---|---|---|---|---|"]
+    for label, fg, bg in [("Status text on white", "text-{s}-primary", None),
+                          ("Status text on its light fill", "text-{s}-primary", "bg-{s}-primary"),
+                          ("White text on solid fill", None, "bg-{s}-solid"),
+                          ("Icon on white (needs 3:1)", "fg-{s}-primary", None)]:
+        cells = []
+        for st in ["success", "warning", "error", "info"]:
+            f = sem[fg.format(s=st)][0] if fg else "#ffffff"
+            b = sem[bg.format(s=st)][0] if bg else "#ffffff"
+            r = contrast(f, b)
+            need = 3 if "Icon" in label else 4.5
+            cells.append(f"{r:.1f}:1 {'pass' if r >= need else '**fail**'}")
+        out.append(f"| {label} | " + " | ".join(cells) + " |")
+    out += ["", "### How to use them (UX rules)", "",
+            "1. **Never color alone.** Every status pairs color with an **icon and words** — about 1 in 12",
+            "   men can't tell red from green. \"Error\" must read as an error in grayscale.",
+            "2. **Match the component to the moment:**",
+            "   - *Inline validation* (one field): `border-*` on the input + `text-*-primary` message under it, with the icon. Validate on blur, not on every keystroke.",
+            "   - *Alert / banner* (a section or page): `bg-*-primary` fill, `border-*_subtle` outline, `fg-*-primary` icon, title in `text-primary`, body in `text-tertiary`.",
+            "   - *Badge / tag* (a status label in a list or table): `bg-*-primary` + `text-*-primary`, or `bg-*-solid` + white for high emphasis.",
+            "   - *Toast* (feedback after an action): neutral `bg-primary-solid` with a colored icon — keep it calm; errors that need action belong in an alert, not a toast that disappears.",
+            "   - *Status dot* (online / healthy): `fg-*-secondary`, always with a text label.",
+            "3. **Write the fix, not just the problem:** \"Enter an email like name@company.com\", not \"Invalid input\".",
+            "4. **Severity order:** error > warning > success > info. Show the most severe first; don't stack more than one banner per region.",
+            "5. **Errors persist, successes fade.** Errors stay until fixed; success toasts can auto-dismiss after ~4–5 s (announce them with `role=\"status\"`; errors with `role=\"alert\"`).",
+            "6. **Status colors are not brand or chart colors.** Don't use green for decoration or as a chart series; Ignis red is never decorative (Veeam rule).",
+            "7. **Warning, not yellow text.** Sol `#FFD839` and Suma `#FE8A25` fail as text on white — always use `text-warning-primary` (`#9F3F0A`) for words.",
+            "8. **Primary buttons stay azure** even inside a status alert. Only destructive actions use `bg-error-solid`.", "",
+            "> Veeam's PDF *System* palette maps to these: Ignis `#ED2B3D` = `error-500`, Suma `#FE8A25` = `warning-500`,",
+            "> cream `#FCF8EB` = `warning-25`, Sol `#FFD839` = highlight (not a status), green = success, blue = info",
+            "> (\"blue/purple is neutral, green is good, red/orange is a problem\", PDF p.52).", ""]
+
+    # ---- Grays for text
+    out += ["## 6. Grays — text tones and shades", "",
+            "Body text is never pure black. Use the gray ramp through the semantic text tokens below; the",
+            "step tells you how much the text should stand out. Contrast is measured on white (`bg-primary`)",
+            "and on the light gray section background (`bg-secondary` `#F9F9F9`).", "",
+            "| Token | Gray step | Hex | On white | On `#F9F9F9` | Use for |", "|---|---|---|---|---|---|"]
+    gray_rows = [("text-primary", "900", "Headings, product names, prices, table values, input values — the default ink"),
+                 ("text-secondary", "700", "Labels, subheadings, nav items, strong body copy"),
+                 ("text-tertiary", "600", "**Body paragraphs** and descriptions, supporting text, hints"),
+                 ("text-quaternary", "500", "Captions, timestamps, metadata, footer headings"),
+                 ("text-placeholder", "500", "Input placeholders only"),
+                 ("text-disabled", "400", "Disabled controls only — never meaningful text")]
+    for k, step, use in gray_rows:
+        h = RAMPS["gray"][step]
+        r1, r2 = contrast(h), contrast(h, RAMPS["gray"]["50"])
+        out.append(f"| `{k}` | gray-{step} | `{h}` | {r1:.1f}:1 | {r2:.1f}:1 | {use} |")
+    out += ["", "**The full gray ramp** (light theme) — tones for text, shades for surfaces and lines:", "",
+            "| Step | Hex | On white | Role |", "|---|---|---|---|"]
+    gray_roles = {"25": "Lightest surface", "50": "`bg-secondary` — alternating sections, table headers",
+                  "100": "`bg-tertiary`, `border-tertiary` — hover fills, subtle dividers",
+                  "200": "`border-secondary`, `bg-quaternary` — cards, tables, dividers",
+                  "300": "`border-primary` — inputs, checkboxes, button outlines",
+                  "400": "`fg-quaternary`, `text-disabled` — supporting icons, disabled",
+                  "500": "`text-quaternary`, `text-placeholder` — smallest text that still passes AA",
+                  "600": "`text-tertiary` — body copy (Grey Mineral)", "700": "`text-secondary` — labels",
+                  "800": "Dark surfaces (`#232323`, the PDF's dark button ground)", "900": "`text-primary` — headings and default ink",
+                  "950": "`bg-primary-solid` — tooltips, toasts"}
+    for st in STEPS:
+        h = RAMPS["gray"][st]
+        out.append(f"| gray-{st} | `{h}` | {contrast(h):.1f}:1 | {gray_roles[st]} |")
+    out += ["", "Rules", "",
+            "- **Body copy = `text-tertiary`** (gray-600, 7.2:1); headings = `text-primary`. Don't go lighter than",
+            "  `text-quaternary` (gray-500, 4.8:1) for anything a user must read.",
+            "- **Hierarchy with 3 grays max per view:** primary → secondary/tertiary → quaternary. More steps read as noise.",
+            "- **Long reading:** `Text lg` or `Text md`, `text-tertiary`, max line length `paragraph-max-width` (720px ≈ 75 characters).",
+            "- **Never gray text on a gray-200 or darker fill** — move to `text-primary`/`text-secondary` there.",
+            "- **On dark surfaces** the dark-theme values apply automatically (`data-theme=\"dark\"`); on photos or gradients use white text on a plate.",
+            "- **Navy (`text-brand-primary` `#0E0D72`)** is a brand accent for prices and hero headlines, not a body-text gray.", ""]
+
+    out += ["## 7. Chart series", "", "Fixed order; max four series. Status colors (green/red/orange) are never series colors.", "",
             "| Token | Value |", "|---|---|"] + [f"| `{k}` | `{v}` |" for k, v in CHART] + [""]
     out += ["## 6. Button tokens per surface (PDF p.41)", "",
             "| Token | Light surface | Grey Mineral surface | Dark surface |", "|---|---|---|---|"]

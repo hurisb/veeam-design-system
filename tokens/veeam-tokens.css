@@ -64,7 +64,7 @@
   --color-error-800: #8c1520;
   --color-error-900: #74161f;
   --color-error-950: #400a0f;
-  --color-warning-25: #fffaf5;
+  --color-warning-25: #fcf8eb;
   --color-warning-50: #fff4ea;
   --color-warning-100: #ffe6cf;
   --color-warning-200: #ffcd9f;
@@ -76,6 +76,18 @@
   --color-warning-800: #9f3f0a;
   --color-warning-900: #80350c;
   --color-warning-950: #451905;
+  --color-info-25: #f5fbff;
+  --color-info-50: #e8f5fd;
+  --color-info-100: #cfeafb;
+  --color-info-200: #a3d6f6;
+  --color-info-300: #6cbdf0;
+  --color-info-400: #33a3eb;
+  --color-info-500: #008ee7;
+  --color-info-600: #0077c4;
+  --color-info-700: #005f9e;
+  --color-info-800: #014b7c;
+  --color-info-900: #023d65;
+  --color-info-950: #022640;
   --color-success-25: #f2fdf6;
   --color-success-50: #e1f4ec;
   --color-success-100: #c6f7da;
@@ -155,8 +167,10 @@
   --text-on-brand-solid: var(--color-white);
   --text-on-brand-solid_hover: var(--color-white);
   --text-error-primary: var(--color-error-600);
-  --text-warning-primary: var(--color-warning-700);
-  --text-success-primary: var(--color-success-700);
+  --text-warning-primary: var(--color-warning-800);
+  --text-success-primary: var(--color-success-800);
+  --text-info-primary: var(--color-info-700);
+  --text-disabled: var(--color-gray-400);
   --border-primary: var(--color-gray-300);
   --border-secondary: var(--color-gray-200);
   --border-secondary_alt: rgb(0 0 0 / 8%);
@@ -166,6 +180,13 @@
   --border-secondary-brand: var(--color-green-500);
   --border-error: var(--color-error-500);
   --border-error_subtle: var(--color-error-300);
+  --border-warning: var(--color-warning-500);
+  --border-warning_subtle: var(--color-warning-300);
+  --border-success: var(--color-success-500);
+  --border-success_subtle: var(--color-success-200);
+  --border-info: var(--color-info-500);
+  --border-info_subtle: var(--color-info-200);
+  --border-disabled: var(--color-gray-200);
   --fg-primary: var(--color-gray-900);
   --fg-secondary: var(--color-gray-700);
   --fg-secondary_hover: var(--color-gray-800);
@@ -180,10 +201,13 @@
   --fg-brand-secondary_alt: var(--color-brand-500);
   --fg-error-primary: var(--color-error-600);
   --fg-error-secondary: var(--color-error-500);
-  --fg-warning-primary: var(--color-warning-600);
+  --fg-warning-primary: var(--color-warning-700);
   --fg-warning-secondary: var(--color-warning-500);
   --fg-success-primary: var(--color-success-600);
   --fg-success-secondary: var(--color-success-500);
+  --fg-info-primary: var(--color-info-600);
+  --fg-info-secondary: var(--color-info-500);
+  --fg-disabled: var(--color-gray-400);
   --bg-primary: var(--color-white);
   --bg-primary_alt: var(--color-white);
   --bg-primary_hover: var(--color-gray-50);
@@ -211,10 +235,14 @@
   --bg-error-solid_hover: var(--color-error-700);
   --bg-warning-primary: var(--color-warning-50);
   --bg-warning-secondary: var(--color-warning-100);
-  --bg-warning-solid: var(--color-warning-600);
+  --bg-warning-solid: var(--color-warning-700);
   --bg-success-primary: var(--color-success-50);
   --bg-success-secondary: var(--color-success-100);
-  --bg-success-solid: var(--color-success-600);
+  --bg-success-solid: var(--color-success-700);
+  --bg-info-primary: var(--color-info-50);
+  --bg-info-secondary: var(--color-info-100);
+  --bg-info-solid: var(--color-info-700);
+  --bg-disabled: var(--color-gray-100);
 
   /* ---- Chart series ---- */
   --chart-1: #3700ff;
@@ -304,15 +332,6 @@
   --spacing-9xl: 96px;
   --spacing-10xl: 128px;
   --spacing-11xl: 160px;
-  --spacing-section: 120px;
-  --vspace-8: 8px;
-  --vspace-16: 16px;
-  --vspace-24: 24px;
-  --vspace-32: 32px;
-  --vspace-48: 48px;
-  --vspace-64: 64px;
-  --vspace-80: 80px;
-  --vspace-120: 120px;
   --radius-none: 0;
   --radius-xxs: 2px;
   --radius-xs: 4px;
@@ -323,27 +342,42 @@
   --radius-2xl: 16px;
   --radius-3xl: 20px;
   --radius-4xl: 24px;
-  --radius-plate: 60px;
   --radius-full: 9999px;
-  --radius-button: 6px;
+  --radius-plate: 60px;
   --stroke-plate: 8px;
   --stroke-icon-marketing: 12px;
   --stroke-focus: 2px;
 
   /* ---- Layout ---- */
-  --container-max-width: 1260px;
-  --container-padding: 15px;
-  --grid-gutter: 30px;
-  --grid-column: 75px;
+  --container-max-width-desktop: 1280px;
+  --container-padding-desktop: 32px;
+  --container-padding-mobile: 16px;
+  --grid-gutter-desktop: 32px;
+  --grid-gutter-mobile: 16px;
   --paragraph-max-width: 720px;
+  --width-xxs: 320px;
+  --width-xs: 384px;
+  --width-sm: 480px;
+  --width-md: 560px;
+  --width-lg: 640px;
+  --width-xl: 768px;
+  --width-2xl: 1024px;
+  --width-3xl: 1280px;
+  --width-4xl: 1440px;
+  --width-5xl: 1600px;
+  --width-6xl: 1920px;
   --button-min-width-lg: 190px;
   --button-min-width-sm: 166px;
   --button-fixed-width: 285px;
-  --breakpoint-xs: 0px;
-  --breakpoint-sm: 768px;
-  --breakpoint-md: 1024px;
-  --breakpoint-lg: 1260px;
-  --breakpoint-xl: 3840px;
+  --breakpoint-mobile: 0px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-wide: 1440px;
+  /* Responsive aliases (S1): mobile values here, desktop values from 768px up */
+  --container-max-width: var(--container-max-width-desktop);
+  --container-padding: var(--container-padding-mobile);
+  --grid-gutter: var(--grid-gutter-mobile);
+  --grid-columns: 4;
 
   /* ---- Buttons (light surface) ---- */
   --button-primary-bg: #3700ff;
@@ -357,6 +391,17 @@
   --button-tertiary-fg: #3700ff;
   --button-tertiary-bg-hover: #eef4f6;
   --button-tertiary-fg-hover: #3700ff;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: var(--container-padding-desktop);
+    --grid-gutter: var(--grid-gutter-desktop);
+    --grid-columns: 6;
+  }
+}
+@media (min-width: 1024px) {
+  :root { --grid-columns: 12; }
 }
 
 /* Dark theme is opt-in: <html data-theme="dark"> or class="theme-dark" on any container. */
@@ -387,6 +432,8 @@
   --text-error-primary: var(--color-error-400);
   --text-warning-primary: var(--color-warning-400);
   --text-success-primary: var(--color-success-400);
+  --text-info-primary: var(--color-info-300);
+  --text-disabled: var(--color-gray-dark-600);
   --border-primary: var(--color-gray-dark-700);
   --border-secondary: var(--color-gray-dark-800);
   --border-secondary_alt: var(--color-gray-dark-800);
@@ -396,6 +443,13 @@
   --border-secondary-brand: var(--color-green-500);
   --border-error: var(--color-error-400);
   --border-error_subtle: var(--color-error-500);
+  --border-warning: var(--color-warning-400);
+  --border-warning_subtle: var(--color-warning-500);
+  --border-success: var(--color-success-400);
+  --border-success_subtle: var(--color-success-600);
+  --border-info: var(--color-info-400);
+  --border-info_subtle: var(--color-info-500);
+  --border-disabled: var(--color-gray-dark-800);
   --fg-primary: var(--color-white);
   --fg-secondary: var(--color-gray-dark-300);
   --fg-secondary_hover: var(--color-gray-dark-200);
@@ -414,6 +468,9 @@
   --fg-warning-secondary: var(--color-warning-400);
   --fg-success-primary: var(--color-success-500);
   --fg-success-secondary: var(--color-success-400);
+  --fg-info-primary: var(--color-info-500);
+  --fg-info-secondary: var(--color-info-400);
+  --fg-disabled: var(--color-gray-dark-600);
   --bg-primary: var(--color-gray-dark-950);
   --bg-primary_alt: var(--color-gray-dark-900);
   --bg-primary_hover: var(--color-gray-dark-800);
@@ -441,10 +498,14 @@
   --bg-error-solid_hover: var(--color-error-500);
   --bg-warning-primary: var(--color-warning-950);
   --bg-warning-secondary: var(--color-warning-600);
-  --bg-warning-solid: var(--color-warning-600);
+  --bg-warning-solid: var(--color-warning-700);
   --bg-success-primary: var(--color-success-950);
   --bg-success-secondary: var(--color-success-600);
-  --bg-success-solid: var(--color-success-600);
+  --bg-success-solid: var(--color-success-700);
+  --bg-info-primary: var(--color-info-950);
+  --bg-info-secondary: var(--color-info-600);
+  --bg-info-solid: var(--color-info-700);
+  --bg-disabled: var(--color-gray-dark-800);
   --color-surface: var(--color-gray-dark-950);
   /* Buttons on dark */
   --button-primary-bg: #00d15f;

@@ -52,25 +52,28 @@ CSS: `--color-viridis`, `--color-electric-azure`, `--color-sky`… (kebab-case o
 
 Same 12 steps as S1, so every S1 semantic token resolves to the same step.
 
-| Step | `brand` (Electric Azure) | `green` (Viridis) = `success` | `gray` (light) | `gray-dark` (PRISM) | `error` | `warning` |
-|---|---|---|---|---|---|---|
-| 25 | `#f5f8fe` | `#f2fdf6` | `#fcfcfc` | `#fafafb` | `#fffafa` | `#fffaf5` |
-| 50 | **`#e3eefe`** | **`#e1f4ec`** | **`#f9f9f9`** | `#f5f6f8` | `#fef2f3` | `#fff4ea` |
-| 100 | `#ccd9fe` | `#c6f7da` | **`#f0f0f0`** | `#eceef3` | `#fde3e5` | `#ffe6cf` |
-| 200 | `#a9b6ff` | **`#9cffa3`** | **`#dbdee1`** | `#e1e4ec` | `#fbc7cc` | `#ffcd9f` |
-| 300 | `#8a8dff` | **`#4aff9c`** | `#c3c6cb` | `#c8ccd8` | `#f69aa3` | `#feb06a` |
-| 400 | `#6b5cff` | **`#32f26f`** | **`#adacaf`** | `#959cb0` | `#f15f6d` | `#fe9c45` |
-| 500 | `#4d2eff` | **`#00d15f`** | `#6e737b` | `#7d859c` | **`#ed2b3d`** | **`#fe8a25`** |
-| 600 | **`#3700ff`** | **`#009277`** | **`#505861`** | `#5a637d` | `#d01a2c` | **`#ff6900`** |
-| 700 | **`#283e8e`** | **`#007f49`** | `#3b4049` | `#34405e` | `#ad1524` | `#c2510a` |
-| 800 | **`#1d1e3f`** | **`#02613f`** | **`#232323`** | `#1e2a47` | `#8c1520` | `#9f3f0a` |
-| 900 | **`#0e0d72`** | `#014a30` | **`#1d1f2a`** | `#162036` | `#74161f` | `#80350c` |
-| 950 | `#0a0a45` | `#002e1e` | `#121318` | **`#0f172c`** | `#400a0f` | `#451905` |
+| Step | `brand` (Electric Azure) | `green` (Viridis) = `success` | `gray` (light) | `gray-dark` (PRISM) | `error` | `warning` | `info` |
+|---|---|---|---|---|---|---|---|
+| 25 | `#f5f8fe` | `#f2fdf6` | `#fcfcfc` | `#fafafb` | `#fffafa` | **`#fcf8eb`** | `#f5fbff` |
+| 50 | **`#e3eefe`** | **`#e1f4ec`** | **`#f9f9f9`** | `#f5f6f8` | `#fef2f3` | `#fff4ea` | `#e8f5fd` |
+| 100 | `#ccd9fe` | `#c6f7da` | **`#f0f0f0`** | `#eceef3` | `#fde3e5` | `#ffe6cf` | `#cfeafb` |
+| 200 | `#a9b6ff` | **`#9cffa3`** | **`#dbdee1`** | `#e1e4ec` | `#fbc7cc` | `#ffcd9f` | `#a3d6f6` |
+| 300 | `#8a8dff` | **`#4aff9c`** | `#c3c6cb` | `#c8ccd8` | `#f69aa3` | `#feb06a` | `#6cbdf0` |
+| 400 | `#6b5cff` | **`#32f26f`** | **`#adacaf`** | `#959cb0` | `#f15f6d` | `#fe9c45` | `#33a3eb` |
+| 500 | `#4d2eff` | **`#00d15f`** | `#6e737b` | `#7d859c` | **`#ed2b3d`** | **`#fe8a25`** | **`#008ee7`** |
+| 600 | **`#3700ff`** | **`#009277`** | **`#505861`** | `#5a637d` | `#d01a2c` | **`#ff6900`** | `#0077c4` |
+| 700 | **`#283e8e`** | **`#007f49`** | `#3b4049` | `#34405e` | `#ad1524` | `#c2510a` | `#005f9e` |
+| 800 | **`#1d1e3f`** | **`#02613f`** | **`#232323`** | `#1e2a47` | `#8c1520` | `#9f3f0a` | `#014b7c` |
+| 900 | **`#0e0d72`** | `#014a30` | **`#1d1f2a`** | `#162036` | `#74161f` | `#80350c` | `#023d65` |
+| 950 | `#0a0a45` | `#002e1e` | `#121318` | **`#0f172c`** | `#400a0f` | `#451905` | `#022640` |
 
 Notes
 - `brand` is the **primary** ramp. Like S1's navy→purple ramp, it changes hue at the dark end:
   `brand-700` is Gradient blue 2 (the PDF's CTA hover) and `brand-900` is Navy Blue.
 - `green` is the **secondary** ramp and doubles as `success` ("green is good", PDF p.52).
+- `info` is anchored on Gradient blue 1 **`#008EE7`** (500) — blue means neutral/system information.
+  `warning-25` is the PDF's system cream **`#FCF8EB`**. How to use the four status colors:
+  [`color-variables.md`](color-variables.md) §5.
 - `gray-dark` is navy-tinted so dark mode sits on the PRISM dark background (`#0F172C`, sampled
   from the PDF's dark-theme swatch).
 - CSS: `--color-brand-600`, `--color-green-500`, `--color-gray-dark-950`…
@@ -107,9 +110,10 @@ stop values; the stops above were sampled from the PDF artwork.
 
 ---
 
-## 5. Spacing scale — unchanged from S1
+## 5. Spacing scale — identical to S1
 
-Base unit 4px, with 2px sub-steps.
+Base unit 4px, with 2px sub-steps. Use these for padding, gaps, margins **and** vertical space
+between sections — there are no Veeam-specific spacing values.
 
 | Token | px | | Token | px |
 |---|---|---|---|---|
@@ -121,17 +125,18 @@ Base unit 4px, with 2px sub-steps.
 | spacing-lg | 12 | | spacing-8xl | 80 |
 | spacing-xl | 16 | | spacing-9xl | 96 |
 | spacing-2xl | 20 | | spacing-10xl | 128 |
-| **spacing-section** *(Veeam)* | **120** | | spacing-11xl | 160 |
+| | | | spacing-11xl | 160 |
 
-### Vertical spacing rules (PDF p.44)
+**Section spacing:** `spacing-8xl` (80) between page sections, `spacing-9xl` (96) for hero and
+feature sections, `spacing-6xl` (48) on mobile. Inside sections, stack blocks with
+`spacing-xl` / `spacing-3xl` / `spacing-4xl` / `spacing-6xl`.
 
-Stack sections and blocks only on these steps: **8 · 16 · 24 · 32 · 48 · 64 · 80 · 120** —
-tokens `--vspace-8` … `--vspace-120` (each equals an S1 spacing token, plus `spacing-section`
-for 120). Section padding: 80 default, 120 for hero/feature sections, 48 on mobile.
+> The Veeam PDF's "vertical spacing rules" (8 · 16 · 24 · 32 · 48 · 64 · 80 · 120) are all S1
+> steps except 120 — use `spacing-9xl` (96) or `spacing-10xl` (128) instead.
 
 ---
 
-## 6. Radius scale — S1 + two Veeam tokens
+## 6. Radius scale — S1 + one Veeam token
 
 | Token | px | | Token | px |
 |---|---|---|---|---|
@@ -139,10 +144,10 @@ for 120). Section padding: 80 default, 120 for hero/feature sections, 48 on mobi
 | radius-xxs | 2 | | radius-2xl | 16 |
 | radius-xs | 4 | | radius-3xl | 20 |
 | radius-sm | 6 | | radius-4xl | 24 |
-| radius-md | 8 | | **radius-plate** *(Veeam)* | **60** |
-| radius-lg | 10 | | radius-full | 9999 |
-| **radius-button** *(Veeam)* | **6** | | | |
+| radius-md | 8 | | radius-full | 9999 |
+| radius-lg | 10 | | **radius-plate** *(Veeam, plates only)* | **60** |
 
+Buttons use `radius-sm` (6px) — the PDF's 6px button corner is already an S1 step.
 Strokes: `stroke-plate` 8px (message plates), `stroke-icon-marketing` 12px (144px icon grid),
 `stroke-focus` 2px.
 
@@ -170,28 +175,32 @@ See [`typography.md`](typography.md) for families, weights and usage.
 
 ---
 
-## 8. Layout — grid & containers (PDF p.44)
+## 8. Layout — grid & containers (identical to S1)
 
-| Breakpoint | Min width | Behavior | Columns | Column | Gutter | Content padding |
-|---|---|---|---|---|---|---|
-| XL | 3840 | centered | 12 | 75 | 30 | 0 15 |
-| L | 1260 | centered | 12 | 75 | 30 | 0 15 |
-| M | 1024 | stretched | 12 | % | 30 | 0 15 |
-| S | 768 | stretched | 6 | % | 30 | 0 15 |
-| xS | < 768 (max 767) | stretched | 2 | % | 30 | 0 15 |
+Three breakpoints, each a fixed-margin column grid. Column width fills the content area.
+
+| Breakpoint | Applies from | Design frame | Container | Columns | Gutter | Side margin | Content width |
+|---|---|---|---|---|---|---|---|
+| Desktop | ≥ 1024px | 1440 viewport | 1280 max | 12 | 32 | 32 | 1216 (col ≈ 72) |
+| Tablet | 768 – 1023px | iPad Mini 768 | 768 | 6 | 32 | 32 | 704 |
+| Mobile | < 768px | iPhone 375 | 375 | 4 | 16 | 16 | 343 |
 
 | Token | px |
 |---|---|
-| container-max-width | 1260 (12 × 75 + 11 × 30 + 2 × 15) |
-| container-padding | 15 |
-| grid-gutter | 30 |
-| grid-column | 75 |
-| paragraph-max-width | 720 *(S1)* |
-| button-min-width-lg / -sm | 190 / 166 |
-| button-fixed-width | 285 |
+| container-max-width-desktop | 1280 |
+| container-padding-desktop / -mobile | 32 / 16 |
+| grid-gutter-desktop / -mobile | 32 / 16 |
+| paragraph-max-width | 720 |
+| width-xxs … width-6xl | 320 · 384 · 480 · 560 · 640 · 768 · 1024 · 1280 · 1440 · 1600 · 1920 |
+| button-min-width-lg / -sm *(Veeam)* | 190 / 166 |
+| button-fixed-width *(Veeam)* | 285 |
 
-> The 30px gutter equals Bootstrap 4's default, so SFRA's grid works unchanged — only the
-> breakpoints and container width are overridden (`tokens/_veeam-tokens.scss`).
+Responsive CSS aliases switch automatically: `--container-padding`, `--grid-gutter` (16 → 32 at
+768px) and `--grid-columns` (4 → 6 → 12). Container grid presets inside the 1280 container (S1):
+12, 6, 5, 3 and 2 columns.
+
+> **Not used:** the Veeam PDF's web grid (1260px container, 75px columns, 30px gutter, 15px
+> padding, 2 columns on mobile). We keep the S1 grid so every Saltbox project shares one grid.
 
 ### Banner sizes (PDF p.45)
 
@@ -200,16 +209,18 @@ See [`typography.md`](typography.md) for families, weights and usage.
 | Hero banner | 1920 × 538 | Static background, light scheme preferred, 1–2 CTAs, standard font size |
 | Hero with video | 1920 × 1180 | Video autoplays below headline; 1–2 CTAs |
 | New Visitors | 252 × 364 | Animated background allowed, 1–2 CTAs |
-| Menu banner | 915 × 128 | Background image 1260px wide, one CTA |
+| Menu banner | 915 × 128 | Background image 1260px wide (per PDF), one CTA |
 
 ---
 
 ## Status
 
-- From the PDF: brand palette, web & presentation palettes, button spec, grid, banner sizes,
+- From the PDF: brand palette, web & presentation palettes, button spec, banner sizes,
   type sizes, plate radius/stroke, icon grid.
 - Derived (flagged in bold vs. plain above): intermediate ramp steps; line-heights for
   Display 120/100/60 (the PDF gives sizes only); `text-xs`; PRISM gradient stops (sampled).
+- Deliberately not used: the PDF web grid and its 120px spacing step — S1's grid and spacing
+  scale apply.
 - Open question: the PDF prints **H2 as "55/52"** — a line-height smaller than the size and a
   size larger than H1 (50). We use **44/52** (fits between H1 50/60 and H3 36/44). Confirm
   with Veeam's Creative team.

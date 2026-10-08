@@ -60,8 +60,10 @@ Use these in marketing/site code when you mean *the brand color*, not a UI role.
 | `text-on-brand-solid` | `#ffffff` | `#232323` | white / gray-800 | **VEEAM** label on bg-brand-solid (white on azure; ink on green in dark) |
 | `text-on-brand-solid_hover` | `#ffffff` | `#ffffff` | white / white | **VEEAM** label on bg-brand-solid_hover |
 | `text-error-primary` | `#d01a2c` | `#f15f6d` | error-600 / error-400 | Error messages |
-| `text-warning-primary` | `#c2510a` | `#fe9c45` | warning-700 / warning-400 | Warning text (700 in light for contrast) |
-| `text-success-primary` | `#007f49` | `#32f26f` | success-700 / success-400 | Success text (700 in light for contrast) |
+| `text-warning-primary` | `#9f3f0a` | `#fe9c45` | warning-800 / warning-400 | Warning text (800 in light: passes AA on white and on its light fill) |
+| `text-success-primary` | `#02613f` | `#32f26f` | success-800 / success-400 | Success text (800 in light: passes AA on white and on its light fill) |
+| `text-info-primary` | `#005f9e` | `#6cbdf0` | info-700 / info-300 | **VEEAM** Info text |
+| `text-disabled` | `#adacaf` | `#5a637d` | gray-400 / gray-dark-600 | **VEEAM** Disabled labels and values (exempt from contrast rules) |
 
 ## 2. Border colors
 
@@ -76,6 +78,13 @@ Use these in marketing/site code when you mean *the brand color*, not a UI role.
 | `border-secondary-brand` | `#00d15f` | `#00d15f` | green-500 / green-500 | **VEEAM** green accent rule (card top borders, timelines 'connected') |
 | `border-error` | `#ed2b3d` | `#f15f6d` | error-500 / error-400 | Error borders |
 | `border-error_subtle` | `#f69aa3` | `#ed2b3d` | error-300 / error-500 | Subtle error borders |
+| `border-warning` | `#fe8a25` | `#fe9c45` | warning-500 / warning-400 | **VEEAM** Warning borders: inputs, alerts |
+| `border-warning_subtle` | `#feb06a` | `#fe8a25` | warning-300 / warning-500 | **VEEAM** Subtle warning borders (alert outlines) |
+| `border-success` | `#00d15f` | `#32f26f` | success-500 / success-400 | **VEEAM** Success borders: validated inputs, alerts |
+| `border-success_subtle` | `#9cffa3` | `#009277` | success-200 / success-600 | **VEEAM** Subtle success borders (alert outlines) |
+| `border-info` | `#008ee7` | `#33a3eb` | info-500 / info-400 | **VEEAM** Info borders |
+| `border-info_subtle` | `#a3d6f6` | `#008ee7` | info-200 / info-500 | **VEEAM** Subtle info borders (alert outlines) |
+| `border-disabled` | `#dbdee1` | `#1e2a47` | gray-200 / gray-dark-800 | **VEEAM** Disabled control borders |
 
 ## 3. Foreground colors (icons, indicators)
 
@@ -95,10 +104,13 @@ Use these in marketing/site code when you mean *the brand color*, not a UI role.
 | `fg-brand-secondary_alt` | `#4d2eff` | `#5a637d` | brand-500 / gray-dark-600 | Brand → gray in dark (brand buttons) |
 | `fg-error-primary` | `#d01a2c` | `#ed2b3d` | error-600 / error-500 | Primary error icons |
 | `fg-error-secondary` | `#ed2b3d` | `#f15f6d` | error-500 / error-400 | Input error icons, negative charts |
-| `fg-warning-primary` | `#ff6900` | `#fe8a25` | warning-600 / warning-500 | Primary warning icons |
+| `fg-warning-primary` | `#c2510a` | `#fe8a25` | warning-700 / warning-500 | Primary warning icons (700 for 3:1 on white) |
 | `fg-warning-secondary` | `#fe8a25` | `#fe9c45` | warning-500 / warning-400 | Secondary warning icons |
 | `fg-success-primary` | `#009277` | `#00d15f` | success-600 / success-500 | Primary success icons |
 | `fg-success-secondary` | `#00d15f` | `#32f26f` | success-500 / success-400 | Dots, online indicators, positive charts |
+| `fg-info-primary` | `#0077c4` | `#008ee7` | info-600 / info-500 | **VEEAM** Primary info icons |
+| `fg-info-secondary` | `#008ee7` | `#33a3eb` | info-500 / info-400 | **VEEAM** Secondary info icons, dots |
+| `fg-disabled` | `#adacaf` | `#5a637d` | gray-400 / gray-dark-600 | **VEEAM** Disabled icons |
 
 ## 4. Background colors
 
@@ -131,12 +143,113 @@ Use these in marketing/site code when you mean *the brand color*, not a UI role.
 | `bg-error-solid_hover` | `#ad1524` | `#ed2b3d` | error-700 / error-500 | Solid error, hover |
 | `bg-warning-primary` | `#fff4ea` | `#451905` | warning-50 / warning-950 | Light warning fill |
 | `bg-warning-secondary` | `#ffe6cf` | `#ff6900` | warning-100 / warning-600 | Warning featured icons |
-| `bg-warning-solid` | `#ff6900` | `#ff6900` | warning-600 / warning-600 | Solid warning: featured icons |
+| `bg-warning-solid` | `#c2510a` | `#c2510a` | warning-700 / warning-700 | Solid warning with white text (700 for 4.7:1) |
 | `bg-success-primary` | `#e1f4ec` | `#002e1e` | success-50 / success-950 | Light success fill |
 | `bg-success-secondary` | `#c6f7da` | `#009277` | success-100 / success-600 | Success featured icons |
-| `bg-success-solid` | `#009277` | `#009277` | success-600 / success-600 | Solid success: featured icons, metrics |
+| `bg-success-solid` | `#007f49` | `#007f49` | success-700 / success-700 | Solid success: badges/toasts with white text (700 for 5.1:1) |
+| `bg-info-primary` | `#e8f5fd` | `#022640` | info-50 / info-950 | **VEEAM** Light info fill |
+| `bg-info-secondary` | `#cfeafb` | `#0077c4` | info-100 / info-600 | **VEEAM** Info featured icons |
+| `bg-info-solid` | `#005f9e` | `#005f9e` | info-700 / info-700 | **VEEAM** Solid info with white text |
+| `bg-disabled` | `#f0f0f0` | `#1e2a47` | gray-100 / gray-dark-800 | **VEEAM** Disabled control fills |
 
-## 5. Chart series
+## 5. System colors — success, warning, error, info
+
+The traffic-light set every status message uses. Each status has the **same five roles**, so
+once you know one, you know all four.
+
+| Status | Meaning | Use when | Examples | Icon (Untitled UI) |
+|---|---|---|---|---|
+| **Success** | Green — it worked / it's healthy | An action completed, a check passed, a system is protected or online. | "Order placed", "Backup verified", valid field, "In stock", online dot | `check-circle` |
+| **Warning** | Orange (Suma) — attention needed, not broken yet | Something may fail or needs a decision soon; the user can continue. | "License expires in 12 days", "Low stock", unsaved changes, approaching a limit | `alert-triangle` |
+| **Error** | Red (Ignis) — it failed / it's blocked | An action failed, input is invalid, data is at risk, or a destructive action is about to happen. | "Payment declined", invalid email, "Backup failed", "Delete account" | `alert-circle` / `x-circle` |
+| **Info** | Blue — neutral information (system) | Context, tips and neutral system messages that need no action. | "Prices exclude tax", "New version available", maintenance notice, help text banners | `info-circle` |
+
+### Tokens per status (light / dark)
+
+| Role | Token pattern | Success | Warning | Error | Info |
+|---|---|---|---|---|---|
+| Light fill (alerts, badges) | `bg-*-primary` | `#e1f4ec` / `#002e1e` | `#fff4ea` / `#451905` | `#fef2f3` / `#400a0f` | `#e8f5fd` / `#022640` |
+| Medium fill (featured icons) | `bg-*-secondary` | `#c6f7da` / `#009277` | `#ffe6cf` / `#ff6900` | `#fde3e5` / `#d01a2c` | `#cfeafb` / `#0077c4` |
+| Solid fill (white text on top) | `bg-*-solid` | `#007f49` / `#007f49` | `#c2510a` / `#c2510a` | `#d01a2c` / `#d01a2c` | `#005f9e` / `#005f9e` |
+| Border / input outline | `border-*` | `#00d15f` / `#32f26f` | `#fe8a25` / `#fe9c45` | `#ed2b3d` / `#f15f6d` | `#008ee7` / `#33a3eb` |
+| Subtle border (alert outline) | `border-*_subtle` | `#9cffa3` / `#009277` | `#feb06a` / `#fe8a25` | `#f69aa3` / `#ed2b3d` | `#a3d6f6` / `#008ee7` |
+| Icon | `fg-*-primary` | `#009277` / `#00d15f` | `#c2510a` / `#fe8a25` | `#d01a2c` / `#ed2b3d` | `#0077c4` / `#008ee7` |
+| Dot / secondary icon / chart | `fg-*-secondary` | `#00d15f` / `#32f26f` | `#fe8a25` / `#fe9c45` | `#ed2b3d` / `#f15f6d` | `#008ee7` / `#33a3eb` |
+| Text | `text-*-primary` | `#02613f` / `#32f26f` | `#9f3f0a` / `#fe9c45` | `#d01a2c` / `#f15f6d` | `#005f9e` / `#6cbdf0` |
+
+### Contrast on white (WCAG 2.1)
+
+| Pair | Success | Warning | Error | Info |
+|---|---|---|---|---|
+| Status text on white | 7.5:1 pass | 6.6:1 pass | 5.4:1 pass | 6.7:1 pass |
+| Status text on its light fill | 6.6:1 pass | 6.1:1 pass | 5.0:1 pass | 6.0:1 pass |
+| White text on solid fill | 5.1:1 pass | 4.7:1 pass | 5.4:1 pass | 6.7:1 pass |
+| Icon on white (needs 3:1) | 3.9:1 pass | 4.7:1 pass | 5.4:1 pass | 4.7:1 pass |
+
+### How to use them (UX rules)
+
+1. **Never color alone.** Every status pairs color with an **icon and words** — about 1 in 12
+   men can't tell red from green. "Error" must read as an error in grayscale.
+2. **Match the component to the moment:**
+   - *Inline validation* (one field): `border-*` on the input + `text-*-primary` message under it, with the icon. Validate on blur, not on every keystroke.
+   - *Alert / banner* (a section or page): `bg-*-primary` fill, `border-*_subtle` outline, `fg-*-primary` icon, title in `text-primary`, body in `text-tertiary`.
+   - *Badge / tag* (a status label in a list or table): `bg-*-primary` + `text-*-primary`, or `bg-*-solid` + white for high emphasis.
+   - *Toast* (feedback after an action): neutral `bg-primary-solid` with a colored icon — keep it calm; errors that need action belong in an alert, not a toast that disappears.
+   - *Status dot* (online / healthy): `fg-*-secondary`, always with a text label.
+3. **Write the fix, not just the problem:** "Enter an email like name@company.com", not "Invalid input".
+4. **Severity order:** error > warning > success > info. Show the most severe first; don't stack more than one banner per region.
+5. **Errors persist, successes fade.** Errors stay until fixed; success toasts can auto-dismiss after ~4–5 s (announce them with `role="status"`; errors with `role="alert"`).
+6. **Status colors are not brand or chart colors.** Don't use green for decoration or as a chart series; Ignis red is never decorative (Veeam rule).
+7. **Warning, not yellow text.** Sol `#FFD839` and Suma `#FE8A25` fail as text on white — always use `text-warning-primary` (`#9F3F0A`) for words.
+8. **Primary buttons stay azure** even inside a status alert. Only destructive actions use `bg-error-solid`.
+
+> Veeam's PDF *System* palette maps to these: Ignis `#ED2B3D` = `error-500`, Suma `#FE8A25` = `warning-500`,
+> cream `#FCF8EB` = `warning-25`, Sol `#FFD839` = highlight (not a status), green = success, blue = info
+> ("blue/purple is neutral, green is good, red/orange is a problem", PDF p.52).
+
+## 6. Grays — text tones and shades
+
+Body text is never pure black. Use the gray ramp through the semantic text tokens below; the
+step tells you how much the text should stand out. Contrast is measured on white (`bg-primary`)
+and on the light gray section background (`bg-secondary` `#F9F9F9`).
+
+| Token | Gray step | Hex | On white | On `#F9F9F9` | Use for |
+|---|---|---|---|---|---|
+| `text-primary` | gray-900 | `#1d1f2a` | 16.4:1 | 15.6:1 | Headings, product names, prices, table values, input values — the default ink |
+| `text-secondary` | gray-700 | `#3b4049` | 10.4:1 | 9.9:1 | Labels, subheadings, nav items, strong body copy |
+| `text-tertiary` | gray-600 | `#505861` | 7.2:1 | 6.9:1 | **Body paragraphs** and descriptions, supporting text, hints |
+| `text-quaternary` | gray-500 | `#6e737b` | 4.8:1 | 4.5:1 | Captions, timestamps, metadata, footer headings |
+| `text-placeholder` | gray-500 | `#6e737b` | 4.8:1 | 4.5:1 | Input placeholders only |
+| `text-disabled` | gray-400 | `#adacaf` | 2.3:1 | 2.1:1 | Disabled controls only — never meaningful text |
+
+**The full gray ramp** (light theme) — tones for text, shades for surfaces and lines:
+
+| Step | Hex | On white | Role |
+|---|---|---|---|
+| gray-25 | `#fcfcfc` | 1.0:1 | Lightest surface |
+| gray-50 | `#f9f9f9` | 1.1:1 | `bg-secondary` — alternating sections, table headers |
+| gray-100 | `#f0f0f0` | 1.1:1 | `bg-tertiary`, `border-tertiary` — hover fills, subtle dividers |
+| gray-200 | `#dbdee1` | 1.4:1 | `border-secondary`, `bg-quaternary` — cards, tables, dividers |
+| gray-300 | `#c3c6cb` | 1.7:1 | `border-primary` — inputs, checkboxes, button outlines |
+| gray-400 | `#adacaf` | 2.3:1 | `fg-quaternary`, `text-disabled` — supporting icons, disabled |
+| gray-500 | `#6e737b` | 4.8:1 | `text-quaternary`, `text-placeholder` — smallest text that still passes AA |
+| gray-600 | `#505861` | 7.2:1 | `text-tertiary` — body copy (Grey Mineral) |
+| gray-700 | `#3b4049` | 10.4:1 | `text-secondary` — labels |
+| gray-800 | `#232323` | 15.7:1 | Dark surfaces (`#232323`, the PDF's dark button ground) |
+| gray-900 | `#1d1f2a` | 16.4:1 | `text-primary` — headings and default ink |
+| gray-950 | `#121318` | 18.6:1 | `bg-primary-solid` — tooltips, toasts |
+
+Rules
+
+- **Body copy = `text-tertiary`** (gray-600, 7.2:1); headings = `text-primary`. Don't go lighter than
+  `text-quaternary` (gray-500, 4.8:1) for anything a user must read.
+- **Hierarchy with 3 grays max per view:** primary → secondary/tertiary → quaternary. More steps read as noise.
+- **Long reading:** `Text lg` or `Text md`, `text-tertiary`, max line length `paragraph-max-width` (720px ≈ 75 characters).
+- **Never gray text on a gray-200 or darker fill** — move to `text-primary`/`text-secondary` there.
+- **On dark surfaces** the dark-theme values apply automatically (`data-theme="dark"`); on photos or gradients use white text on a plate.
+- **Navy (`text-brand-primary` `#0E0D72`)** is a brand accent for prices and hero headlines, not a body-text gray.
+
+## 7. Chart series
 
 Fixed order; max four series. Status colors (green/red/orange) are never series colors.
 

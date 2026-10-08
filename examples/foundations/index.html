@@ -30,7 +30,13 @@
     .toc { position: sticky; top: 0; z-index: 2; background: rgb(255 255 255 / 92%); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border-secondary); }
     .toc .vds-container { display: flex; gap: var(--spacing-3xl); overflow-x: auto; padding-block: var(--spacing-lg); font-size: var(--font-size-text-sm); }
     .toc a { text-decoration: none; white-space: nowrap; }
-    section h2 { margin-bottom: var(--vspace-32); }
+    .tok-table { width: 100%; border-collapse: collapse; font-size: var(--font-size-text-xs); }
+    .tok-table td { padding: var(--spacing-xs) 0; border-top: 1px solid var(--border-tertiary); color: var(--text-tertiary); }
+    .tok-table code { color: var(--text-secondary); }
+    .tone { display: grid; grid-template-columns: 1fr auto; gap: var(--spacing-lg); padding: var(--spacing-xl) 0; border-top: 1px solid var(--border-secondary); align-items: baseline; }
+    .tone code { font-size: var(--font-size-text-xs); color: var(--text-tertiary); text-align: right; }
+    .ramp-v > div { display: grid; grid-template-columns: 64px 1fr auto; gap: var(--spacing-lg); align-items: center; padding: var(--spacing-sm) var(--spacing-lg); font-size: var(--font-size-text-xs); }
+    section h2 { margin-bottom: var(--spacing-4xl); }
     @media (max-width: 767px) { .ramp { grid-template-columns: 70px repeat(12, minmax(0, 1fr)); } .ramp > span { font-size: 0; } .type-row { grid-template-columns: 1fr; gap: var(--spacing-xs); } }
   </style>
 </head>
@@ -38,16 +44,16 @@
   <header class="vds-surface-brand">
     <div class="vds-container vds-section">
       <img src="../../skill/assets/logos/veeam-logo-primary.svg" alt="Veeam" width="200">
-      <div class="vds-plate-blur" style="margin-top: var(--vspace-48); max-width: 760px;">
+      <div class="vds-plate-blur" style="margin-top: var(--spacing-6xl); max-width: 760px;">
         <p class="vds-eyebrow vds-eyebrow--sm">Veeam Design System · built on S1</p>
-        <h1 class="display-xl" style="margin-top: var(--vspace-16);">Foundations</h1>
-        <p class="text-lg text-tertiary-color" style="margin-top: var(--vspace-16);">Every swatch, size and state on this page is drawn from <code>tokens/veeam-tokens.css</code>. If it looks wrong here, fix it in <code>scripts/build-tokens.py</code>.</p>
+        <h1 class="display-xl" style="margin-top: var(--spacing-xl);">Foundations</h1>
+        <p class="text-lg text-tertiary-color" style="margin-top: var(--spacing-xl);">Every swatch, size and state on this page is drawn from <code>tokens/veeam-tokens.css</code>. If it looks wrong here, fix it in <code>scripts/build-tokens.py</code>.</p>
       </div>
     </div>
   </header>
 
   <nav class="toc" aria-label="Sections"><div class="vds-container">
-    <a href="#brand">Brand colors</a><a href="#ramps">Ramps</a><a href="#gradients">Gradients</a><a href="#type">Typography</a>
+    <a href="#brand">Brand colors</a><a href="#ramps">Ramps</a><a href="#status">System colors</a><a href="#grays">Text grays</a><a href="#gradients">Gradients</a><a href="#type">Typography</a>
     <a href="#buttons">Buttons</a><a href="#forms">Forms &amp; badges</a><a href="#spacing">Spacing</a><a href="#grid">Grid</a><a href="#logo">Logo</a>
   </div></nav>
 
@@ -57,10 +63,64 @@
       <div class="swatches" id="alias-swatches"></div>
     </section>
 
+    <section id="status" class="vds-container vds-section">
+      <h2>System colors — success, warning, error, info</h2>
+      <p class="text-lg text-tertiary-color" style="max-width: var(--paragraph-max-width); margin: calc(-1 * var(--spacing-xl)) 0 var(--spacing-4xl);">One traffic-light set for every status message. Each status has the same roles — fill, border, icon, text, solid — and always pairs color with an icon and words.</p>
+      <div class="vds-grid">
+        <div class="vds-col-3 vds-stack-16">
+          <div style="display:flex;align-items:center;gap:var(--spacing-md)"><span style="width:28px;height:28px;border-radius:var(--radius-full);background:var(--fg-success-secondary)"></span><div><p class="fw-semibold">Success</p><p class="text-sm text-tertiary-color">It worked / it's healthy</p></div></div>
+          <div class="vds-alert vds-alert--success" role="status"><svg class="vds-alert__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 10l1.7 1.7L12.5 8.3M18.3 10a8.3 8.3 0 1 1-16.6 0 8.3 8.3 0 0 1 16.6 0Z"/></svg><div><p class="vds-alert__title">Backup verified</p><p class="vds-alert__body">Your 3 workloads were backed up at 09:42.</p></div></div>
+          <div class="vds-field"><label class="vds-label">Work email</label><input class="vds-input" data-state="success" value="pat.okafor@northwind.io"><p class="vds-field-msg vds-field-msg--success" style=""><svg  viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 10l1.7 1.7L12.5 8.3M18.3 10a8.3 8.3 0 1 1-16.6 0 8.3 8.3 0 0 1 16.6 0Z"/></svg>Email looks good.</p></div>
+          <div style="display:flex;gap:var(--spacing-md);flex-wrap:wrap;align-items:center"><span class="vds-badge vds-badge--success">Protected</span><span class="vds-badge vds-badge--solid-success">Protected</span><span class="vds-dot vds-dot--success">Protected</span></div>
+          <table class="tok-table"><tr><td>Fill</td><td><code>bg-success-primary</code></td></tr><tr><td>Border</td><td><code>border-success</code></td></tr><tr><td>Icon</td><td><code>fg-success-primary</code></td></tr><tr><td>Text</td><td><code>text-success-primary</code></td></tr><tr><td>Solid</td><td><code>bg-success-solid</code></td></tr></table>
+        </div>
+        <div class="vds-col-3 vds-stack-16">
+          <div style="display:flex;align-items:center;gap:var(--spacing-md)"><span style="width:28px;height:28px;border-radius:var(--radius-full);background:var(--fg-warning-secondary)"></span><div><p class="fw-semibold">Warning</p><p class="text-sm text-tertiary-color">Attention needed, not broken yet</p></div></div>
+          <div class="vds-alert vds-alert--warning" role="status"><svg class="vds-alert__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 7.5v3.3m0 3.4h0M8.6 3.2 1.7 15a1.7 1.7 0 0 0 1.4 2.5h13.8a1.7 1.7 0 0 0 1.4-2.5L11.4 3.2a1.7 1.7 0 0 0-2.8 0Z"/></svg><div><p class="vds-alert__title">License expires in 12 days</p><p class="vds-alert__body">Renew now to keep backups running without interruption.</p></div></div>
+          <div class="vds-field"><label class="vds-label">Work email</label><input class="vds-input" data-state="warning" value="pat.okafor@northwind.io"><p class="vds-field-msg vds-field-msg--warning" style=""><svg  viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 7.5v3.3m0 3.4h0M8.6 3.2 1.7 15a1.7 1.7 0 0 0 1.4 2.5h13.8a1.7 1.7 0 0 0 1.4-2.5L11.4 3.2a1.7 1.7 0 0 0-2.8 0Z"/></svg>This domain isn't on your company account yet.</p></div>
+          <div style="display:flex;gap:var(--spacing-md);flex-wrap:wrap;align-items:center"><span class="vds-badge vds-badge--warning">Expiring</span><span class="vds-badge vds-badge--solid-warning">Expiring</span><span class="vds-dot vds-dot--warning">Expiring</span></div>
+          <table class="tok-table"><tr><td>Fill</td><td><code>bg-warning-primary</code></td></tr><tr><td>Border</td><td><code>border-warning</code></td></tr><tr><td>Icon</td><td><code>fg-warning-primary</code></td></tr><tr><td>Text</td><td><code>text-warning-primary</code></td></tr><tr><td>Solid</td><td><code>bg-warning-solid</code></td></tr></table>
+        </div>
+        <div class="vds-col-3 vds-stack-16">
+          <div style="display:flex;align-items:center;gap:var(--spacing-md)"><span style="width:28px;height:28px;border-radius:var(--radius-full);background:var(--fg-error-secondary)"></span><div><p class="fw-semibold">Error</p><p class="text-sm text-tertiary-color">It failed / it's blocked</p></div></div>
+          <div class="vds-alert vds-alert--error" role="alert"><svg class="vds-alert__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6.7V10m0 3.3h0m8.3-3.3a8.3 8.3 0 1 1-16.6 0 8.3 8.3 0 0 1 16.6 0Z"/></svg><div><p class="vds-alert__title">Payment declined</p><p class="vds-alert__body">Your card was declined. Try another card or contact your bank.</p></div></div>
+          <div class="vds-field"><label class="vds-label">Work email</label><input class="vds-input" aria-invalid="true" value="pat.okafor@northwind.io"><p class="vds-field-msg vds-field-msg--error" style=""><svg  viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6.7V10m0 3.3h0m8.3-3.3a8.3 8.3 0 1 1-16.6 0 8.3 8.3 0 0 1 16.6 0Z"/></svg>Enter an email like name@company.com.</p></div>
+          <div style="display:flex;gap:var(--spacing-md);flex-wrap:wrap;align-items:center"><span class="vds-badge vds-badge--error">Backup failed</span><span class="vds-badge vds-badge--solid-error">Backup failed</span><span class="vds-dot vds-dot--error">Backup failed</span></div>
+          <table class="tok-table"><tr><td>Fill</td><td><code>bg-error-primary</code></td></tr><tr><td>Border</td><td><code>border-error</code></td></tr><tr><td>Icon</td><td><code>fg-error-primary</code></td></tr><tr><td>Text</td><td><code>text-error-primary</code></td></tr><tr><td>Solid</td><td><code>bg-error-solid</code></td></tr></table>
+        </div>
+        <div class="vds-col-3 vds-stack-16">
+          <div style="display:flex;align-items:center;gap:var(--spacing-md)"><span style="width:28px;height:28px;border-radius:var(--radius-full);background:var(--fg-info-secondary)"></span><div><p class="fw-semibold">Info (system)</p><p class="text-sm text-tertiary-color">Neutral information</p></div></div>
+          <div class="vds-alert vds-alert--info" role="status"><svg class="vds-alert__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13.3V10m0-3.3h0m8.3 3.3a8.3 8.3 0 1 1-16.6 0 8.3 8.3 0 0 1 16.6 0Z"/></svg><div><p class="vds-alert__title">Prices exclude tax</p><p class="vds-alert__body">Tax is calculated at checkout based on your billing address.</p></div></div>
+          <div class="vds-field"><label class="vds-label">Work email</label><input class="vds-input"  value="pat.okafor@northwind.io"><p class="vds-field-msg vds-field-msg--success" style="color:var(--text-info-primary)"><svg  viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13.3V10m0-3.3h0m8.3 3.3a8.3 8.3 0 1 1-16.6 0 8.3 8.3 0 0 1 16.6 0Z"/></svg>We'll send the license key to this address.</p></div>
+          <div style="display:flex;gap:var(--spacing-md);flex-wrap:wrap;align-items:center"><span class="vds-badge vds-badge--info">Scheduled</span><span class="vds-badge vds-badge--solid-info">Scheduled</span><span class="vds-dot vds-dot--info">Scheduled</span></div>
+          <table class="tok-table"><tr><td>Fill</td><td><code>bg-info-primary</code></td></tr><tr><td>Border</td><td><code>border-info</code></td></tr><tr><td>Icon</td><td><code>fg-info-primary</code></td></tr><tr><td>Text</td><td><code>text-info-primary</code></td></tr><tr><td>Solid</td><td><code>bg-info-solid</code></td></tr></table>
+        </div>
+      </div>
+      <div class="vds-card vds-card--plain" style="margin-top: var(--spacing-4xl);">
+        <p class="vds-card__title">Rules of thumb</p>
+        <ul class="text-md text-tertiary-color" style="margin: var(--spacing-md) 0 0; padding-left: 20px; display:grid; gap: var(--spacing-sm);">
+          <li><b style="color:var(--text-primary)">Never color alone</b> — icon + words, so it works for color-blind users and in grayscale.</li>
+          <li><b style="color:var(--text-primary)">Say how to fix it</b> — "Enter an email like name@company.com", not "Invalid input".</li>
+          <li><b style="color:var(--text-primary)">Errors stay, successes fade</b> — errors persist until fixed; success toasts may auto-dismiss after 4–5 s.</li>
+          <li><b style="color:var(--text-primary)">Severity order</b> — error, warning, success, info. One banner per region.</li>
+          <li><b style="color:var(--text-primary)">Not decoration</b> — status colors are never brand accents or chart series; Ignis red is never decorative.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="grays" class="vds-container vds-section">
+      <h2>Grays — text tones and shades</h2>
+      <p class="text-lg text-tertiary-color" style="max-width: var(--paragraph-max-width); margin: calc(-1 * var(--spacing-xl)) 0 var(--spacing-4xl);">Body text is never pure black. Pick the tone by how much the text should stand out — three tones per view is plenty.</p>
+      <div class="vds-grid">
+        <div class="vds-col-7" id="text-tones"></div>
+        <div class="vds-col-5"><div class="ramp-v" id="gray-shades"></div></div>
+      </div>
+    </section>
+
     <section id="ramps" class="vds-container vds-section--sm">
       <h2>Primitive ramps (25 → 950)</h2>
       <div id="ramps-wrap" class="vds-stack-8"></div>
-      <p class="vds-hint" style="margin-top: var(--vspace-16);">Steps printed in the Veeam PDF are anchored exactly; the remaining steps were derived to complete each ramp. See <code>skill/references/tokens.md</code>.</p>
+      <p class="vds-hint" style="margin-top: var(--spacing-xl);">Steps printed in the Veeam PDF are anchored exactly; the remaining steps were derived to complete each ramp. See <code>skill/references/tokens.md</code>.</p>
     </section>
 
     <section id="gradients" class="vds-container vds-section">
@@ -70,7 +130,7 @@
 
     <section id="type" class="vds-container vds-section">
       <h2>Typography</h2>
-      <div class="vds-grid" style="margin-bottom: var(--vspace-48);">
+      <div class="vds-grid" style="margin-bottom: var(--spacing-6xl);">
         <div class="vds-col-6 vds-card vds-card--plain">
           <p class="vds-eyebrow vds-eyebrow--sm">Headings &amp; display</p>
           <p class="display-md" style="margin-top: var(--spacing-lg);">ES Build Bauhaus</p>
@@ -92,7 +152,7 @@
         <div class="btn-col vds-surface-mineral" data-surface="mineral" id="btns-mineral"></div>
         <div class="btn-col" style="background: var(--color-gray-800);" data-surface="dark" id="btns-dark"></div>
       </div>
-      <div style="display:flex; flex-wrap: wrap; gap: var(--spacing-xl); margin-top: var(--vspace-32); align-items:center;">
+      <div style="display:flex; flex-wrap: wrap; gap: var(--spacing-xl); margin-top: var(--spacing-4xl); align-items:center;">
         <button class="vds-btn">Call to action</button>
         <button class="vds-btn vds-btn--sm">Call to action</button>
         <button class="vds-btn vds-btn--fixed">Fixed 285px</button>
@@ -125,7 +185,7 @@
     </section>
 
     <section id="spacing" class="vds-container vds-section">
-      <h2>Spacing (S1 scale) &amp; vertical rhythm</h2>
+      <h2>Spacing &amp; radius — S1 scale</h2>
       <div class="vds-grid">
         <div class="vds-col-6 vds-stack-8" id="spacing-rows"></div>
         <div class="vds-col-6 vds-stack-8" id="radius-rows"></div>
@@ -133,9 +193,9 @@
     </section>
 
     <section id="grid" class="vds-container vds-section">
-      <h2>Grid — 12 / 6 / 2 columns, 30px gutter</h2>
+      <h2>Grid — S1: 12 / 6 / 4 columns</h2>
       <div class="vds-grid grid-demo" id="grid-demo"></div>
-      <p class="vds-hint" style="margin-top: var(--vspace-16);">Resize the window: 12 columns ≥ 1024px, 6 columns ≥ 768px, 2 columns below. Container max 1260px with 15px padding.</p>
+      <p class="vds-hint" style="margin-top: var(--spacing-xl);">Same grid as S1. Desktop ≥ 1024px: 12 columns, 32px gutter, 32px margin, container max 1280px (1216px content). Tablet ≥ 768px: 6 columns, 32px gutter and margin. Mobile: 4 columns, 16px gutter and margin. Resize the window to see it change. <span id="grid-now"></span></p>
     </section>
 
     <section id="logo" class="vds-container vds-section">
@@ -166,7 +226,7 @@
 
     const steps = ['25','50','100','200','300','400','500','600','700','800','900','950'];
     const rw = document.getElementById('ramps-wrap');
-    ['brand','green','gray','gray-dark','error','warning'].forEach(r => {
+    ['brand','green','gray','gray-dark','error','warning','info'].forEach(r => {
       const row = el('div', { className: 'ramp' }, `<b>${r}</b>`);
       steps.forEach((s, i) => {
         const chip = el('span', { title: `--color-${r}-${s} ${v(`--color-${r}-${s}`)}` }, `<span style="color:${i > 5 ? '#fff' : '#1d1f2a'}">${s}</span>`);
@@ -175,6 +235,23 @@
       });
       rw.append(row);
     });
+
+
+    // Text tones (grays for body copy)
+    const tones = [['text-primary','gray-900','Headings, product names, prices, input values','Stay ahead by backing up'],
+      ['text-secondary','gray-700','Labels, subheadings, nav items','Workload packs (10 each)'],
+      ['text-tertiary','gray-600','Body paragraphs and descriptions','Secure backup and fast, reliable recovery for virtual, physical, cloud and SaaS workloads.'],
+      ['text-quaternary','gray-500','Captions, timestamps, metadata','Updated 3 hours ago'],
+      ['text-placeholder','gray-500','Input placeholders only','you@company.com'],
+      ['text-disabled','gray-400','Disabled controls only','Unavailable in your region']];
+    const lum = h => { const c = [1,3,5].map(i => parseInt(h.slice(i,i+2),16)/255).map(x => x <= .03928 ? x/12.92 : ((x+.055)/1.055)**2.4); return .2126*c[0]+.7152*c[1]+.0722*c[2]; };
+    const ratio = (a, b='#ffffff') => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return ((x+.05)/(y+.05)).toFixed(1); };
+    const tt = document.getElementById('text-tones');
+    tones.forEach(([t, step, use, sample]) => { const hex = v('--color-' + step);
+      tt.append(el('div', { className: 'tone' }, `<div><p class="text-lg" style="color:var(--${t})">${sample}</p><p class="text-sm" style="color:var(--text-tertiary);margin-top:4px">${use}</p></div><code>--${t}<br>${step} · ${hex}<br>${ratio(hex)}:1 on white</code>`)); });
+    const gs = document.getElementById('gray-shades');
+    steps.forEach((s, i) => { const hex = v(`--color-gray-${s}`); const row = el('div', {}, `<b>gray-${s}</b><span>${hex}</span><span>${ratio(hex)}:1</span>`);
+      row.style.background = hex; row.style.color = i > 5 ? '#fff' : '#1d1f2a'; gs.append(row); });
 
     const grads = ['gradient-brand','gradient-brand-radial','gradient-brand-light','gradient-hero-text','gradient-tab-active','gradient-negative',
       'gradient-dark-bg','gradient-icon','gradient-green-cyan','gradient-casia-azure','gradient-cyan-ocean','gradient-mint-cyan','gradient-alert','gradient-alert-dark'];
@@ -204,14 +281,20 @@
     });
 
     const sp = document.getElementById('spacing-rows');
-    ['spacing-xs','spacing-md','spacing-lg','spacing-xl','spacing-3xl','spacing-4xl','spacing-6xl','spacing-7xl','spacing-8xl','spacing-section'].forEach(t =>
+    ['spacing-xs','spacing-md','spacing-lg','spacing-xl','spacing-3xl','spacing-4xl','spacing-6xl','spacing-7xl','spacing-8xl','spacing-9xl','spacing-10xl'].forEach(t =>
       sp.append(el('div', { className: 'space-row' }, `<code>--${t}</code><span>${v('--' + t)}</span><div class="space-bar" style="width:var(--${t})"></div>`)));
     const rr = document.getElementById('radius-rows');
-    ['radius-xs','radius-button','radius-md','radius-xl','radius-2xl','radius-plate','radius-full'].forEach(t =>
+    ['radius-xs','radius-sm','radius-md','radius-xl','radius-2xl','radius-plate','radius-full'].forEach(t =>
       rr.append(el('div', { className: 'space-row' }, `<code>--${t}</code><span>${v('--' + t)}</span><div style="height:44px;width:120px;background:var(--bg-brand-primary);border:1px solid var(--color-primary);border-radius:var(--${t})"></div>`)));
 
     const gd = document.getElementById('grid-demo');
-    for (let i = 0; i < 12; i++) gd.append(el('div'));
+    const drawGrid = () => {
+      const cols = +getComputedStyle(document.documentElement).getPropertyValue('--grid-columns');
+      gd.innerHTML = '';
+      for (let i = 0; i < cols; i++) gd.append(el('div', {}, `<span style="display:block;padding:6px;font-size:11px;color:var(--text-tertiary)">${i + 1}</span>`));
+      document.getElementById('grid-now').textContent = `Now: ${cols} columns, ${v('--grid-gutter')} gutter.`;
+    };
+    drawGrid(); addEventListener('resize', drawGrid);
   </script>
 </body>
 </html>
