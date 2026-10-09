@@ -39,7 +39,7 @@ Text is centered; the arrow icon is optional on Primary/Secondary.
 | Grey Mineral `#505861` | white / `#232323` text → `#232323`, white text | white outline → white fill, dark text | white fill, dark text |
 | Dark (`#232323`, navy) | `#00D15F` / `#232323` text → `#009277`, white text | `#00D15F` outline → `#009277` fill | `#EEF4F6` fill |
 
-CSS: `.vds-btn`, `.vds-btn--secondary`, `.vds-btn--tertiary`, `.vds-btn--sm` in `css/veeam.css`;
+CSS: `.vds-btn`, `.vds-btn--secondary`, `.vds-btn--tertiary`, `.vds-btn--link`, `.vds-btn--link-gray`, `.vds-btn--sm` in `css/veeam.css`;
 set the surface with `data-surface="mineral"` or `data-surface="dark"` on the section.
 Tokens: `--button-primary-bg`, `--button-primary-bg-hover`, `--button-secondary-border`, … (see
 `color-variables.md`, section 8). Only **one Primary per view**.
@@ -51,7 +51,7 @@ Tokens: `--button-primary-bg`, `--button-primary-bg-hover`, `--button-secondary-
 | **Primary** button | Solid azure (`.vds-btn`) | The one main action of a view or section | Add to cart, Checkout, Shop products, Start trial |
 | **Secondary** button | Azure outline (`.vds-btn--secondary`) | An alternative action next to a primary, or the action of a promo/banner | Talk to sales, Request a quote, See what's new |
 | **Tertiary** button | Azure text, no box (`.vds-btn--tertiary`) | Low-emphasis actions inside a form or toolbar | Add another product, Clear filters, Sign in |
-| **Text link + →** | Azure Semibold text with arrow, sentence case | Navigation to another page — not an action | Shop all products →, Compare editions → |
+| **Link button + →** (`.vds-btn--link`) | Azure Semibold 16px text with arrow, sentence case, no box | Navigation to another page — not an action | Shop all products →, Compare editions → |
 | **Icon button** | Gray icon, 44px target, `aria-label` | Utility actions | Remove row, Close, Account, Cart |
 
 Rules: buttons *do* something, links *go* somewhere. Never use a button style for plain

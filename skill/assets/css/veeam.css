@@ -165,8 +165,34 @@ p { margin: 0; }
 }
 .vds-btn--tertiary.vds-btn--sm { min-width: 0; }
 .vds-btn--fixed { width: var(--button-fixed-width); }
+/* Link button — "Link color" / "Link gray" hierarchy: inline, no box, sentence case, 16px (text-md from .vds-btn). */
+.vds-btn--link, .vds-btn--link-gray {
+  --_bg: transparent; --_bd: transparent; --_bg-h: transparent; --_bd-h: transparent;
+  min-width: 0; padding: 0; border: 0; border-radius: 0;
+  text-transform: none; letter-spacing: 0; gap: var(--spacing-sm);
+}
+.vds-btn--link { --_fg: var(--color-primary); --_fg-h: var(--color-primary-hover); }
+.vds-btn--link-gray { --_fg: var(--text-tertiary); --_fg-h: var(--text-primary); }
+.vds-btn--link:hover, .vds-btn--link:focus-visible,
+.vds-btn--link-gray:hover, .vds-btn--link-gray:focus-visible { background: transparent; text-decoration: underline; }
+.vds-btn--link--sm, .vds-btn--link-gray.vds-btn--sm { font-size: var(--font-size-text-sm); line-height: var(--line-height-text-sm); }
 @media (max-width: 767px) { .vds-btn--block-mobile { width: 100%; } }
 .vds-btn__arrow { width: 1em; height: 1em; flex: none; }
+
+/* ---------- Featured icon (Untitled UI component) ----------
+   Variants: --modern (white tile, hairline border, soft shadow). Sizes sm→xl.
+   Holds an Untitled UI line icon (stroke=currentColor); colour via --color-secondary (Viridis). */
+.vds-featured-icon { display: inline-grid; place-items: center; flex: none; color: var(--color-secondary); }
+.vds-featured-icon svg { display: block; }
+.vds-featured-icon--modern { background: var(--bg-primary); border: 1px solid var(--border-secondary); box-shadow: 0 1px 2px rgb(10 13 18 / 6%); }
+.vds-featured-icon--sm { width: 32px; height: 32px; border-radius: var(--radius-md); }
+.vds-featured-icon--sm svg { width: 16px; height: 16px; }
+.vds-featured-icon--md { width: 40px; height: 40px; border-radius: var(--radius-md); }
+.vds-featured-icon--md svg { width: 20px; height: 20px; }
+.vds-featured-icon--lg { width: 48px; height: 48px; border-radius: var(--radius-lg); }
+.vds-featured-icon--lg svg { width: 24px; height: 24px; }
+.vds-featured-icon--xl { width: 56px; height: 56px; border-radius: var(--radius-xl); }
+.vds-featured-icon--xl svg { width: 28px; height: 28px; }
 
 /* ---------- Form fields (S1 Input field, Veeam values) ---------- */
 .vds-field { display: grid; gap: var(--spacing-sm); }

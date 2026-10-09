@@ -66,25 +66,25 @@
 
     /* ---------- Shop by product (category cards on a subtle gray section) ---------- */
     .categories { background: var(--bg-secondary); border-block: 1px solid var(--border-tertiary); }
+    .categories .vds-eyebrow { color: var(--text-tertiary); }   /* "Start here" eyebrow in muted gray, not brand */
     .section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--spacing-xl); margin-bottom: var(--spacing-4xl); }
     .section-head p { margin-top: var(--spacing-md); }
+    /* All-white card: count badge, modern featured icon (left), title, desc, link — consistent 16px rhythm. */
     .category {
-      display: flex; flex-direction: column; height: 100%;
+      display: flex; flex-direction: column; align-items: flex-start; height: 100%;
+      padding: var(--spacing-3xl);
       background: var(--bg-primary); border: 1px solid var(--border-secondary); border-radius: var(--radius-xl);
-      overflow: hidden; text-decoration: none; color: inherit;
+      text-decoration: none; color: inherit;
       box-shadow: 0 1px 2px rgb(29 31 42 / 5%);
       transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .25s, border-color .25s;
     }
     .category:hover { transform: translateY(-4px); border-color: var(--border-brand); box-shadow: 0 24px 40px -24px rgb(55 0 255 / 35%); }
     .category:focus-visible { outline: var(--stroke-focus) solid var(--border-brand); outline-offset: 3px; }
-    .category__media { position: relative; aspect-ratio: 16 / 9; display: grid; place-items: center; overflow: hidden; }
-    .category__media svg { width: 72px; height: 72px; transition: transform .4s cubic-bezier(0.16, 1, 0.3, 1); }
-    .category:hover .category__media svg { transform: scale(1.08); }
-    .category__count { position: absolute; top: var(--spacing-lg); left: var(--spacing-lg); }
-    .category__body { display: flex; flex-direction: column; gap: var(--spacing-md); padding: var(--spacing-3xl); flex: 1; }
-    .category__title { font-family: var(--font-family-display); font-weight: var(--font-weight-semibold); font-size: var(--font-size-text-xl); line-height: var(--line-height-text-xl); color: var(--text-primary); }
-    .category__desc { font-size: var(--font-size-text-sm); line-height: var(--line-height-text-sm); color: var(--text-tertiary); }
-    .category__link { margin-top: auto; padding-top: var(--spacing-lg); display: inline-flex; align-items: center; gap: var(--spacing-sm); font-size: var(--font-size-text-sm); font-weight: var(--font-weight-semibold); color: var(--text-brand-tertiary); }
+    .category .vds-featured-icon { margin-top: var(--spacing-xl); transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1); }
+    .category:hover .vds-featured-icon { transform: translateY(-2px); }
+    .category__title { margin-top: var(--spacing-xl); font-family: var(--font-family-display); font-weight: var(--font-weight-semibold); font-size: var(--font-size-text-xl); line-height: var(--line-height-text-xl); color: var(--text-primary); }
+    .category__desc { margin-top: var(--spacing-sm); margin-bottom: var(--spacing-xl); font-size: var(--font-size-text-sm); line-height: var(--line-height-text-sm); color: var(--text-tertiary); }
+    .category__link { margin-top: auto; align-self: flex-start; }   /* pushed to card bottom; styling from .vds-btn--link (16px azure) */
     .category__link svg { transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1); }
     .category:hover .category__link svg { transform: translateX(3px); }
     .link-arrow { display: inline-flex; align-items: center; gap: var(--spacing-sm); font-size: var(--font-size-text-md); font-weight: var(--font-weight-semibold); color: var(--text-brand-tertiary); text-decoration: none; white-space: nowrap; }
@@ -265,28 +265,27 @@
       addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
     })();
 
-    // ---- Category cards (data from veeam.com product lines)
-    const icon = (d, id) => `<svg viewBox="0 0 72 72" fill="none" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="72" x2="72" y2="0"><stop stop-color="#008EE7"/><stop offset="1" stop-color="#32F26F"/></linearGradient></defs><path d="${d}" stroke="url(#${id})" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    // ---- Category cards. Icons: Untitled UI line set (24px grid, 2px stroke, currentColor),
+    //      shown in a modern featured-icon (xl, left-aligned, Viridis) via .vds-featured-icon. Source files in skill/assets/icons/.
+    const icons = {
+      'shield-tick': '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 11.4999L11 13.4999L15.5 8.99987M20 11.9999C20 16.9083 14.646 20.4783 12.698 21.6147C12.4766 21.7439 12.3659 21.8085 12.2097 21.842C12.0884 21.868 11.9116 21.868 11.7903 21.842C11.6341 21.8085 11.5234 21.7439 11.302 21.6147C9.35396 20.4783 4 16.9083 4 11.9999V7.21747C4 6.41796 4 6.0182 4.13076 5.67457C4.24627 5.37101 4.43398 5.10015 4.67766 4.8854C4.9535 4.64231 5.3278 4.50195 6.0764 4.22122L11.4382 2.21054C11.6461 2.13258 11.75 2.0936 11.857 2.07815C11.9518 2.06444 12.0482 2.06444 12.143 2.07815C12.25 2.0936 12.3539 2.13258 12.5618 2.21054L17.9236 4.22122C18.6722 4.50195 19.0465 4.64231 19.3223 4.8854C19.566 5.10015 19.7537 5.37101 19.8692 5.67457C20 6.0182 20 6.41796 20 7.21747V11.9999Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      'grid-01': '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8.4 3H4.6C4.03995 3 3.75992 3 3.54601 3.10899C3.35785 3.20487 3.20487 3.35785 3.10899 3.54601C3 3.75992 3 4.03995 3 4.6V8.4C3 8.96005 3 9.24008 3.10899 9.45399C3.20487 9.64215 3.35785 9.79513 3.54601 9.89101C3.75992 10 4.03995 10 4.6 10H8.4C8.96005 10 9.24008 10 9.45399 9.89101C9.64215 9.79513 9.79513 9.64215 9.89101 9.45399C10 9.24008 10 8.96005 10 8.4V4.6C10 4.03995 10 3.75992 9.89101 3.54601C9.79513 3.35785 9.64215 3.20487 9.45399 3.10899C9.24008 3 8.96005 3 8.4 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19.4 3H15.6C15.0399 3 14.7599 3 14.546 3.10899C14.3578 3.20487 14.2049 3.35785 14.109 3.54601C14 3.75992 14 4.03995 14 4.6V8.4C14 8.96005 14 9.24008 14.109 9.45399C14.2049 9.64215 14.3578 9.79513 14.546 9.89101C14.7599 10 15.0399 10 15.6 10H19.4C19.9601 10 20.2401 10 20.454 9.89101C20.6422 9.79513 20.7951 9.64215 20.891 9.45399C21 9.24008 21 8.96005 21 8.4V4.6C21 4.03995 21 3.75992 20.891 3.54601C20.7951 3.35785 20.6422 3.20487 20.454 3.10899C20.2401 3 19.9601 3 19.4 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19.4 14H15.6C15.0399 14 14.7599 14 14.546 14.109C14.3578 14.2049 14.2049 14.3578 14.109 14.546C14 14.7599 14 15.0399 14 15.6V19.4C14 19.9601 14 20.2401 14.109 20.454C14.2049 20.6422 14.3578 20.7951 14.546 20.891C14.7599 21 15.0399 21 15.6 21H19.4C19.9601 21 20.2401 21 20.454 20.891C20.6422 20.7951 20.7951 20.6422 20.891 20.454C21 20.2401 21 19.9601 21 19.4V15.6C21 15.0399 21 14.7599 20.891 14.546C20.7951 14.3578 20.6422 14.2049 20.454 14.109C20.2401 14 19.9601 14 19.4 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.4 14H4.6C4.03995 14 3.75992 14 3.54601 14.109C3.35785 14.2049 3.20487 14.3578 3.10899 14.546C3 14.7599 3 15.0399 3 15.6V19.4C3 19.9601 3 20.2401 3.10899 20.454C3.20487 20.6422 3.35785 20.7951 3.54601 20.891C3.75992 21 4.03995 21 4.6 21H8.4C8.96005 21 9.24008 21 9.45399 20.891C9.64215 20.7951 9.79513 20.6422 9.89101 20.454C10 20.2401 10 19.9601 10 19.4V15.6C10 15.0399 10 14.7599 9.89101 14.546C9.79513 14.3578 9.64215 14.2049 9.45399 14.109C9.24008 14 8.96005 14 8.4 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      'download-cloud-02': '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 17L12 21M12 21L16 17M12 21V12M20 16.7428C21.2215 15.734 22 14.2079 22 12.5C22 9.46243 19.5376 7 16.5 7C16.2815 7 16.0771 6.886 15.9661 6.69774C14.6621 4.48484 12.2544 3 9.5 3C5.35786 3 2 6.35786 2 10.5C2 12.5661 2.83545 14.4371 4.18695 15.7935" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      'safe': '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 21H9M15 21H18M17.5 6.5V14.5M3 6.2L3 14.8C3 15.9201 3 16.4802 3.21799 16.908C3.40973 17.2843 3.71569 17.5903 4.09202 17.782C4.51984 18 5.07989 18 6.2 18L17.8 18C18.9201 18 19.4802 18 19.908 17.782C20.2843 17.5903 20.5903 17.2843 20.782 16.908C21 16.4802 21 15.9201 21 14.8V6.2C21 5.0799 21 4.51984 20.782 4.09202C20.5903 3.7157 20.2843 3.40974 19.908 3.21799C19.4802 3 18.9201 3 17.8 3L6.2 3C5.0799 3 4.51984 3 4.09202 3.21799C3.7157 3.40973 3.40973 3.71569 3.21799 4.09202C3 4.51984 3 5.07989 3 6.2ZM11.5 10.5C11.5 11.8807 10.3807 13 9 13C7.61929 13 6.5 11.8807 6.5 10.5C6.5 9.11929 7.61929 8 9 8C10.3807 8 11.5 9.11929 11.5 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    };
     const arrow = '<svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     const categories = [
-      ['Veeam Data Platform', 'Compare Essentials, Foundation, Advanced and Premium for VMware, Hyper-V, Nutanix and physical servers.', '4 editions', 'Compare editions',
-        'M36 8 60 17v17c0 15-10 25-24 30C22 59 12 49 12 34V17L36 8Zm-10 27 7 7 14-15', 'var(--color-brand-25)'],
-      ['Microsoft 365 backup', 'Protect Exchange Online, SharePoint, OneDrive and Teams — self-managed or as a service.', '3 plans', 'Browse plans',
-        'M14 14h20v20H14V14Zm24 0h20v20H38V14ZM14 38h20v20H14V38Zm24 0h20v20H38V38Z', 'var(--color-info-50)'],
-      ['Veeam Data Cloud', 'Fully managed SaaS backup for Salesforce, Microsoft Entra ID, Azure and more — no infrastructure to run.', '6 workloads', 'Explore solutions',
-        'M22 52h30a12 12 0 0 0 1-24 17 17 0 0 0-33 4 10 10 0 0 0 2 20Zm14-24v16m-7-7 7 7 7-7', 'var(--color-green-50)'],
-      ['Secure cloud storage', 'Veeam Vault: fully managed, immutable object storage — air-gapped and ready for offsite backup.', 'Per TB', 'Shop Veeam Vault',
-        'M14 14h44v44H14V14Zm22 14a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm0-14v6m0 32v6M14 36h6m32 0h6', 'var(--color-gray-100)']];
-    document.getElementById('category-grid').innerHTML = categories.map(([t, d, count, cta, path, bg], i) => `
+      ['Veeam Data Platform', 'Compare Essentials, Foundation, Advanced and Premium for VMware, Hyper-V, Nutanix and physical servers.', '4 editions', 'Compare editions', 'shield-tick'],
+      ['Microsoft 365 backup', 'Protect Exchange Online, SharePoint, OneDrive and Teams — self-managed or as a service.', '3 plans', 'Browse plans', 'grid-01'],
+      ['Veeam Data Cloud', 'Fully managed SaaS backup for Salesforce, Microsoft Entra ID, Azure and more — no infrastructure to run.', '6 workloads', 'Explore solutions', 'download-cloud-02'],
+      ['Secure cloud storage', 'Veeam Vault: fully managed, immutable object storage — air-gapped and ready for offsite backup.', 'Per TB', 'Shop Veeam Vault', 'safe']];
+    document.getElementById('category-grid').innerHTML = categories.map(([t, d, count, cta, ic]) => `
       <a class="vds-col-3 category" href="../storefront/">
-        <div class="category__media" style="background:${bg}">
-          <span class="vds-badge vds-badge--neutral category__count">${count}</span>${icon(path, 'cg' + i)}
-        </div>
-        <div class="category__body">
-          <h3 class="category__title">${t}</h3>
-          <p class="category__desc">${d}</p>
-          <span class="category__link">${cta} ${arrow}</span>
-        </div>
+        <span class="vds-badge vds-badge--neutral">${count}</span>
+        <span class="vds-featured-icon vds-featured-icon--modern vds-featured-icon--xl">${icons[ic]}</span>
+        <h3 class="category__title">${t}</h3>
+        <p class="category__desc">${d}</p>
+        <span class="category__link vds-btn vds-btn--link">${cta} ${arrow}</span>
       </a>`).join('');
 
     // ---- Quick order rows, with inline validation using the system colors
