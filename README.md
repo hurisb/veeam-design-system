@@ -97,6 +97,7 @@ veeam-design-system/
 │   ├── foundations/             ← every token rendered: colors, ramps, gradients, type, buttons, spacing, grid, logo
 │   ├── homepage/                ← storefront homepage: parallax hero + Data Command Graph, category cards, promo + quick order
 │   └── storefront/              ← Commerce Cloud PLP (index.html) + PDP (product.html)
+├── lwc/                         ← ready-to-use Lightning Web Components (token-driven) — pull & deploy; see lwc/README.md
 ├── dist/veeam-design-system.zip ← THE CLAUDE SKILL, ready to upload (built by scripts/package-skill.sh)
 ├── skill/                       ← the Claude Skill source (also the full written spec)
 │   ├── SKILL.md
@@ -275,6 +276,11 @@ export default extendTheme(veeamTheme)
 Upload `fonts/` as a static resource, load `fonts.css` + the tokens in Head Markup, and map the
 tokens onto the `--dxp-g-*` styling hooks — snippet in
 [`commerce-cloud.md` Section 3](skill/references/commerce-cloud.md#3-b2b--d2c-commerce-on-lwr-experience-builder).
+
+**Ready-to-use components:** pull token-driven Lightning Web Components straight from
+[`lwc/`](lwc/) (e.g. **Shop by Product**) — copy a bundle into
+`force-app/main/default/lwc/` and deploy. Setup, catalog and usage in
+[`lwc/README.md`](lwc/README.md).
 
 ### 4.5 Tailwind CSS (v3)
 

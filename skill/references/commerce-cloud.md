@@ -93,6 +93,10 @@ All of them come from `scripts/build-tokens.py` — change a value there, run
    button radius 6px. Hook names can differ between releases — confirm them in your org's
    Theme panel before relying on one.
 4. In custom LWCs, use the tokens directly (`color: var(--text-secondary)`), never hex.
+   Remember LWC's shadow DOM blocks the global `css/veeam.css` classes — only the
+   CSS variables cross the boundary — so style components with tokens, not `.vds-*`.
+5. **Ready-made LWCs** live in `lwc/` (e.g. **Shop by Product** — `veeamShopByProduct`).
+   Copy a bundle into `force-app/main/default/lwc/` and deploy; see `lwc/README.md`.
 
 ## 4. Any website
 

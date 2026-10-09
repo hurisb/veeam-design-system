@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Veeam — Shop by Product</masterLabel>
+    <description>Shop-by-product section: product category cards with modern featured icons and link CTAs, styled with the Veeam design tokens.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="eyebrow" type="String" label="Eyebrow" default="Start here" />
+            <property name="heading" type="String" label="Heading" default="Shop by product" />
+            <property name="intro" type="String" label="Intro text" default="Go straight to pricing and editions for the products you already know or use." />
+            <property name="viewAllLabel" type="String" label="View-all link label" default="Shop all Veeam products" />
+            <property name="viewAllUrl" type="String" label="View-all link URL" default="#" />
+            <property name="categoriesJson" type="String" label="Categories (JSON, optional)" description="Optional JSON array to override the four default products. Each item: {id, count, title, description, cta, url, icon}. icon = shield-tick | grid-01 | download-cloud-02 | safe. Leave blank to use the defaults." />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,213 @@
+/* Veeam "Shop by product" section.
+   Self-contained: styled only with Veeam design tokens (CSS custom properties).
+   The tokens + ES Build fonts must be loaded globally on the site — see README.
+   No hex, px spacing or radius here; everything resolves from var(--token). */
+
+:host {
+    display: block;
+}
+
+.shop {
+    background: var(--bg-secondary);
+    padding-block: var(--spacing-9xl);
+}
+
+.shop__container {
+    max-width: var(--container-max-width-desktop);
+    margin-inline: auto;
+    padding-inline: var(--container-padding-desktop);
+}
+
+/* ---- Section header ---- */
+.shop__head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-4xl);
+}
+
+.eyebrow {
+    margin: 0;
+    font-family: var(--font-family-body);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-text-sm);
+    line-height: var(--line-height-text-sm);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+}
+
+.heading {
+    margin: var(--spacing-sm) 0 0;
+    font-family: var(--font-family-display);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-display-md);
+    line-height: var(--line-height-display-md);
+    letter-spacing: var(--letter-spacing-display-md);
+    color: var(--text-primary);
+}
+
+.intro {
+    margin: var(--spacing-md) 0 0;
+    font-size: var(--font-size-text-lg);
+    line-height: var(--line-height-text-lg);
+    color: var(--text-tertiary);
+}
+
+.link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-family: var(--font-family-body);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-text-md);
+    line-height: var(--line-height-text-md);
+    color: var(--color-primary); /* Electric Azure — actions */
+    text-decoration: none;
+    white-space: nowrap;
+}
+.link-arrow:hover {
+    text-decoration: underline;
+}
+.link-arrow__icon {
+    width: 20px;
+    height: 20px;
+    flex: none;
+}
+
+/* ---- Card grid (S1 grid: 4 / 2 / 1 columns) ---- */
+.grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--grid-gutter);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.grid__item {
+    display: flex;
+}
+
+/* ---- Card ---- */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    padding: var(--spacing-3xl);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 1px 2px rgba(29, 31, 42, 0.05);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s,
+        border-color 0.25s;
+}
+.card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-brand);
+    box-shadow: 0 24px 40px -24px rgba(55, 0, 255, 0.35);
+}
+.card:focus-visible {
+    outline: var(--stroke-focus, 2px) solid var(--border-brand);
+    outline-offset: 3px;
+}
+
+/* Count badge (S1 neutral badge) */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-xxs) var(--spacing-md);
+    border-radius: var(--radius-full);
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    font-size: var(--font-size-text-xs);
+    line-height: var(--line-height-text-xs);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Featured icon — modern variant, xl (56px tile / 28px icon), Viridis */
+.fi {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin-top: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-secondary);
+    box-shadow: 0 1px 2px rgba(10, 13, 18, 0.06);
+    color: var(--color-secondary); /* icon stroke inherits this via currentColor */
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fi c-veeam-product-icon {
+    display: block;
+    width: 28px;
+    height: 28px;
+}
+.card:hover .fi {
+    transform: translateY(-2px);
+}
+
+.card__title {
+    margin: var(--spacing-xl) 0 0;
+    font-family: var(--font-family-display);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-text-xl);
+    line-height: var(--line-height-text-xl);
+    color: var(--text-primary);
+}
+.card__desc {
+    margin: var(--spacing-sm) 0 var(--spacing-xl);
+    font-size: var(--font-size-text-sm);
+    line-height: var(--line-height-text-sm);
+    color: var(--text-tertiary);
+}
+
+/* Bottom CTA — azure 16px link-button (S1 .vds-btn--link) */
+.card__link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-family: var(--font-family-body);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-text-md);
+    line-height: var(--line-height-text-md);
+    color: var(--color-primary);
+}
+.card__link-icon {
+    width: 16px;
+    height: 16px;
+    flex: none;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card:hover .card__link {
+    text-decoration: underline;
+}
+.card:hover .card__link-icon {
+    transform: translateX(3px);
+}
+
+/* ---- Responsive (S1 breakpoints) ---- */
+@media (max-width: 1023px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media (max-width: 767px) {
+    .shop {
+        padding-block: var(--spacing-7xl);
+    }
+    .shop__container {
+        padding-inline: var(--container-padding-mobile);
+    }
+    .grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--spacing-xl);
+    }
+}

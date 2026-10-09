@@ -1,0 +1,36 @@
+<template>
+    <section class="shop">
+        <div class="shop__container">
+            <header class="shop__head">
+                <div class="shop__intro">
+                    <p class="eyebrow">{eyebrow}</p>
+                    <h2 class="heading">{heading}</h2>
+                    <p class="intro">{intro}</p>
+                </div>
+                <a class="link-arrow" href={viewAllUrl}>
+                    {viewAllLabel}
+                    <svg class="link-arrow__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </a>
+            </header>
+
+            <ul class="grid">
+                <template for:each={categories} for:item="cat">
+                    <li key={cat.id} class="grid__item">
+                        <a class="card" href={cat.url}>
+                            <span class="badge">{cat.count}</span>
+                            <span class="fi">
+                                <c-veeam-product-icon icon-name={cat.icon}></c-veeam-product-icon>
+                            </span>
+                            <h3 class="card__title">{cat.title}</h3>
+                            <p class="card__desc">{cat.description}</p>
+                            <span class="card__link">
+                                {cat.cta}
+                                <svg class="card__link-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                            </span>
+                        </a>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </section>
+</template>
